@@ -10,69 +10,63 @@ class DataProvider
 	
   public static function ExecuteQuery($sql) 
   { 
-    $connection = mysql_connect(HOSTNAME,USERNAME,PASSWORD) or 
+    $connection = mysqli_connect(HOSTNAME,USERNAME,PASSWORD,DATABASE) or 
       	die ("couldn't connect to localhost"); 
  
-    	mysql_select_db(DATABASE,$connection); 
          
-    mysql_query("set names 'utf8'"); 
+    mysqli_query($connection,"set names 'utf8'"); 
      
-    $result = mysql_query($sql,$connection); 
+    $result = mysqli_query($connection,$sql); 
      
-    mysql_close($connection); 
+    mysqli_close($connection); 
      
     return $result; 
   }
   
   public static function ExecuteQueryArray($sql) 
   { 
-    $connection = mysql_connect(HOSTNAME,USERNAME,PASSWORD) or 
-      	die ("couldn't connect to localhost"); 
+    $connection = mysqli_connect(HOSTNAME,USERNAME,PASSWORD,DATABASE) or 
+      	die ("couldn't connect to localhost");
  
-    	mysql_select_db(DATABASE,$connection); 
          
-    mysql_query("set names 'utf8'"); 
+    mysqli_query($connection,"set names 'utf8'"); 
 	
-	$kq = mysql_fetch_array($sql);
+	$kq = mysqli_fetch_array($sql);
      
-    mysql_close($connection); 
+    mysqli_close($connection); 
      
     return $kq; 
   }  
   
   public static function GetOneRow($sql)
   {
-    $connection = mysql_connect(HOSTNAME,USERNAME,PASSWORD) or 
-      	die ("couldn't connect to localhost"); 
- 
-    	mysql_select_db(DATABASE,$connection); 
+    $connection = mysqli_connect(HOSTNAME,USERNAME,PASSWORD,DATABASE) or 
+      	die ("couldn't connect to localhost");
          
-    mysql_query("set names 'utf8'"); 
+    mysqli_query($connection,"set names 'utf8'"); 
      
-    $result = mysql_query($sql,$connection); 
-	$row = mysql_fetch_array($result);
+    $result = mysqli_query($connection,$sql); 
+	$row = mysqli_fetch_array($result);
      
-    mysql_close($connection); 
+    mysqli_close($connection); 
      
     return $row; 
   }
   
   public static function GetRows($sql)
   {
-	      $connection = mysql_connect(HOSTNAME,USERNAME,PASSWORD) or 
-      die ("couldn't connect to localhost"); 
- 
-    mysql_select_db(DATABASE,$connection); 
+	$connection = mysqli_connect(HOSTNAME,USERNAME,PASSWORD,DATABASE) or 
+      	die ("couldn't connect to localhost"); 
          
-    mysql_query("set names 'utf8'"); 
+    mysqli_query($connection,"set names 'utf8'"); 
     
-    $result = mysql_query($sql,$connection);
+    $result = mysqli_query($connection,$sql);
 	$i = 0;
-	while ($row = mysql_fetch_array($result))
+	while ($row = mysqli_fetch_array($result))
 	{
 		$returnresult[$i++] = $row;
 	}
-    mysql_close($connection); 
+    mysqli_close($connection); 
     return $returnresult; 
 	}
 		
