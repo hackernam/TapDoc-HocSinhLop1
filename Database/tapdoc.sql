@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 02, 2015 at 03:40 AM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Host: localhost
+-- Generation Time: Dec 03, 2015 at 03:57 AM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -76,7 +76,15 @@ CREATE TABLE IF NOT EXISTS `gioitinh` (
   `gt_ID` int(11) NOT NULL AUTO_INCREMENT,
   `gt_LoaiGioiTinh` varchar(50) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`gt_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `gioitinh`
+--
+
+INSERT INTO `gioitinh` (`gt_ID`, `gt_LoaiGioiTinh`) VALUES
+(1, 'Nam'),
+(2, 'Nữ');
 
 -- --------------------------------------------------------
 
