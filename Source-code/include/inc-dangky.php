@@ -53,7 +53,7 @@
 		}
 		var temp = document.getElementById("result").innerHTML;
 		if(temp.length > 6){
-			alert("ton tai");
+			//alert("ton tai");
 			document.getElementById("result").innerHTML = "Email đã tồn tại !";
 			return false;
 		}
