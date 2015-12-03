@@ -1,19 +1,21 @@
-<script language="javascript" src="../scripts/jquery-2.0.0.min.js"></script>
 <script language="javascript">
 	function kiemtraemailtontai(){
-		$.ajax({
-			url : "process/kiemmailtontai.php", // gửi ajax đến file result.php
-			type : "get", // chọn phương thức gửi là get
-			dateType:"text", // dữ liệu trả về dạng text
-			data : { // Danh sách các thuộc tính sẽ gửi đi
-				 email : $('#txtEmail').val()
-			},
-			success : function (result){
-				// Sau khi gửi và kết quả trả về thành công thì gán nội dung trả về
-				// đó vào thẻ div có id = result
-				$('#result').html(result);
+		var xmlHttpRequest;
+		if(window.XMLHttpRequest){
+			xmlHttpRequest = new XMLHttpRequest();
+		}
+		else{
+			xmlHttpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		
+		xmlHttpRequest.onreadystatechange = function(){
+			if(xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200){
+				document.getElementById("result").innerHTML = xmlHttpRequest.responseText;
 			}
-		});
+		}
+		var email = document.getElementById("txtEmail").value;
+		xmlHttpRequest.open("get","process/kiemmailtontai.php?email="+email,true);
+		xmlHttpRequest.send();
 	}
 	function kiemtrahople(){
 		myFrmObj = document.DKUser;
