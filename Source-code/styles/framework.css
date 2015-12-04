@@ -2812,6 +2812,11 @@ ul.tabs li.active-tab{
     padding:12px 30px;
 }
 
+.button-m{
+    font-size:12px;
+    padding:12px 30px;
+}
+
 .button-l{
     font-size:15px;
     padding:10px 30px;
