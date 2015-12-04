@@ -343,9 +343,72 @@
         
         
         <div id="content" class="snap-content">
-            <?php
-				include_once("include/inc-dsbaihoc.php");
-			?> 
+            <div class="content">
+            <div class="header-clear-large"></div>
+            <!--Page content goes here, fixed elements go above the all elements class-->
+                
+                <div class="container heading-style-5">
+                    <h4 class="heading-title">Xin chào bạn</h4>
+                    <i class="fa fa-th heading-icon"></i>
+                    <div class="line bg-black"></div>
+                    <p class="heading-subtitle">
+                        Bạn hãy chức chọn một trong những chức năng dưới đây nhé !
+                    </p>
+                </div> 
+                
+                <div class="decoration"></div>
+                
+                <div class="thumbnail-menu">
+				
+					<!-- ===============================================================-->
+					
+					
+					
+					
+					<!-- ===============================================================-->
+                    <a href="index.html">
+                        <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/phatam.png" class="responsive-image" alt="img"></i>
+                        <em>Đọc âm</em>
+                    </a>                    
+                    <a href="index.html">
+                        <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/phattu.png" class="responsive-image" alt="img"></i>
+                        <em>Đọc từ</em>
+                    </a>
+					<a href="index.html">
+                        <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/doccau.png" class="responsive-image" alt="img"></i>
+                        <em>Đọc câu</em>
+                    </a>
+					<a href="index.html">
+                        <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/hinhanh.png" class="responsive-image" alt="img"></i>
+                        <em>Hình ảnh</em>
+                    </a>
+					<a href="index.html">
+                        <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/baitap.png" class="responsive-image" alt="img"></i>
+                        <em>Bài tập</em>
+                    </a>
+					<a href="index.html">
+                        <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/game.png" class="responsive-image" alt="img"></i>
+                        <em>Trò chơi</em>
+                    </a>
+                </div>
+                
+                <div class="decoration"></div>
+                
+                <div class="footer">
+                    <p class="center-text">Copyright 2015. All rights reserved.</p>
+                    <div class="footer-icons">
+                        <a href="#" class="scale-hover facebook-color social-ball"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="scale-hover twitter-color social-ball"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="scale-hover google-color social-ball"><i class="fa fa-google-plus"></i></a>
+                        <a href="#" class="scale-hover back-to-top bg-green-dark social-ball"><i class="fa fa-angle-up"></i></a>
+                        <a href="#" class="scale-hover show-share-bottom bg-magenta-dark social-ball"><i class="fa fa-retweet"></i></a>
+                    </div>
+                </div>
+                                
+                
+                
+            <!-- End of entire page content-->
+            </div> 
         </div>
     </div>  
     <a href="#" class="back-to-top-badge"><i class="fa fa-caret-up"></i>Back to top</a>

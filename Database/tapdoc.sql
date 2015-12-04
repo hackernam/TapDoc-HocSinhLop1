@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Dec 03, 2015 at 03:57 AM
--- Server version: 5.5.16
--- PHP Version: 5.3.8
+-- Host: 127.0.0.1
+-- Generation Time: Dec 04, 2015 at 09:45 AM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -49,7 +49,19 @@ CREATE TABLE IF NOT EXISTS `baihoc` (
   `bh_HinhDaiDien` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`bh_ID`),
   KEY `fk_baihoc_loaibaihoc_idx` (`bh_LoaiBaiHoc`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `baihoc`
+--
+
+INSERT INTO `baihoc` (`bh_ID`, `bh_TenBaiHoc`, `bh_LoaiBaiHoc`, `bh_NgayTao`, `bh_HinhDaiDien`) VALUES
+(1, 'Bài 1', 1, '2015-12-04 00:00:00', 'images\\pictures\\baitap.png'),
+(2, 'Bài 2', 1, '2015-12-04 00:00:00', 'images\\pictures\\baitap.png'),
+(3, 'Bài 1', 2, '2015-12-04 00:00:00', 'images\\pictures\\baitap.png'),
+(4, 'Bài 1', 3, '2015-12-04 00:00:00', 'images\\pictures\\baitap.png'),
+(5, 'Bài 2', 2, '2015-12-04 00:00:00', 'images\\pictures\\baitap.png'),
+(6, 'Bài 2', 3, '2015-12-04 00:00:00', 'images\\pictures\\baitap.png');
 
 -- --------------------------------------------------------
 
@@ -127,7 +139,19 @@ CREATE TABLE IF NOT EXISTS `loaibaihoc` (
   `lbh_ID` int(11) NOT NULL AUTO_INCREMENT,
   `lbh_LoaiBaiHoc` varchar(100) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`lbh_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `loaibaihoc`
+--
+
+INSERT INTO `loaibaihoc` (`lbh_ID`, `lbh_LoaiBaiHoc`) VALUES
+(1, 'Phát âm theo từ'),
+(2, 'Phát âm theo câu'),
+(3, 'Phát âm theo hình ảnh'),
+(4, 'Đọc âm'),
+(5, 'Trò chơi'),
+(6, 'Luyện tập');
 
 -- --------------------------------------------------------
 
