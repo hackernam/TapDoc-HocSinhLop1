@@ -1,3 +1,20 @@
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '115148265520822',
+      xfbml      : true,
+      version    : 'v2.5'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 
 <?PHP
 require_once("process/xuly_dangnhap.php");
@@ -8,14 +25,21 @@ if(isset($_POST['btnLogin']))
 
 	//document.getElementById("result").innerHTML =''; // Variable To Store Error Message
 	$xx->HandleError('');
-	if($xx->CheckLoginInDB($_POST['txtUsername'], $_POST['txtPassword']))
+	$id = $xx->CheckLoginInDB($_POST['txtUsername'], $_POST['txtPassword']);
+	if($id > 0)
 	{
+		if (session_status() == PHP_SESSION_NONE) {
+			session_start();
+		}
+		$_SESSION['UID'] = $id;
+		
+		//$xx->HandleError($id);
+		$xx->RedirectToURL("index.php");
 		
 	}
 }
 
 ?>
-         
 <div class="all-elements">
     <div class="snap-drawers">
         <div class="snap-drawer snap-drawer-left">        
@@ -323,12 +347,13 @@ if(isset($_POST['btnLogin']))
 								</div>
 								<input type="submit" name="btnLogin" value="Đăng nhập" class="pageapp-login-button button button-m button-green button-fullscreen" />
 								<div class="decoration"></div>
-								<div id="result" style="color:#F00; font-weight:bold"><?php echo $xx->GetErrorMessage(); ?></div>
+								<div id="result" style="color:#ff5c3d; font-weight:bold; "><?php echo $xx->GetErrorMessage(); ?></div>
 								<!--a href="#" class="pageapp-login-button button button-small button-green button-fullscreen">Đăng nhập</a>
 								<div class="decoration"></div-->
-								<a href="#" class="facebook-login facebook-color"><i class="fa fa-facebook"></i>Đăng nhập bằng Facebook</a>
+								<a href="process/fbconfig.php" class="facebook-login facebook-color"><i class="fa fa-facebook"></i>Đăng nhập bằng Facebook</a>
 								<a href="#" class="twitter-login twitter-color no-bottom"><i class="fa fa-twitter"></i>Đăng nhập bằng Twitter</a>                    
 							</div>
+	
                         </form>
 						<!--Form Dang Nhap END-->
 						

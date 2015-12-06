@@ -24,7 +24,7 @@
 			if (empty($username) || empty($password))
 			{
 				 $this->HandleError("Tên đăng nhập hoặc Mật khẩu không được để trống");
-				 return false;
+				 return -1;
 			}
 			else
 			{
@@ -36,8 +36,12 @@
 				$rows = mysqli_num_rows($query);
 				if($rows == 1)
 				{
-					$this->HandleError('ok');
-					return true;
+					$id = -1;
+					while ($row = $query->fetch_assoc()) {
+						$id = $row["tk_ID"];
+					}
+				
+					return $id;
 				}
 				else
 				{
@@ -45,6 +49,25 @@
 				}
 				mysqli_close($connection);
 			}
+		}
+		
+		function CheckLogin()
+		{
+			if (session_status() == PHP_SESSION_NONE) {
+				session_start();
+			}
+			 
+			if(empty($_SESSION['UID']) && empty($_SESSION['FBID']) )
+			{
+				return false;
+			}
+			 return true;
+		}
+		
+		function RedirectToURL($url)
+		{
+			header("Location: $url");
+			exit;
 		}
 	}
 ?>
