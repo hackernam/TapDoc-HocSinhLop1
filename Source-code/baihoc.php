@@ -29,10 +29,16 @@
 <link href="styles/font-awesome.css"    rel="stylesheet" type="text/css">
 <link href="styles/animate.css"         rel="stylesheet" type="text/css">
 
+<link rel="stylesheet" href="player/css/reset.css" />
+<link rel="stylesheet" href="player/css/demo.css" />
+<link rel="stylesheet" href="player/css/audioplayer.css" />
+
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/jqueryui.js"></script>
 <script type="text/javascript" src="scripts/framework-plugins.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
+
+
 </head>
 
 <body class="dual-sidebar"> 
@@ -338,8 +344,8 @@
             
             <p class="sidebar-footer">Copyright 2015. All rights reserved</p>
         </div>
-        
-        
+
+		</div>
         
         <div id="content" class="snap-content">
             <div class="content">
@@ -355,72 +361,13 @@
                     </p>
                 </div> 
                                 
-          
+                <?php
+	include_once 'dataconfig/dataprovider.php';
+?>
 
-
-
-                <div class="container switch-box">
-                    <h4>Con cá</h4>
-                    <a href="#" class="switch-icon switch-1 switch-1-on">
-                        <em><i class="fa fa-times"></i></em>
-                        <span></span>
-                        <em><i class="fa fa-check"></i></em>
-                    </a>
-                </div>
-				
-				<div class="container switch-box">
-                    <h4>Ngôi nhà</h4>
-                    <a href="#" class="switch-icon switch-1 switch-1-on">
-                        <em><i class="fa fa-times"></i></em>
-                        <span></span>
-                        <em><i class="fa fa-check"></i></em>
-                    </a>
-                </div>
-
-                <div class="container switch-box">
-                    <h4>Cây cối</h4>
-                    <a href="#" class="switch-icon switch-1 switch-1-on">
-                        <em><i class="fa fa-times"></i></em>
-                        <span></span>
-                        <em><i class="fa fa-check"></i></em>
-                    </a>
-                </div>
-				
-				<div class="container switch-box">
-                    <h4>Con sông</h4>
-                    <a href="#" class="switch-icon switch-1 switch-1-on">
-                        <em><i class="fa fa-times"></i></em>
-                        <span></span>
-                        <em><i class="fa fa-check"></i></em>
-                    </a>
-                </div>
-				
-				<div class="container switch-box">
-                    <h4>Ngọn núi</h4>
-                    <a href="#" class="switch-icon switch-1 switch-1-on">
-                        <em><i class="fa fa-times"></i></em>
-                        <span></span>
-                        <em><i class="fa fa-check"></i></em>
-                    </a>
-                </div>
-				
-				<div class="container switch-box">
-                    <h4>Trái cây</h4>
-                    <a href="#" class="switch-icon switch-1 switch-1-on">
-                        <em><i class="fa fa-times"></i></em>
-                        <span></span>
-                        <em><i class="fa fa-check"></i></em>
-                    </a>
-                </div>
-				
-				<div class="container switch-box">
-                    <h4>Con mèo</h4>
-                    <a href="#" class="switch-icon switch-1 switch-1-on">
-                        <em><i class="fa fa-times"></i></em>
-                        <span></span>
-                        <em><i class="fa fa-check"></i></em>
-                    </a>
-                </div>
+<?php 
+	include('include/inc-baihoc-tungu.php');
+?>
                 <!-- Regular Toggles -->
                 
                 <div class="container-fullscreen heading-style-3 bg-2">
