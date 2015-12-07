@@ -69,6 +69,21 @@ class DataProvider
 	}
     mysqli_close($connection); 
     return $returnresult; 
+	}
+
+	public static function NumRows($sql)
+	{
+		$connection = mysqli_connect(HOSTNAME,USERNAME,PASSWORD,DATABASE) or 
+      	die ("couldn't connect to localhost");
+         
+    mysqli_query($connection,"set names 'utf8'"); 
+     
+    $result = mysqli_query($connection,$sql); 
+	$row = mysqli_num_rows($result);
+     
+    mysqli_close($connection); 
+     
+    return $row; 
 	}	
 } 
 ?> 

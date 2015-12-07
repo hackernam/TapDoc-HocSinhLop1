@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	if(!($_SESSION['DaDangNhap'] == 1))
+	{
+		header("Location: dangnhap.php");
+	}
+?>
+
 <!DOCTYPE HTML>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -22,7 +30,7 @@
 <link rel="icon" type="image/png" href="images/splash/favicon-16x16.png" sizes="16x16">
 <link rel="shortcut icon" href="images/splash/favicon.ico" type="image/x-icon" /> 
     
-<title>Epsilon 4.0</title>
+<title>Bài học</title>
 
 <link href="styles/style.css"           rel="stylesheet" type="text/css">
 <link href="styles/framework.css"       rel="stylesheet" type="text/css">
@@ -368,258 +376,9 @@
 <?php 
 	include('include/inc-baihoc-tungu.php');
 ?>
-                <!-- Regular Toggles -->
-                
-                <div class="container-fullscreen heading-style-3 bg-2">
-                    <h3 class="heading-title">Regular Toggles</h3>
-                    <em class="heading-subtitle">Default designed, simple toggles.</em>
-                    <div class="overlay bg-black"></div>
-                </div>
-
-                <div class="container">
-                    <h4>Classic Toggles</h4>
-                    <p>
-                        Classic, oldschool, everyone knows them, everyone uses them toggles. Simple and effective.
-                    </p>
-                </div>
-
-                <div class="container">
-                    <div class="toggle active-toggle">
-                        <a href="#" class="toggle-title">Active Toggle<i class="rotate-toggle fa fa-plus"></i></a>
-                        <div class="toggle-content">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </p>
-                        </div>
-                    </div>       
-                    <div class="toggle">
-                        <a href="#" class="toggle-title">Inactive Toggle<i class="fa fa-plus"></i></a>
-                        <div class="toggle-content">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-                
-
-                <!-- Acordion -->
-                
-                <div class="container-fullscreen heading-style-3 bg-3">
-                    <h3 class="heading-title">Accordion</h3>
-                    <em class="heading-subtitle">A simple way to display a lot of content.</em>
-                    <div class="overlay bg-black"></div>
-                </div>
-                
-                <div class="container">
-                    <div class="accordion">
-                        <h6 class="accordion-toggle">
-                            Accordion 1
-                            <i class="fa fa-angle-down"></i>
-                        </h6>
-                        <!-- Add the extra class active-accordion to any accordion-content to make it active by default -->
-                        <div class="accordion-content active-accordion">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        </div>
-                        <h6 class="accordion-toggle">
-                            Accordion 2
-                            <i class="fa fa-angle-down"></i>
-                        </h6>
-                        <div class="accordion-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        </div>
-                        <h6 class="accordion-toggle">
-                            Accordion 3
-                            <i class="fa fa-angle-down"></i>
-                        </h6>
-                        <div class="accordion-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Tabs -->
-                
-                <div class="container-fullscreen heading-style-3 bg-4">
-                    <h3 class="heading-title">Tabs</h3>
-                    <em class="heading-subtitle">Easy to use, with active classes included.</em>
-                    <div class="overlay bg-black"></div>
-                </div>
-                
-                <div class="container">
-                    <ul class="tabs">
-                        <li class="tab-link active-tab" data-tab="tab-1">Tab 1</li>
-                        <li class="tab-link" data-tab="tab-2">Tab 2</li>
-                        <li class="tab-link" data-tab="tab-3">Tab 3</li>
-                        <li class="tab-link" data-tab="tab-4">Tab 4</li>
-                    </ul>
-
-                    <div id="tab-1" class="tab-content active-tab-content">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.
-                    </div>
-                    <div id="tab-2" class="tab-content">
-                         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
-                    <div id="tab-3" class="tab-content">
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    </div>
-                    <div id="tab-4" class="tab-content">
-                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat dolore mollit anim est laborum.
-                    </div>
-                </div>
-                
-                <div class="decoration"></div>
-                
-                <!-- Notifications -->
-
-                <div class="container-fullscreen heading-style-3 bg-5">
-                    <h3 class="heading-title">Alerts & Notifications</h3>
-                    <em class="heading-subtitle">Alerts and fixed notifications with timeouts.</em>
-                    <div class="overlay bg-black"></div>
-                </div>
-
-                <div class="container">
-                    <h5>Large Notifications</h5>
-                    <p>
-                        Fixed notifications that pop-up from the top, or simple notifications you can tap to dismiss.
-                        Simple, fast, and efficient displays of useful information
-                    </p>
-
-                    <div class="static-notification bg-red-dark">
-                        <h6><i class="fa fa-times-circle static-notification-icon"></i>This is a notification</h6>
-                        <a class="static-notification-close" href="#"><i class="fa fa-times"></i></a>
-                        <p>
-                            You can use any text you want and have a close or tap to dismiss system for your notifications.
-                        </p>
-                    </div>            
-
-                    <div class="static-notification bg-green-dark">
-                        <h6><i class="fa fa-check static-notification-icon"></i>This is a notification</h6>
-                        <a class="static-notification-close" href="#"><i class="fa fa-times"></i></a>
-                        <p>
-                            You can use any text you want and have a close or tap to dismiss system for your notifications.
-                        </p>
-                    </div>            
-
-                    <div class="static-notification bg-blue-dark">
-                        <h6><i class="fa fa-info static-notification-icon"></i>This is a notification</h6>
-                        <a class="static-notification-close" href="#"><i class="fa fa-times"></i></a>
-                        <p>
-                            You can use any text you want and have a close or tap to dismiss system for your notifications.
-                        </p>
-                    </div>            
-
-                    <div class="static-notification bg-orange-dark">
-                        <h6><i class="fa fa-warning static-notification-icon"></i> This is a notification</h6>
-                        <a class="static-notification-close" href="#"><i class="fa fa-times"></i></a>
-                        <p>
-                            You can use any text you want and have a close or tap to dismiss system for your notifications.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="decoration"></div>
-                
-                <div class="container">
-                    <h5>Small Notifications</h5>
-                    <p>
-                        Smaller are sometimes better if you don't want a big colorful thing poping up and blocking the view.
-                        These notifications can be dismissed with a simple tap.
-                    </p>
-
-                    <div class="static-notification bg-red-dark tap-dismiss">
-                        <p>
-                            <i class="fa fa-times"></i>
-                            This is a warning notification
-                        </p>
-                    </div>            
-                    <div class="static-notification bg-green-dark tap-dismiss">
-                        <p>
-                            <i class="fa fa-check"></i>
-                            This is an all good notification
-                        </p>
-                    </div>            
-                    <div class="static-notification bg-blue-dark tap-dismiss">
-                        <p>
-                            <i class="fa fa-info"></i>
-                            This is an information notification
-                        </p>
-                    </div>            
-                    <div class="static-notification bg-orange-dark tap-dismiss">
-                        <p>
-                            <i class="fa fa-exclamation"></i>
-                            This is an attention seeker notification.
-                        </p>
-                    </div>            
-                </div>
-                
-                <div class="decoration"></div>
-                
-                <div class="container">
-                    <h5>Fixed Header Notifications</h5>
-                    <p>
-                        You can deploy notifications on top or the bottom of the page from a simple button.
-                        Creating them is as easy as copy pasting a single line of code.
-                    </p>
-                    <a class="show-top-notification-1" href="#">Fixed Top Notification</a>                    
-                    <a class="show-bottom-notification-1" href="#">Fixed Bottom Notification</a>
-                    <a class="show-top-notification-2 timer-notification" href="#">Fixed Top Notification With Timeout</a>
-                    <a class="show-bottom-notification-2 timer-notification" href="#">Fixed Bottom Notification With Timeout</a>
-                    <div class="clear"></div>
-                </div>
-
-                <div class="decoration"></div>
-                
-                <!-- Device Detection -->
-
-                <div class="container-fullscreen heading-style-3 bg-6">
-                    <h3 class="title">Device Detection</h3>
-                    <em class="subtitle">Detect your mobile agent, and show content.</em>
-                    <div class="overlay bg-black"></div>
-                </div>
 
                 
-                <div class="show-android device-detected">
-                    <img src="images/detector/android.png" alt="img">
-                    <h5>Android Detected</h5>
-                </div>
-                <div class="show-blackberry device-detected">
-                    <img src="images/detector/blackberry.png" alt="img">
-                    <h5>Blackberry Detected</h5>
-                    <p>
-                        We've detected that you're browsing from a BBery Mobile Phone.
-                        The button will appear only on BBery Mobile devices.
-                    </p>
-                    <a href="#" class="button-small button-green button-center">BlackBerry</a>
-                </div>
-                <div class="show-ios device-detected">
-                    <img src="images/detector/appstore.png" alt="img">
-                    <h5>iOS Detected</h5>
-                    <p>
-                        We've detected that you're browsing from a iOS Mobile Phone.
-                        The button will appear only on iOS Mobile devices.
-                    </p>
-                    <a href="#" class="button-small button-green button-center">iOS</a>
-                </div>
-                <div class="show-windows device-detected">
-                    <img src="images/detector/windows.png" alt="img">
-                    <h5>Windows Detected</h5>
-                    <p>
-                        We've detected that you're browsing from a Windows Mobile Phone.
-                        The button will appear only on Windows Mobile devices.
-                    </p>
-                    <a href="#" class="button-small button-green button-center">Windows</a>
-                </div>                
-                <div class="show-no-detection device-detected">
-                    <img src="images/detector/none.png" alt="img">
-                    <h5>You're not on a mobile device!</h5>
-                    <p>
-                        This section will detect and replace  itself with any mobile device
-                        software around. iOS, Android, BlackBerry or Windows Mobile.
-                    </p>
-                    <a href="#" class="button-small button-red button-center">No Mobile</a>
-                </div>
+             
                 
                 <div class="decoration"></div>
                 
@@ -629,8 +388,6 @@
                         <a href="#" class="scale-hover facebook-color social-ball"><i class="fa fa-facebook"></i></a>
                         <a href="#" class="scale-hover twitter-color social-ball"><i class="fa fa-twitter"></i></a>
                         <a href="#" class="scale-hover google-color social-ball"><i class="fa fa-google-plus"></i></a>
-                        <a href="#" class="scale-hover back-to-top bg-green-dark social-ball"><i class="fa fa-angle-up"></i></a>
-                        <a href="#" class="scale-hover show-share-bottom bg-magenta-dark social-ball"><i class="fa fa-retweet"></i></a>
                     </div>
                 </div>
                                 

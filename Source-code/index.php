@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	if(!($_SESSION['DaDangNhap'] == 1))
+	{
+		header("Location: dangnhap.php");
+	}
+?>
+
 <!DOCTYPE HTML>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -22,7 +30,7 @@
 <link rel="icon" type="image/png" href="images/splash/favicon-16x16.png" sizes="16x16">
 <link rel="shortcut icon" href="images/splash/favicon.ico" type="image/x-icon" /> 
     
-<title>Epsilon 4.0</title>
+<title>Bé tập đọc</title>
 
 <link href="styles/style.css"           rel="stylesheet" type="text/css">
 <link href="styles/framework.css"       rel="stylesheet" type="text/css">
@@ -370,7 +378,7 @@
                         <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/phatam.png" class="responsive-image" alt="img"></i>
                         <em>Đọc âm</em>
                     </a>                    
-                    <a href="index.html">
+                    <a href="danhsachbaihoc.php?lsid=2">
                         <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/phattu.png" class="responsive-image" alt="img"></i>
                         <em>Đọc từ</em>
                     </a>

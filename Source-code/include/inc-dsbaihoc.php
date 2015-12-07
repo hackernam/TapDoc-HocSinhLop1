@@ -30,7 +30,7 @@
 							foreach ($result as $value) {
 					?>
 					<!-- ===============================================================-->
-                    <a href="#">
+                    <a href="baihoc.php?bh=<?php echo $value['bh_ID']; ?>&lbh=<?php echo $lessonid; ?>">
                         <i class="bg-green-dark bg-hover-green-dark fa border-radius-img">
 							<img class="img-responsive img-circle" src="<?php echo $value['bh_HinhDaiDien']; ?>">
 						</i>
