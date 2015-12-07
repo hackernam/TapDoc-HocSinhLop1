@@ -62,7 +62,6 @@ class DataProvider
     
     $result = mysqli_query($connection,$sql);
 	$i = 0;
-	$returnresult = [];
 	while ($row = mysqli_fetch_array($result))
 	{
 		$returnresult[$i++] = $row;
