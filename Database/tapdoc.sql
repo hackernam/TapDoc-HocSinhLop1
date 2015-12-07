@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2015 at 09:45 AM
+-- Generation Time: Dec 07, 2015 at 03:46 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -49,19 +49,14 @@ CREATE TABLE IF NOT EXISTS `baihoc` (
   `bh_HinhDaiDien` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`bh_ID`),
   KEY `fk_baihoc_loaibaihoc_idx` (`bh_LoaiBaiHoc`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `baihoc`
 --
 
 INSERT INTO `baihoc` (`bh_ID`, `bh_TenBaiHoc`, `bh_LoaiBaiHoc`, `bh_NgayTao`, `bh_HinhDaiDien`) VALUES
-(1, 'Bài 1', 1, '2015-12-04 00:00:00', 'images\\pictures\\baitap.png'),
-(2, 'Bài 2', 1, '2015-12-04 00:00:00', 'images\\pictures\\baitap.png'),
-(3, 'Bài 1', 2, '2015-12-04 00:00:00', 'images\\pictures\\baitap.png'),
-(4, 'Bài 1', 3, '2015-12-04 00:00:00', 'images\\pictures\\baitap.png'),
-(5, 'Bài 2', 2, '2015-12-04 00:00:00', 'images\\pictures\\baitap.png'),
-(6, 'Bài 2', 3, '2015-12-04 00:00:00', 'images\\pictures\\baitap.png');
+(1, 'Bài 1', 2, '2015-12-04 00:00:00', 'upload\\HinhAnh\\doccau.png');
 
 -- --------------------------------------------------------
 
@@ -139,19 +134,17 @@ CREATE TABLE IF NOT EXISTS `loaibaihoc` (
   `lbh_ID` int(11) NOT NULL AUTO_INCREMENT,
   `lbh_LoaiBaiHoc` varchar(100) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`lbh_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `loaibaihoc`
 --
 
 INSERT INTO `loaibaihoc` (`lbh_ID`, `lbh_LoaiBaiHoc`) VALUES
-(1, 'Phát âm theo từ'),
-(2, 'Phát âm theo câu'),
-(3, 'Phát âm theo hình ảnh'),
-(4, 'Đọc âm'),
-(5, 'Trò chơi'),
-(6, 'Luyện tập');
+(1, 'Âm'),
+(2, 'Từ ngữ'),
+(3, 'Câu'),
+(4, 'Hình ảnh');
 
 -- --------------------------------------------------------
 
@@ -167,7 +160,16 @@ CREATE TABLE IF NOT EXISTS `taikhoan` (
   `tk_MatKhau` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`tk_ID`),
   KEY `fk_taikhoan_gioitinh_idx` (`tk_GioiTinh`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `taikhoan`
+--
+
+INSERT INTO `taikhoan` (`tk_ID`, `tk_HoTen`, `tk_GioiTinh`, `tk_TenDangNhap`, `tk_MatKhau`) VALUES
+(1, 'ABC', 1, 'test', '123'),
+(2, 'hnam12', 1, '', 'e10adc3949ba59abbe56e057f20f883e'),
+(3, 'asdasfds', 1, 'test123', '123456');
 
 -- --------------------------------------------------------
 
@@ -182,7 +184,23 @@ CREATE TABLE IF NOT EXISTS `tu` (
   `t_BaiHoc` int(11) NOT NULL,
   PRIMARY KEY (`t_ID`),
   KEY `fk_tu_baihoc_idx` (`t_BaiHoc`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
+
+--
+-- Dumping data for table `tu`
+--
+
+INSERT INTO `tu` (`t_ID`, `t_NoiDung`, `t_DuongDanGhiAm`, `t_BaiHoc`) VALUES
+(1, 'Con heo', 'upload\\GhiAm\\Tu\\con heo.mp3', 1),
+(2, 'Con bò', 'upload\\GhiAm\\Tu\\con bo.mp3', 1),
+(3, 'Con cá', 'upload\\GhiAm\\Tu\\con ca.mp3', 1),
+(4, 'Con chuột', 'upload\\GhiAm\\Tu\\con chuot.mp3', 1),
+(5, 'Con gấu', 'upload\\GhiAm\\Tu\\con gau.mp3', 1),
+(6, 'Con khỉ', 'upload\\GhiAm\\Tu\\con khi.mp3', 1),
+(7, 'Con mèo', 'upload\\GhiAm\\Tu\\con meo.mp3', 1),
+(8, 'Con ngựa', 'upload\\GhiAm\\Tu\\con ngua.mp3', 1),
+(9, 'Con trâu', 'upload\\GhiAm\\Tu\\con trau.mp3', 1),
+(10, 'Con voi', 'upload\\GhiAm\\Tu\\con voi.mp3', 1);
 
 --
 -- Constraints for dumped tables
