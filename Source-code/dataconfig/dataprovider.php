@@ -62,13 +62,13 @@ class DataProvider
     
     $result = mysqli_query($connection,$sql);
 	$i = 0;
-	$returnresult = [];
+	$returnresult = NULL;
 	while ($row = mysqli_fetch_array($result))
 	{
 		$returnresult[$i++] = $row;
 	}
-    mysqli_close($connection); 
-    return $returnresult; 
+		mysqli_close($connection); 
+		return $returnresult; 
 	}
 
 	public static function NumRows($sql)

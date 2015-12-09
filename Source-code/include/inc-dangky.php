@@ -1,5 +1,5 @@
 <script language="javascript">
-	function kiemtraemailtontai(){
+	function kiemtratontai(){
 		var xmlHttpRequest;
 		if(window.XMLHttpRequest){
 			xmlHttpRequest = new XMLHttpRequest();
@@ -13,8 +13,8 @@
 				document.getElementById("result").innerHTML = xmlHttpRequest.responseText;
 			}
 		}
-		var email = document.getElementById("txtEmail").value;
-		xmlHttpRequest.open("get","process/kiemmailtontai.php?email="+email,true);
+		var taikhoan = document.getElementById("txttentaikhoan").value;
+		xmlHttpRequest.open("get","process/kiemmailtontai.php?taikhoan="+taikhoan,true);
 		xmlHttpRequest.send();
 	}
 	function kiemtrahople(){
@@ -41,26 +41,20 @@
 		else if(myFrmObj.txttentaikhoan.value.length >= 6){
 			document.getElementById("result").innerHTML = "&nbsp;";
 		}
+		kiemtratontai();
 		return true;
 	}
 	function Kiemtralai(){
 		myFrmObj = document.DKUser;
 		if(myFrmObj.txtmatkhau.value.length < 6){
-			//alert("ton tai");
 			document.getElementById("result").innerHTML = "Mật khẩu phải hơn 6 kí tự";
 			return false;
 		}
 		if(myFrmObj.txttentaikhoan.value.length < 6){
-			//alert("ton tai");
 			document.getElementById("result").innerHTML = "Tên tài khoản phải hơn 6 kí tự";
 			return false;
 		}
 		var temp = document.getElementById("result").innerHTML;
-		if(temp.length > 6){
-			//alert("ton tai");
-			document.getElementById("result").innerHTML = "Email đã tồn tại !";
-			return false;
-		}
 		return true;
 	}
 </script>

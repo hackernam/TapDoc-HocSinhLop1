@@ -8,21 +8,20 @@ function triggerAudio(abc) {
 <?php
 	$idBaiHoc = $_GET["bh"];
 	$idLoaiBaiHoc = $_GET["lbh"];
-	$result = DataProvider::GetRows("select * from tu where t_BaiHoc = $idBaiHoc");
+	$sql = "select * from tu where t_BaiHoc = $idBaiHoc";
+	$result = DataProvider::GetRows($sql);
 	foreach ($result as $value) 
 			{
-				?>
-				
-			
+				?>	
 				<div class="container switch-box">
-                    <h4><?php echo $value['t_NoiDung'];?></h4>
+                    <h4><?php echo $value[1];?></h4>
                     <a href="#" class="switch-icon">
-					<p id="play<?php echo $value['t_ID'];?>" onclick="triggerAudio(this)"><img style="width: 50px;height: 50px;" src="images\loa.png"/></p> 
+					<p id="play<?php echo $value[0];?>" onclick="triggerAudio(this)"><img style="width: 50px;height: 50px;" src="images\loa.png"/></p> 
                     </a>
                 </div>
 				
-				<audio id="audio<?php echo $value['t_ID'];?>">
-					<source src="<?php echo $value['t_DuongDanGhiAm'];?>" type="audio/mpeg" />
+				<audio id="audio<?php echo $value[0];?>">
+					<source src="<?php echo $value[2];?>" type="audio/mpeg" />
 				</audio>
 			<?php
 			}

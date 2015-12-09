@@ -1,13 +1,13 @@
 <?php
 include_once '../dataconfig/dataprovider.php';
-$kiememail=$_GET["email"];
+$kiememail=$_GET["taikhoan"];
 
 $strSQL = "SELECT * FROM taikhoan WHERE tk_TenDangNhap='".$kiememail."'";
 $resu = DataProvider::ExecuteQuery($strSQL);
 $record = DataProvider::ExecuteQueryArray($resu);
 if($record)
 {
-	echo"Email đã tồn tại !";
+	echo"Tài khoản đã tồn tại !";
 }
 else
 {
