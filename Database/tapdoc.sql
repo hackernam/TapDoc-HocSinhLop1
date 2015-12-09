@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Dec 09, 2015 at 09:20 AM
--- Server version: 5.5.16
--- PHP Version: 5.3.8
+-- Host: 127.0.0.1
+-- Generation Time: Dec 09, 2015 at 03:30 PM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -30,28 +30,22 @@ CREATE TABLE IF NOT EXISTS `am` (
   `a_ID` int(11) NOT NULL AUTO_INCREMENT,
   `a_NoiDung` varchar(50) CHARACTER SET utf8 NOT NULL,
   `a_DuongDanGhiAm` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `a_Hinh1` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `a_NoiDungHinh1` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `a_GhiAmHinh1` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `a_Hinh2` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `a_NoiDungHinh2` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `a_GhiAmHinh2` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `a_Hinh3` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `a_NoiDungHinh3` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `a_GhiAmHinh3` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `a_BaiHoc` int(11) NOT NULL,
   PRIMARY KEY (`a_ID`),
   KEY `fk_am_baihoc_idx` (`a_BaiHoc`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `am`
 --
 
-INSERT INTO `am` (`a_ID`, `a_NoiDung`, `a_DuongDanGhiAm`, `a_Hinh1`, `a_NoiDungHinh1`, `a_GhiAmHinh1`, `a_Hinh2`, `a_NoiDungHinh2`, `a_GhiAmHinh2`, `a_Hinh3`, `a_NoiDungHinh3`, `a_GhiAmHinh3`, `a_BaiHoc`) VALUES
-(1, 'upload\\HinhAnh\\Am\\A-B.png', 'upload\\GhiAm\\Am\\a.mp3', 'upload\\HinhAnh\\Am\\A.png', 'Con Heo', 'upload\\GhiAm\\Am\\a1.mp3', 'upload\\HinhAnh\\Am\\A.png', 'Con Heo', 'upload\\GhiAm\\Am\\a1.mp3', 'upload\\HinhAnh\\Am\\A.png', 'Con Heo', 'upload\\GhiAm\\Am\\a1.mp3', 2),
-(2, 'upload\\HinhAnh\\Am\\A-B.png', 'upload\\GhiAm\\Am\\a.mp3', 'upload\\HinhAnh\\Am\\A.png', 'Con Ca', 'upload\\GhiAm\\Am\\a2.mp3', 'upload\\HinhAnh\\Am\\A.png', 'Con Ca', 'upload\\GhiAm\\Am\\a2.mp3', 'upload\\HinhAnh\\Am\\A.png', 'Con Ca', 'upload\\GhiAm\\Am\\a2.mp3', 2),
-(3, 'upload\\HinhAnh\\Am\\A-B.png', 'upload\\GhiAm\\Am\\a.mp3', 'upload\\HinhAnh\\Am\\A.png', 'Con Heo', 'upload\\GhiAm\\Am\\a1.mp3', 'upload\\HinhAnh\\Am\\A.png', 'Con Heo', 'upload\\GhiAm\\Am\\a1.mp3', 'upload\\HinhAnh\\Am\\A.png', 'Con Heo', 'upload\\GhiAm\\Am\\a1.mp3', 2);
+INSERT INTO `am` (`a_ID`, `a_NoiDung`, `a_DuongDanGhiAm`, `a_BaiHoc`) VALUES
+(1, 'a', 'upload\\GhiAm\\Am\\a.mp3', 2),
+(2, 'á', 'upload\\GhiAm\\Am\\a.mp3', 2),
+(3, 'à', 'upload\\GhiAm\\Am\\a.mp3', 2),
+(4, 'ạ', 'sdfsdf', 2),
+(5, 'ã', 'fdgd', 2),
+(6, 'ả', 'dgdfg', 2);
 
 -- --------------------------------------------------------
 
@@ -65,6 +59,7 @@ CREATE TABLE IF NOT EXISTS `baihoc` (
   `bh_LoaiBaiHoc` int(11) NOT NULL,
   `bh_NgayTao` datetime NOT NULL,
   `bh_HinhDaiDien` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `bh_SoLanChon` int(11) NOT NULL,
   PRIMARY KEY (`bh_ID`),
   KEY `fk_baihoc_loaibaihoc_idx` (`bh_LoaiBaiHoc`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
@@ -73,10 +68,10 @@ CREATE TABLE IF NOT EXISTS `baihoc` (
 -- Dumping data for table `baihoc`
 --
 
-INSERT INTO `baihoc` (`bh_ID`, `bh_TenBaiHoc`, `bh_LoaiBaiHoc`, `bh_NgayTao`, `bh_HinhDaiDien`) VALUES
-(1, 'Bài 1', 2, '2015-12-04 00:00:00', 'upload\\HinhAnh\\doccau.png'),
-(2, 'Bảng Chữ Cái', 1, '2015-12-08 00:00:00', 'upload\\HinhAnh\\Am\\bangchucai.png'),
-(3, 'Hình Ảnh 1', 4, '2015-12-08 00:00:00', 'upload\\HinhAnh\\HinhAnh\\bangchucai.png');
+INSERT INTO `baihoc` (`bh_ID`, `bh_TenBaiHoc`, `bh_LoaiBaiHoc`, `bh_NgayTao`, `bh_HinhDaiDien`, `bh_SoLanChon`) VALUES
+(1, 'Bài 1', 2, '2015-12-04 00:00:00', 'upload\\HinhAnh\\doccau.png', 10),
+(2, 'Âm "a"', 1, '2015-12-08 00:00:00', 'upload\\HinhAnh\\Am\\bangchucai.png', 11),
+(3, 'Hình Ảnh 1', 4, '2015-12-08 00:00:00', 'upload\\HinhAnh\\HinhAnh\\bangchucai.png', 12);
 
 -- --------------------------------------------------------
 
@@ -187,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `taikhoan` (
   `tk_MatKhau` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`tk_ID`),
   KEY `fk_taikhoan_gioitinh_idx` (`tk_GioiTinh`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `taikhoan`
@@ -195,9 +190,9 @@ CREATE TABLE IF NOT EXISTS `taikhoan` (
 
 INSERT INTO `taikhoan` (`tk_ID`, `tk_HoTen`, `tk_GioiTinh`, `tk_TenDangNhap`, `tk_MatKhau`) VALUES
 (1, 'ABC', 1, 'test', '123'),
-(2, 'hnam12', 1, '', 'e10adc3949ba59abbe56e057f20f883e'),
 (3, 'asdasfds', 1, 'test123', '123456'),
-(6, 'Hoc Sinh', 1, 'hocsinh123', '123456');
+(6, 'Hoc Sinh', 1, 'hocsinh123', '123456'),
+(7, 'fghdgdfg', 1, 'testasdfs', 'asfdfsdg');
 
 -- --------------------------------------------------------
 

@@ -1,23 +1,51 @@
-
 <?PHP
 require_once("process/xuly_dangnhap.php");
-
 $xx = new xuLyDangNhap();
 if(isset($_POST['btnLogin']))
 {	
-
 	//document.getElementById("result").innerHTML =''; // Variable To Store Error Message
 	$xx->HandleError('');
-	if($xx->CheckLoginInDB($_POST['txtUsername'], $_POST['txtPassword']))
-	{
-		
+	$id = $xx->CheckLoginInDB($_POST['txtUsername'], $_POST['txtPassword']);
+	if($id > 0)
+ 	{
+		if (session_status() == PHP_SESSION_NONE)
+		{
+			session_start();
+		}
+		$_SESSION['UID'] = $id;
+		$_SESSION['DaDangNhap'] = 1;
+		$xx->RedirectToURL("index.php");
 	}
 }
-
 ?>
-         
+  
+<a id="thongbaoloi" class="show-top-notification-2 timer-notification" href="#"/>
+<div class="top-notification-2 top-notification bg-red-dark timeout-notification">
+    <h4>Thông báo</h4>
+    <p>
+        <?php echo $xx->GetErrorMessage(); ?>
+    </p>
+</div>
 
-        
+<?php
+	if($xx->GetErrorMessage() != ''){
+		?>
+		<script language="javascript">
+            function runxz(){
+				$(document).ready( function() { 
+					document.getElementById('thongbaoloi').click();
+					document.getElementById("txtUsername").value = '<?php echo $_POST['txtUsername']?>' ;
+					document.getElementById("txtPassword").value = '<?php echo $_POST['txtPassword']?>' ;
+				}); 
+            }
+           <?php
+               echo "runxz();";
+           ?>
+       </script>
+	   <?php
+	}
+	
+?>            
         
         <div id="content" class="snap-content">
             <div class="content container-fullscreen no-bottom">
@@ -41,7 +69,6 @@ if(isset($_POST['btnLogin']))
 								<input type="submit" name="btnLogin" value="Đăng nhập" class="pageapp-login-button button button-m button-green button-fullscreen" />
 								<input onclick="window.location.href='dangky.php'" name="btnLogin" value="Đăng ký" class="pageapp-login-button button button-m button-red button-fullscreen" />
 								<div class="decoration"></div>
-								<div id="result" style="color:#F00; font-weight:bold"><?php echo $xx->GetErrorMessage(); ?></div>
 								<!--a href="#" class="pageapp-login-button button button-small button-green button-fullscreen">Đăng nhập</a>
 								<div class="decoration"></div-->
 								<a href="#" class="facebook-login facebook-color"><i class="fa fa-facebook"></i>Đăng nhập bằng Facebook</a>

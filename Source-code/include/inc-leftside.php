@@ -1,3 +1,5 @@
+
+
 <div class="snap-drawer snap-drawer-left">        
             <div class="sidebar-header">
                 <a class="close-sidebar" href="#"><i class="fa fa-times"></i></a>
@@ -12,17 +14,17 @@
             <div class="sidebar-menu">                                                                     
                 <a class="menu-item" href="index.php">
                     <i class="fa fa-home"></i>
-                    <em>Trang chủ</em>
+                    <em style="color: blue;">Trang chủ</em>
                     <i class="fa fa-circle"></i>
                 </a>                     
                 <a class="menu-item" href="danhsachbaihoc.php?lsid=1">
                     <i class="fa fa-music"></i>
-                    <em>Đọc âm</em>
+                    <em style="color: red;">Đọc âm</em>
                     <i class="fa fa-circle"></i>
                 </a>                 
                 <a class="menu-item" href="danhsachbaihoc.php?lsid=2">
                     <i class="fa fa-h-square"></i>
-                    <em>Đọc từ</em>
+                    <em style="color: green;">Đọc từ</em>
                     <i class="fa fa-circle"></i>
                 </a>                
                 <a class="menu-item" href="#">
@@ -47,44 +49,15 @@
                 </a>
             </div>
             
-            <p class="sidebar-divider">Let's get social</p>
+            <p class="sidebar-divider">Hệ thống</p>
             
             <div class="sidebar-menu">
-                <a class="menu-item" href="https://www.facebook.com/enabled.labs">
-                    <i class="fa fa-facebook"></i>
-                    <em>Facebook</em>
-                </a>                   
-                <a class="menu-item" href="https://twitter.com/iEnabled">
-                    <i class="fa fa-twitter"></i>
-                    <em>Twitter</em>
-                </a>                 
-                <a class="menu-item" href="#">
-                    <i class="fa fa-google-plus"></i>
-                    <em>Google Plus</em>
+                <a class="menu-item" href="dangxuat.php">
+                    <i class="fa fa-power-off"></i>
+                    <em style="color: red;">Đăng xuất</em>
                 </a>                    
-                <a class="menu-item" href="#">
-                    <i class="fa fa-youtube-play"></i>
-                    <em>YouTube</em>
-                </a>    
             </div>
             
-            <p class="sidebar-divider">Contact Us</p>
-            
-            <div class="sidebar-menu">
-                <a class="menu-item" href="tel:+123 456 7890">
-                    <i class="fa fa-phone"></i>
-                    <em>Call Us</em>
-                </a>                   
-                <a class="menu-item" href="sms:+123 456 7890">
-                    <i class="fa fa-comment-o"></i>
-                    <em>Text Us</em>
-                </a>                 
-                <a class="menu-item" href="mailto:someone@yoursite.com?subject=Message from ThemeForest">
-                    <i class="fa fa-envelope-o"></i>
-                    <em>Mail Us</em>
-                </a>                     
-            </div>
-            
-            <p class="sidebar-footer">Copyright 2015. All rights reserved</p>
+            <p class="sidebar-footer">Thực hiện @ 2015</p>
             
         </div>

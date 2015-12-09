@@ -113,12 +113,7 @@
         I'll go away on my own after a few seconds!
     </p>
 </div>
-<div class="top-notification-2 top-notification bg-red-dark timeout-notification">
-    <h4>Timeout: 5 Seconds</h4>
-    <p>
-        I'll go away on my own after a few seconds!
-    </p>
-</div>
+
     
 </body>
 
