@@ -1,9 +1,19 @@
             <div class="content">
             <div class="header-clear-large"></div>
             <!--Page content goes here, fixed elements go above the all elements class-->
-                
+                <?php
+					include_once 'dataconfig/dataprovider.php';
+					$id_LoaiBaiHoc = $_GET["lsid"];
+					$sql_tieude = "select lbh_LoaiBaiHoc from loaibaihoc where lbh_ID = $id_LoaiBaiHoc";
+					$result = DataProvider::GetRows($sql_tieude);
+					$tieude;
+					foreach ($result as $value) 
+					{
+						$tieude = $value;
+					}
+				?>
                 <div class="container heading-style-5">
-                    <h4 class="heading-title">Phát âm theo câu</h4>
+                    <h4 class="heading-title"><?php echo $tieude[0]; ?></h4>
                     <i class="fa fa-th heading-icon"></i>
                     <div class="line bg-black"></div>
                     <p class="heading-subtitle">
