@@ -35,6 +35,8 @@ if(isset($_POST['btnLogin']))
             function runxz(){
 				$(document).ready( function() { 
 					document.getElementById('thongbaoloi').click();
+					document.getElementById("txtUsername").value = '<?php echo $_POST['txtUsername']?>' ;
+					document.getElementById("txtPassword").value = '<?php echo $_POST['txtPassword']?>' ;
 				}); 
             }
 
@@ -356,11 +358,11 @@ if(isset($_POST['btnLogin']))
 								<a class="pageapp-login-logo" href="#"></a>
 								<div class="pageapp-login-field">
 									<i class="fa fa-user"></i>
-									<input type="text" value="Tên đăng nhập" onfocus="if (this.value=='Tên đăng nhập') this.value = ''" onblur="if (this.value=='') this.value = 'Tên đăng nhập'" id="txtUsername" name="txtUsername">
+									<input type="text" value="" onfocus="if (this.value=='Tên đăng nhập') this.value = ''" onblur="if (this.value=='') this.value = 'Tên đăng nhập'" id="txtUsername" name="txtUsername">
 								</div>
 								<div class="pageapp-login-field">
 									<i class="fa fa-lock"></i>
-									<input type="password" value="password" onfocus="if (this.value=='password') this.value = ''" onblur="if (this.value=='') this.value = 'password'" id="txtPassword" name="txtPassword">
+									<input type="password" value="" onfocus="if (this.value=='password') this.value = ''" onblur="if (this.value=='') this.value = 'password'" id="txtPassword" name="txtPassword">
 								</div>
 								<input type="submit" name="btnLogin" value="Đăng nhập" class="pageapp-login-button button button-m button-green button-fullscreen" />
 								<input onclick="window.location.href='dangky.php'" name="btnLogin" value="Đăng ký" class="pageapp-login-button button button-m button-red button-fullscreen" />

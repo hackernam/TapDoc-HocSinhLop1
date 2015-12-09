@@ -28,12 +28,15 @@
 			}
 			else
 			{
-				$password = md5($password);
+				//$password = md5($password);
 				
-				$connection = mysqli_connect("localhost","root","","tapdoc");
-				//mysql_select_db("tapdoc",$connection);
-				$query  = mysqli_query($connection, "SELECT * FROM taikhoan WHERE tk_TenDangNhap='$username' AND tk_MatKhau = '$password'");
+				//$connection = mysqli_connect("localhost","root","","tapdoc");				
+				//$query  = mysqli_query($connection, "SELECT * FROM taikhoan WHERE tk_TenDangNhap='$username' AND tk_MatKhau = '$password'");
+				
+				$sql  = "SELECT * FROM taikhoan WHERE tk_TenDangNhap='$username' AND tk_MatKhau = '$password'";
+				$query  = DataProvider::ExecuteQuery($sql);
 				$rows = mysqli_num_rows($query);
+				
 				if($rows == 1)
 				{
 					$id = -1;
