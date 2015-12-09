@@ -53,7 +53,7 @@
     
 <div id="header-fixed">
     <a class="open-left-sidebar" href="#"><i class="fa fa-navicon"></i></a>
-    <a class="header-logo" href="#"><img src="images/logo-light.png" alt="img"></a>
+    <a class="header-logo" href="index.php"><img src="images/logo-light.png" alt="img"></a>
 </div>    
             
 <div class="all-elements">
@@ -86,7 +86,7 @@
 					
 					
 					<!-- ===============================================================-->
-                    <a href="index.html">
+                    <a href="danhsachbaihoc.php?lsid=1">
                         <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/phatam.png" class="responsive-image" alt="img"></i>
                         <em>Đọc âm</em>
                     </a>                    
@@ -98,7 +98,7 @@
                         <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/doccau.png" class="responsive-image" alt="img"></i>
                         <em>Đọc câu</em>
                     </a>
-					<a href="index.html">
+					<a href="danhsachbaihoc.php?lsid=4">
                         <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/hinhanh.png" class="responsive-image" alt="img"></i>
                         <em>Hình ảnh</em>
                     </a>

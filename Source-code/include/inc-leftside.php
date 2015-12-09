@@ -15,22 +15,22 @@
                     <em>Trang chủ</em>
                     <i class="fa fa-circle"></i>
                 </a>                     
-                <a class="menu-item" href="page-blog.html">
+                <a class="menu-item" href="danhsachbaihoc.php?lsid=1">
                     <i class="fa fa-music"></i>
                     <em>Đọc âm</em>
                     <i class="fa fa-circle"></i>
                 </a>                 
-                <a class="menu-item" href="page-map.html">
+                <a class="menu-item" href="danhsachbaihoc.php?lsid=2">
                     <i class="fa fa-h-square"></i>
                     <em>Đọc từ</em>
                     <i class="fa fa-circle"></i>
                 </a>                
-                <a class="menu-item" href="contact.html">
+                <a class="menu-item" href="#">
                     <i class="fa fa-cc-stripe"></i>
                     <em>Đọc câu</em>
                     <i class="fa fa-circle"></i>
                 </a>                
-                <a class="menu-item close-sidebar" href="#">
+                <a class="menu-item" href="danhsachbaihoc.php?lsid=4">
                     <i class="fa fa-picture-o"></i>
                     <em>Đọc theo hình ảnh</em>
                     <i class="fa fa-circle"></i>

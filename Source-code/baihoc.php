@@ -57,7 +57,7 @@
     
 <div id="header-fixed">
     <a class="open-left-sidebar" href="#"><i class="fa fa-navicon"></i></a>
-    <a class="header-logo" href="#"><img src="images/logo-light.png" alt="img"></a>
+    <a class="header-logo" href="index.php"><img src="images/logo-light.png" alt="img"></a>
 </div>    
             
 <div class="all-elements">
@@ -72,22 +72,35 @@
             <div class="content">
             <div class="header-clear-large"></div>
             <!--Page content goes here, fixed elements go above the all elements class-->
-                
+                 <?php
+					include_once 'dataconfig/dataprovider.php';
+				?>
+                <?php $id_BaiHoc = $_GET["bh"];
+					$id_LoaiBaiHoc = $_GET["lbh"];
+					$sql_tieude = "select bh_TenBaiHoc from baihoc where bh_ID = $id_BaiHoc and bh_LoaiBaiHoc = $id_LoaiBaiHoc";
+					$result = DataProvider::GetRows($sql_tieude);
+					$tieude;
+					foreach ($result as $value) 
+					{
+						$tieude = $value;
+					}
+				?>
                 <div class="container heading-style-5">
-                    <h4 class="heading-title">Bài 1</h4>
+                    <h4 class="heading-title"><?php echo $tieude[0]; ?></h4>
                     <i class="fa fa-bolt heading-icon"></i>
                     <div class="line bg-black"></div>
                     <p class="heading-subtitle">
                         Chọn hình cái loa để phát âm nhé !
                     </p>
-                </div> 
+                </div>  
                                 
-                <?php
-	include_once 'dataconfig/dataprovider.php';
-?>
-
 <?php 
+if($id_LoaiBaiHoc == 2)
 	include('include/inc-baihoc-tungu.php');
+else if($id_LoaiBaiHoc == 1)
+	include('include/inc-baihoc-am.php');
+else if($id_LoaiBaiHoc == 4)
+	include('include/inc-baihoc-hinhanh.php');
 ?>
 
                 
