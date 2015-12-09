@@ -23,7 +23,7 @@ if(isset($_POST['btnLogin']))
 
 ?>
   
-<a id="thongbaoloi" class="show-top-notification-2 timer-notification" href="#">Fixed Top Notification With Timeout</a>
+<a id="thongbaoloi" class="show-top-notification-2 timer-notification" href="#"/>
 <div class="top-notification-2 top-notification bg-red-dark timeout-notification">
     <h4><?php echo $xx->GetErrorMessage(); ?></h4>
 </div>
@@ -60,6 +60,17 @@ if(isset($_POST['btnLogin']))
             <div class="sidebar-logo">
                 <img src="images/logo-sidebar.png" alt="img">
             </div>
+			
+			<!--##############################################
+				Logout
+			###############################################-->
+			<a  class="menu-item" href="include/inc-dangxuat.php" >
+				<i class="fa fa-power-off"></i>
+                <em>Logout</em>
+            </a> 
+			<!--##############################################
+				Logout
+			###############################################-->
         
             <p class="sidebar-divider">Navigation</p>
             
