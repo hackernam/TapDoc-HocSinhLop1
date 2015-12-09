@@ -40,6 +40,7 @@
 					while ($row = $query->fetch_assoc()) {
 						$id = $row["tk_ID"];
 					}
+					mysqli_close($connection);
 				
 					return $id;
 				}

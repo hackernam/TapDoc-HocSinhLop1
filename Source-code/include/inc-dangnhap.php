@@ -9,15 +9,15 @@ if(isset($_POST['btnLogin']))
 	//document.getElementById("result").innerHTML =''; // Variable To Store Error Message
 	$xx->HandleError('');
 	$id = $xx->CheckLoginInDB($_POST['txtUsername'], $_POST['txtPassword']);
-+	if($id > 0)
- 	{		 	{
-		if (session_status() == PHP_SESSION_NONE) {
-+			session_start();
-+		}
-+		$_SESSION['UID'] = $id;
+	if($id > 0)
+ 	{
+		if (session_status() == PHP_SESSION_NONE)
+		{
+			session_start();
+		}
+		$_SESSION['UID'] = $id;
 		$_SESSION['DaDangNhap'] = 1;
-+		//$xx->HandleError($id);
-+		$xx->RedirectToURL("index.php");
+		$xx->RedirectToURL("index.php");
 	}
 }
 
