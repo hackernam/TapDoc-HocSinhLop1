@@ -58,6 +58,7 @@
 <div id="header-fixed">
     <a class="open-left-sidebar" href="#"><i class="fa fa-navicon"></i></a>
     <a class="header-logo" href="index.php"><img src="images/logo-light.png" alt="img"></a>
+	<a class="open-right-sidebar" href='#'><i class="fa fa-chevron-left"></i></a>
 </div>    
             
 <div class="all-elements">

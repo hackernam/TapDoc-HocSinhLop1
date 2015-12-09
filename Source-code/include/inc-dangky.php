@@ -64,8 +64,8 @@
 		return true;
 	}
 </script>
-<a id="ktnguoidung" class="show-top-notification-2 timer-notification" href="#">Fixed Top Notification With Timeout</a>
-<div class="top-notification-2 top-notification bg-red-dark timeout-notification">
+<a id="ktnguoidung" class="show-top-notification-3 timer-notification" href="#">Fixed Top Notification With Timeout</a>
+<div class="top-notification-3 top-notification bg-red-dark timeout-notification">
     <h4>Tên tài khoản phải hơn 6 kí tự</h4>
 </div>
 
