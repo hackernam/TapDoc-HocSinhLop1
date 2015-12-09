@@ -43,7 +43,7 @@
 					while ($row = $query->fetch_assoc()) {
 						$id = $row["tk_ID"];
 					}
-					mysqli_close($connection);
+					//mysqli_close($connection);
 				
 					return $id;
 				}
@@ -51,7 +51,7 @@
 				{
 					$this->HandleError("Tên đăng nhập / Mật khẩu không hợp lệ");
 				}
-				mysqli_close($connection);
+				//mysqli_close($connection);
 			}
 		}
 		
