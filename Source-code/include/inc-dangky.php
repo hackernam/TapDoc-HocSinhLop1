@@ -1,4 +1,5 @@
 <script language="javascript">
+	var hiemthi = 0;
 	function kiemtraemailtontai(){
 		var xmlHttpRequest;
 		if(window.XMLHttpRequest){
@@ -21,8 +22,13 @@
 		myFrmObj = document.DKUser;
 		if(myFrmObj.txtmatkhau.value.length < 6){
 			//alert("ton tai");
-			document.getElementById('ktmatkhau').click();
-			document.getElementById("result").innerHTML = "Mật khẩu phải hơn 6 kí tự";
+			if(hiemthi == 0){
+				document.getElementById('thongbaoloilink').click();
+				document.getElementById("result").innerHTML = "Mật khẩu phải hơn 6 kí tự";
+				document.getElementById("thongbaoloitext").innerHTML = "Mật khẩu phải hơn 6 kí tự";
+				hiemthi = 1;
+				setTimeout(function(){ hiemthi = 0 }, 5000);
+			}
 			return false;
 		}
 		else if(myFrmObj.txtmatkhau.value.length >= 6){
@@ -34,8 +40,13 @@
 		myFrmObj = document.DKUser;
 		if(myFrmObj.txttentaikhoan.value.length < 6){
 			//alert("ton tai");
-			document.getElementById('ktnguoidung').click();
-			document.getElementById("result").innerHTML = "Tên tài khoản phải hơn 6 kí tự";
+			if(hiemthi == 0){
+				document.getElementById('thongbaoloilink').click();
+				document.getElementById("result").innerHTML = "Tên tài khoản phải hơn 6 kí tự";
+				document.getElementById("thongbaoloitext").innerHTML = "Tên tài khoản phải hơn 6 kí tự";
+				hiemthi = 1;
+				setTimeout(function(){ hiemthi = 0 }, 5000);
+			}
 			return false;
 		}
 		else if(myFrmObj.txttentaikhoan.value.length >= 6){
@@ -64,15 +75,12 @@
 		return true;
 	}
 </script>
-<a id="ktnguoidung" class="show-top-notification-2 timer-notification" href="#">Fixed Top Notification With Timeout</a>
+<a id="thongbaoloilink" class="show-top-notification-2 timer-notification" href="#">Fixed Top Notification With Timeout</a>
 <div class="top-notification-2 top-notification bg-red-dark timeout-notification">
-    <h4>Tên tài khoản phải hơn 6 kí tự</h4>
+    <h4 id="thongbaoloitext" >Tên tài khoản phải hơn 6 kí tự</h4>
 </div>
 
-<a id="ktmatkhau" class="show-top-notification-2 timer-notification" href="#">Fixed Top Notification With Timeout</a>
-<div class="top-notification-2 top-notification bg-red-dark timeout-notification">
-    <h4>Mật khẩu phải hơn 6 kí tự</h4>
-</div>
+
 <div class="all-elements">
     <div class="snap-drawers">
         <div id="content" class="snap-content">
@@ -101,13 +109,12 @@
                                    <option value="Nữ">Nữ</option>
                                 </select>
                             </div>  
-                          <input type="submit" name="btnRegister" value="Đăng ký" class="pageapp-signup-button button button-small button-green button-fullscreen" />
-                          <input type="reset" value="Tạo lại" class="pageapp-signup-button button button-small button-green button-fullscreen"/>
+                          <input type="submit" name="btnRegister" value="Register" class="pageapp-signup-button button button-small button-green button-fullscreen" />
+                          <input type="reset" value="Reset" class="pageapp-signup-button button button-small button-green button-fullscreen"/>
                         </div>
                         </form>
                     </div>
                     <div class="overlay bg-black"></div>
-					<a href="index.php" class="left-button"><i class="fa fa-home"></i>Quay lại</a>
                 </div>
             <!-- End of entire page content-->
             </div> 
