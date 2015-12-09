@@ -344,7 +344,33 @@
         
         <div id="content" class="snap-content">
             <div class="content">
-            <div class="header-clear-large"></div>
+            <div class="header-clear"></div>
+			<div class="homepage-slider container-fullscreen">
+                    <div class="homepage-slider-transition" data-snap-ignore="true">
+                        <div class="homepage-slider-item">
+                            <h5 class="left-text">Trịnh Xuân Đạt</h5>
+                            <p class="left-text">Swipe the image to begin.</p>
+                            <img src="images/pictures/4ww.jpg" alt="img">
+                            <div class="overlay bg-black"></div>
+                        </div>                
+                        <div class="homepage-slider-item">
+                            <h5 class="center-text">This slider has CSS3 transitions</h5>
+                            <p class="center-text">And they are just awesome!</p>
+                            <img src="images/pictures/5ww.jpg" alt="img">
+                            <div class="overlay bg-black"></div>
+                        </div>                
+                        <div class="homepage-slider-item">
+                            <h5 class="right-text">Just add a simple class</h5>
+                            <p class="right-text">And images will fade in our out!</p>
+                            <img src="images/pictures/6ww.jpg" alt="img">
+                            <div class="overlay bg-black"></div>
+                        </div>
+                    </div>
+                    <a href="#" class="next-home-slider"><i class="fa fa-angle-right"></i></a>
+                    <a href="#" class="prev-home-slider"><i class="fa fa-angle-left"></i></a>
+                </div>      	
+                
+			
             <!--Page content goes here, fixed elements go above the all elements class-->
                 
                 <div class="container heading-style-5">
@@ -394,6 +420,45 @@
                 
                 <div class="decoration"></div>
                 
+					<div class="staff-slider">
+                    <div class="staff-slider-no-transition" data-snap-ignore="true">
+                        <div class="staff-item">
+                            <img class="scale-hover" src="images/pictures/3s.jpg" alt="img">
+                            <h3>Đạt Mập</h3>
+                            <em class="color-red-dark">Professional Freelancer</em>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                Aliquam at imperdiet enim, ut laoreet dolor. Maecenas 
+                                vitae nibh in sapien vehicula fermentum id vitae lorem.    
+                            </p> 
+                        </div>
+                        <div class="staff-item">
+                            <img class="scale-hover" src="images/pictures/5s.jpg" alt="img">
+                            <h3>Đẹp Trai</h3>
+                            <em class="color-green-dark">Software Manager</em>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                Aliquam at imperdiet enim, ut laoreet dolor. Maecenas 
+                                vitae nibh in sapien vehicula fermentum id vitae lorem.    
+                            </p>
+                        </div>                    
+                        <div class="staff-item">
+                            <img class="scale-hover" src="images/pictures/7s.jpg" alt="img">
+                            <h3>Vô Đối</h3>
+                            <em class="color-orange-dark">Support Staff</em>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                Aliquam at imperdiet enim, ut laoreet dolor. Maecenas 
+                                vitae nibh in sapien vehicula fermentum id vitae lorem.    
+                            </p>
+                        </div>
+                    </div>
+                    <a class="next-staff-slider" href="#"><i class="fa fa-angle-right"></i></a>
+                    <a class="prev-staff-slider" href="#"><i class="fa fa-angle-left"></i></a>
+					</div>
+				
+				<div class="decoration"></div>
+				
                 <div class="footer">
                     <p class="center-text">Copyright 2015. All rights reserved.</p>
                     <div class="footer-icons">

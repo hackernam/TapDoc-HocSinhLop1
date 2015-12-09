@@ -35,7 +35,7 @@
 <script type="text/javascript" src="scripts/custom.js"></script>
 </head>
 
-<body class="dual-sidebar"> 
+<body> 
 <?php
 	include_once 'dataconfig/dataprovider.php';
 ?>
@@ -53,7 +53,6 @@
 <?php 
 	include('include/inc-dangky.php');
 ?>
-    
 </body>
 
 

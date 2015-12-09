@@ -47,14 +47,16 @@
 <div class="gallery-fix"></div> <!-- Important for all pages that have galleries or portfolios -->
     
 <div id="header-fixed">
-    <a class="open-left-sidebar" href="#"><i class="fa fa-navicon"></i></a>
     <a class="header-logo" href="#"><img src="images/logo-light.png" alt="img"></a>
-    <a class="open-right-sidebar" href="#"><i class="fa fa-envelope-o"></i></a>
 </div>    
-            
+<div class="all-elements">
+    <div class="snap-drawers"> 
 <?php 
 	include('include/inc-dangnhap.php');
-?>  
+?>
+</div>
+<a href="#" class="back-to-top-badge"><i class="fa fa-caret-up"></i>Back to top</a>
+</div>
 <!--Fly up share box and notifications go here -->
 <!--These are the only features that should be placed outside the all-elements class-->
     
