@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	if(!($_SESSION['DaDangNhap'] == 1))
+	{
+		header("Location: dangnhap.php");
+	}
+?>
+
 <!DOCTYPE HTML>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -22,7 +30,7 @@
 <link rel="icon" type="image/png" href="images/splash/favicon-16x16.png" sizes="16x16">
 <link rel="shortcut icon" href="images/splash/favicon.ico" type="image/x-icon" /> 
     
-<title>Epsilon 4.0</title>
+<title>Danh sách bài học</title>
 
 <link href="styles/style.css"           rel="stylesheet" type="text/css">
 <link href="styles/framework.css"       rel="stylesheet" type="text/css">
@@ -343,83 +351,9 @@
         
         
         <div id="content" class="snap-content">
-            <div class="content">
-            <div class="header-clear-large"></div>
-            <!--Page content goes here, fixed elements go above the all elements class-->
-                
-                <div class="container heading-style-5">
-                    <h4 class="heading-title">Phát âm theo câu</h4>
-                    <i class="fa fa-th heading-icon"></i>
-                    <div class="line bg-black"></div>
-                    <p class="heading-subtitle">
-                        Bạn hãy chọn một trong những bài học dưới đây để học nhé !
-                    </p>
-                </div> 
-                
-                <div class="decoration"></div>
-                
-                <div class="thumbnail-menu">
-				
-					<!-- ===============================================================-->
-					
-					
-					
-					
-					<!-- ===============================================================-->
-                    <a href="index.html">
-                        <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"></i>
-                        <em>Bài 1</em>
-                    </a>                    
-                    <a href="index.html">
-                        <i class="bg-red-dark fa border-radius-img"></i>
-                        <em>Bài 2</em>
-                    </a>  <a href="index.html">
-                        <i class="bg-blue-dark fa border-radius-img"></i>
-                        <em>Bài 3</em>
-                    </a>
-					<a href="index.html">
-                        <i class="bg-magenta-dark fa border-radius-img"></i>
-                        <em>Bài 4</em>
-                    </a>  
-					<a href="index.html">
-                        <i class="bg-night-dark fa border-radius-img"></i>
-                        <em>Bài 5</em>
-                    </a>  
-					<a href="index.html">
-                        <i class="bg-yellow-dark fa border-radius-img"></i>
-                        <em>Bài 6</em>
-                    </a>  
-					<a href="index.html">
-                        <i class="bg-orange-dark fa border-radius-img"></i>
-                        <em>Bài 7</em>
-                    </a>  
-					<a href="index.html">
-                        <i class="bg-gray-dark fa border-radius-img"></i>
-                        <em>Bài 8</em>
-                    </a>  
-					<a href="index.html">
-                        <i class="bg-teal-dark fa border-radius-img"></i>
-                        <em>Bài 9</em>
-                    </a>  
-                </div>
-                
-                <div class="decoration"></div>
-                
-                <div class="footer">
-                    <p class="center-text">Copyright 2015. All rights reserved.</p>
-                    <div class="footer-icons">
-                        <a href="#" class="scale-hover facebook-color social-ball"><i class="fa fa-facebook"></i></a>
-                        <a href="#" class="scale-hover twitter-color social-ball"><i class="fa fa-twitter"></i></a>
-                        <a href="#" class="scale-hover google-color social-ball"><i class="fa fa-google-plus"></i></a>
-                        <a href="#" class="scale-hover back-to-top bg-green-dark social-ball"><i class="fa fa-angle-up"></i></a>
-                        <a href="#" class="scale-hover show-share-bottom bg-magenta-dark social-ball"><i class="fa fa-retweet"></i></a>
-                    </div>
-                </div>
-                                
-                
-                
-            <!-- End of entire page content-->
-            </div> 
+            <?php
+				include_once("include/inc-dsbaihoc.php");
+			?> 
         </div>
     </div>  
     <a href="#" class="back-to-top-badge"><i class="fa fa-caret-up"></i>Back to top</a>

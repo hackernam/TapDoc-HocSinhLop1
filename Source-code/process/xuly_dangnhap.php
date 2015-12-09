@@ -1,5 +1,5 @@
 <?php
-	//include_once '../dataconfig/dataprovider.php';
+	include_once 'dataconfig/dataprovider.php';
 	
 	class xuLyDangNhap{
 		var $error_message;
@@ -23,51 +23,32 @@
 
 			if (empty($username) || empty($password))
 			{
-				 $this->HandleError("Tên đăng nhập hoặc Mật khẩu không được để trống");
-				 return -1;
+				 $this->HandleError("Tên đăng nhập / Mật khẩu không được để trống");
+				 return false;
 			}
 			else
 			{
-				$password = md5($password);
+				//$password = md5($password);
 				
-				$connection = mysqli_connect("localhost","root","","tapdoc");
+				//$connection = mysqli_connect("localhost","root","","tapdoc");
 				//mysql_select_db("tapdoc",$connection);
-				$query  = mysqli_query($connection, "SELECT * FROM taikhoan WHERE tk_TenDangNhap='$username' AND tk_MatKhau = '$password'");
-				$rows = mysqli_num_rows($query);
+				//$query  = mysqli_query($connection, "SELECT * FROM taikhoan WHERE tk_TenDangNhap='$username' AND tk_MatKhau = '$password'");
+				$sql = "SELECT * FROM taikhoan WHERE tk_TenDangNhap='$username' AND tk_MatKhau = '$password'";
+				$rows = DataProvider::NumRows($sql);
 				if($rows == 1)
 				{
-					$id = -1;
-					while ($row = $query->fetch_assoc()) {
-						$id = $row["tk_ID"];
-					}
-				
-					return $id;
+					@session_start();
+					ob_start();
+					$_SESSION['DaDangNhap'] = 1;
+					header("Location: index.php");
+					ob_end_flush();
 				}
 				else
 				{
-					$this->HandleError("Tên đăng nhập hoặc Mật khẩu không hợp lệ");
+					$this->HandleError("Tên đăng nhập / Mật khẩu không hợp lệ");
 				}
-				mysqli_close($connection);
+				//mysqli_close($connection);
 			}
-		}
-		
-		function CheckLogin()
-		{
-			if (session_status() == PHP_SESSION_NONE) {
-				session_start();
-			}
-			 
-			if(empty($_SESSION['UID']) && empty($_SESSION['FBID']) )
-			{
-				return false;
-			}
-			 return true;
-		}
-		
-		function RedirectToURL($url)
-		{
-			header("Location: $url");
-			exit;
 		}
 	}
 ?>

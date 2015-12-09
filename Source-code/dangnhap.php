@@ -22,7 +22,7 @@
 <link rel="icon" type="image/png" href="images/splash/favicon-16x16.png" sizes="16x16">
 <link rel="shortcut icon" href="images/splash/favicon.ico" type="image/x-icon" /> 
     
-<title>Epsilon 4.0</title>
+<title>Đăng nhập</title>
 
 <link href="styles/style.css"           rel="stylesheet" type="text/css">
 <link href="styles/framework.css"       rel="stylesheet" type="text/css">
@@ -106,12 +106,6 @@
     <a href="#" class="close-bottom-notification"><i class="fa fa-times"></i></a>
 </div> 
 <div class="bottom-notification-2 bottom-notification bg-orange-dark timeout-notification">
-    <h4>Timeout: 5 Seconds</h4>
-    <p>
-        I'll go away on my own after a few seconds!
-    </p>
-</div>
-<div class="top-notification-2 top-notification bg-red-dark timeout-notification">
     <h4>Timeout: 5 Seconds</h4>
     <p>
         I'll go away on my own after a few seconds!

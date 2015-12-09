@@ -22,7 +22,7 @@
 <link rel="icon" type="image/png" href="images/splash/favicon-16x16.png" sizes="16x16">
 <link rel="shortcut icon" href="images/splash/favicon.ico" type="image/x-icon" /> 
     
-<title>Epsilon 4.0</title>
+<title>Đăng ký</title>
 
 <link href="styles/style.css"           rel="stylesheet" type="text/css">
 <link href="styles/framework.css"       rel="stylesheet" type="text/css">
