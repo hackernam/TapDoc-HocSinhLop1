@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Dec 03, 2015 at 03:57 AM
--- Server version: 5.5.16
--- PHP Version: 5.3.8
+-- Host: 127.0.0.1
+-- Generation Time: Dec 09, 2015 at 03:30 PM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -33,7 +33,19 @@ CREATE TABLE IF NOT EXISTS `am` (
   `a_BaiHoc` int(11) NOT NULL,
   PRIMARY KEY (`a_ID`),
   KEY `fk_am_baihoc_idx` (`a_BaiHoc`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `am`
+--
+
+INSERT INTO `am` (`a_ID`, `a_NoiDung`, `a_DuongDanGhiAm`, `a_BaiHoc`) VALUES
+(1, 'a', 'upload\\GhiAm\\Am\\a.mp3', 2),
+(2, 'á', 'upload\\GhiAm\\Am\\a.mp3', 2),
+(3, 'à', 'upload\\GhiAm\\Am\\a.mp3', 2),
+(4, 'ạ', 'sdfsdf', 2),
+(5, 'ã', 'fdgd', 2),
+(6, 'ả', 'dgdfg', 2);
 
 -- --------------------------------------------------------
 
@@ -47,9 +59,19 @@ CREATE TABLE IF NOT EXISTS `baihoc` (
   `bh_LoaiBaiHoc` int(11) NOT NULL,
   `bh_NgayTao` datetime NOT NULL,
   `bh_HinhDaiDien` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `bh_SoLanChon` int(11) NOT NULL,
   PRIMARY KEY (`bh_ID`),
   KEY `fk_baihoc_loaibaihoc_idx` (`bh_LoaiBaiHoc`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `baihoc`
+--
+
+INSERT INTO `baihoc` (`bh_ID`, `bh_TenBaiHoc`, `bh_LoaiBaiHoc`, `bh_NgayTao`, `bh_HinhDaiDien`, `bh_SoLanChon`) VALUES
+(1, 'Bài 1', 2, '2015-12-04 00:00:00', 'upload\\HinhAnh\\doccau.png', 10),
+(2, 'Âm "a"', 1, '2015-12-08 00:00:00', 'upload\\HinhAnh\\Am\\bangchucai.png', 11),
+(3, 'Hình Ảnh 1', 4, '2015-12-08 00:00:00', 'upload\\HinhAnh\\HinhAnh\\bangchucai.png', 12);
 
 -- --------------------------------------------------------
 
@@ -99,7 +121,14 @@ CREATE TABLE IF NOT EXISTS `hinhanh` (
   `ha_DuongDanGhiAm` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `ha_BaiHoc` int(11) NOT NULL,
   PRIMARY KEY (`ha_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `hinhanh`
+--
+
+INSERT INTO `hinhanh` (`ha_ID`, `ha_NoiDung`, `ha_DuongDanHinhAnh`, `ha_DuongDanGhiAm`, `ha_BaiHoc`) VALUES
+(1, 'Con Bò', 'upload\\HinhAnh\\HinhAnh\\conbo.jpg', 'upload\\GhiAm\\HinhAnh\\con bo.mp3', 3);
 
 -- --------------------------------------------------------
 
@@ -127,7 +156,17 @@ CREATE TABLE IF NOT EXISTS `loaibaihoc` (
   `lbh_ID` int(11) NOT NULL AUTO_INCREMENT,
   `lbh_LoaiBaiHoc` varchar(100) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`lbh_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `loaibaihoc`
+--
+
+INSERT INTO `loaibaihoc` (`lbh_ID`, `lbh_LoaiBaiHoc`) VALUES
+(1, 'Phát Âm Theo Âm'),
+(2, 'Phát Âm Từ ngữ'),
+(3, 'Phát ÂM Theo Câu'),
+(4, 'Phát Âm Theo Hình Ảnh');
 
 -- --------------------------------------------------------
 
@@ -143,7 +182,17 @@ CREATE TABLE IF NOT EXISTS `taikhoan` (
   `tk_MatKhau` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`tk_ID`),
   KEY `fk_taikhoan_gioitinh_idx` (`tk_GioiTinh`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `taikhoan`
+--
+
+INSERT INTO `taikhoan` (`tk_ID`, `tk_HoTen`, `tk_GioiTinh`, `tk_TenDangNhap`, `tk_MatKhau`) VALUES
+(1, 'ABC', 1, 'test', '123'),
+(3, 'asdasfds', 1, 'test123', '123456'),
+(6, 'Hoc Sinh', 1, 'hocsinh123', '123456'),
+(7, 'fghdgdfg', 1, 'testasdfs', 'asfdfsdg');
 
 -- --------------------------------------------------------
 
@@ -158,7 +207,23 @@ CREATE TABLE IF NOT EXISTS `tu` (
   `t_BaiHoc` int(11) NOT NULL,
   PRIMARY KEY (`t_ID`),
   KEY `fk_tu_baihoc_idx` (`t_BaiHoc`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
+
+--
+-- Dumping data for table `tu`
+--
+
+INSERT INTO `tu` (`t_ID`, `t_NoiDung`, `t_DuongDanGhiAm`, `t_BaiHoc`) VALUES
+(1, 'Con heo', 'upload\\GhiAm\\Tu\\con heo.mp3', 1),
+(2, 'Con bò', 'upload\\GhiAm\\Tu\\con bo.mp3', 1),
+(3, 'Con cá', 'upload\\GhiAm\\Tu\\con ca.mp3', 1),
+(4, 'Con chuột', 'upload\\GhiAm\\Tu\\con chuot.mp3', 1),
+(5, 'Con gấu', 'upload\\GhiAm\\Tu\\con gau.mp3', 1),
+(6, 'Con khỉ', 'upload\\GhiAm\\Tu\\con khi.mp3', 1),
+(7, 'Con mèo', 'upload\\GhiAm\\Tu\\con meo.mp3', 1),
+(8, 'Con ngựa', 'upload\\GhiAm\\Tu\\con ngua.mp3', 1),
+(9, 'Con trâu', 'upload\\GhiAm\\Tu\\con trau.mp3', 1),
+(10, 'Con voi', 'upload\\GhiAm\\Tu\\con voi.mp3', 1);
 
 --
 -- Constraints for dumped tables
