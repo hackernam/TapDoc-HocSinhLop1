@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2015 at 04:27 AM
+-- Generation Time: Dec 14, 2015 at 05:23 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -76,6 +76,19 @@ INSERT INTO `baihoc` (`bh_ID`, `bh_TenBaiHoc`, `bh_LoaiBaiHoc`, `bh_NgayTao`, `b
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `baitap`
+--
+
+CREATE TABLE IF NOT EXISTS `baitap` (
+  `bt_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `bt_TieuDe` varchar(150) CHARACTER SET utf8 DEFAULT NULL,
+  `bt_NgayTao` datetime DEFAULT NULL,
+  PRIMARY KEY (`bt_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cau`
 --
 
@@ -86,6 +99,26 @@ CREATE TABLE IF NOT EXISTS `cau` (
   `c_BaiHoc` int(11) NOT NULL,
   PRIMARY KEY (`c_ID`),
   KEY `fk_cau_baihoc_idx` (`c_BaiHoc`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cauhoi`
+--
+
+CREATE TABLE IF NOT EXISTS `cauhoi` (
+  `ch_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ch_BaiTap` int(11) NOT NULL,
+  `ch_DuongDanHinhAnh` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `ch_DuongDanGhiAm` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `ch_LuaChon1` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `ch_LuaChon2` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `ch_LuaChon3` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `ch_LuaChon4` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `ch_DapAn` int(11) NOT NULL,
+  PRIMARY KEY (`ch_ID`),
+  KEY `fk_cauhoi_baitap_idx` (`ch_BaiTap`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -128,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `hinhanh` (
 --
 
 INSERT INTO `hinhanh` (`ha_ID`, `ha_NoiDung`, `ha_DuongDanHinhAnh`, `ha_DuongDanGhiAm`, `ha_BaiHoc`) VALUES
-(1, 'Con Bò', 'upload\\HinhAnh\\HinhAnh\\conbo.jpg', 'upload\\GhiAm\\HinhAnh\\con bo.mp3', 3);
+(1, 'Con Bò', 'upload/HinhAnh/HinhAnh/conbo.jpg', 'upload/GhiAm/HinhAnh/con bo.mp3', 3);
 
 -- --------------------------------------------------------
 
@@ -141,9 +174,28 @@ CREATE TABLE IF NOT EXISTS `lichsubaihoc` (
   `lsbh_TaiKhoan` int(11) NOT NULL,
   `lsbh_BaiHoc` int(11) NOT NULL,
   `lsbh_ThoiGian` datetime NOT NULL,
+  `lsbh_SoLanHoc` int(11) NOT NULL,
   PRIMARY KEY (`lsbh_ID`),
   KEY `fk_lichsubaihoc_baihoc_idx` (`lsbh_BaiHoc`),
   KEY `fk_lichsubaihoc_taikhoan_idx` (`lsbh_TaiKhoan`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lichsubaitap`
+--
+
+CREATE TABLE IF NOT EXISTS `lichsubaitap` (
+  `lsbt_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `lsbt_TaiKhoan` int(11) NOT NULL,
+  `lsbt_BaiTap` int(11) NOT NULL,
+  `lsbt_NgayLam` datetime NOT NULL,
+  `lsbt_SoCauDung` int(11) NOT NULL,
+  `lsbt_DiemSo` float NOT NULL,
+  PRIMARY KEY (`lsbt_ID`),
+  KEY `fk_lichsubaitap_taikhoan_idx` (`lsbt_TaiKhoan`),
+  KEY `fk_lichsubaitap_baitap_idx` (`lsbt_BaiTap`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -171,6 +223,26 @@ INSERT INTO `loaibaihoc` (`lbh_ID`, `lbh_LoaiBaiHoc`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `loainguoidung`
+--
+
+CREATE TABLE IF NOT EXISTS `loainguoidung` (
+  `lnd_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `lnd_LoaiNguoiDung` varchar(100) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`lnd_ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `loainguoidung`
+--
+
+INSERT INTO `loainguoidung` (`lnd_ID`, `lnd_LoaiNguoiDung`) VALUES
+(1, 'Học sinh'),
+(2, 'Quản trị');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `taikhoan`
 --
 
@@ -179,22 +251,27 @@ CREATE TABLE IF NOT EXISTS `taikhoan` (
   `tk_HoTen` varchar(100) CHARACTER SET utf8 NOT NULL,
   `tk_GioiTinh` int(11) NOT NULL,
   `tk_TenDangNhap` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `tk_MatKhau` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tk_MatKhau` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `tk_DangNhapLanCuoi` datetime NOT NULL,
+  `tk_LoaiNguoiDung` int(11) NOT NULL,
   PRIMARY KEY (`tk_ID`),
-  KEY `fk_taikhoan_gioitinh_idx` (`tk_GioiTinh`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
+  KEY `fk_taikhoan_gioitinh_idx` (`tk_GioiTinh`),
+  KEY `fk_taikhoan_loainguoidung_idx` (`tk_LoaiNguoiDung`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `taikhoan`
 --
 
-INSERT INTO `taikhoan` (`tk_ID`, `tk_HoTen`, `tk_GioiTinh`, `tk_TenDangNhap`, `tk_MatKhau`) VALUES
-(1, 'ABC', 1, 'test', '123'),
-(3, 'asdasfds', 1, 'test123', '123456'),
-(6, 'Hoc Sinh', 1, 'hocsinh123', '123456'),
-(7, 'fghdgdfg', 1, 'testasdfs', 'asfdfsdg'),
-(8, 'sdfsdf', 1, 'abc1234', '1234567'),
-(9, 'sdfgdsgdf', 2, 'hoangnam123', '1234567');
+INSERT INTO `taikhoan` (`tk_ID`, `tk_HoTen`, `tk_GioiTinh`, `tk_TenDangNhap`, `tk_MatKhau`, `tk_DangNhapLanCuoi`, `tk_LoaiNguoiDung`) VALUES
+(1, 'ABC', 1, 'test', '123', '0000-00-00 00:00:00', 1),
+(3, 'asdasfds', 1, 'test123', '123456', '0000-00-00 00:00:00', 1),
+(6, 'Hoc Sinh', 1, 'hocsinh123', '123456', '0000-00-00 00:00:00', 1),
+(7, 'fghdgdfg', 1, 'testasdfs', 'asfdfsdg', '0000-00-00 00:00:00', 1),
+(8, 'sdfsdf', 1, 'abc1234', '1234567', '0000-00-00 00:00:00', 1),
+(9, 'sdfgdsgdf', 2, 'hoangnam123', '1234567', '0000-00-00 00:00:00', 1),
+(10, 'Nguyễn Văn A', 1, 'hocsinhabc', '1234567', '0000-00-00 00:00:00', 1),
+(11, 'Nguyễn Văn V', 1, 'hocsinh123', '1234567', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -250,6 +327,12 @@ ALTER TABLE `cau`
   ADD CONSTRAINT `fk_cau_baihoc` FOREIGN KEY (`c_BaiHoc`) REFERENCES `baihoc` (`bh_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Constraints for table `cauhoi`
+--
+ALTER TABLE `cauhoi`
+  ADD CONSTRAINT `fk_cauhoi_baitap` FOREIGN KEY (`ch_BaiTap`) REFERENCES `baitap` (`bt_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Constraints for table `lichsubaihoc`
 --
 ALTER TABLE `lichsubaihoc`
@@ -257,9 +340,17 @@ ALTER TABLE `lichsubaihoc`
   ADD CONSTRAINT `fk_lichsubaihoc_taikhoan` FOREIGN KEY (`lsbh_TaiKhoan`) REFERENCES `taikhoan` (`tk_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Constraints for table `lichsubaitap`
+--
+ALTER TABLE `lichsubaitap`
+  ADD CONSTRAINT `fk_lichsubaitap_taikhoan` FOREIGN KEY (`lsbt_TaiKhoan`) REFERENCES `taikhoan` (`tk_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_lichsubaitap_baitap` FOREIGN KEY (`lsbt_BaiTap`) REFERENCES `baitap` (`bt_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Constraints for table `taikhoan`
 --
 ALTER TABLE `taikhoan`
+  ADD CONSTRAINT `fk_taikhoan_loainguoidung` FOREIGN KEY (`tk_LoaiNguoiDung`) REFERENCES `loainguoidung` (`lnd_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_taikhoan_gioitinh` FOREIGN KEY (`tk_GioiTinh`) REFERENCES `gioitinh` (`gt_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
