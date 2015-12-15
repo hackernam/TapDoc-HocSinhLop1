@@ -52,7 +52,7 @@ class DataProvider
      
     return $row; 
   }
-  
+
   public static function GetRows($sql)
   {
 	$connection = mysqli_connect(HOSTNAME,USERNAME,PASSWORD,DATABASE) or 
