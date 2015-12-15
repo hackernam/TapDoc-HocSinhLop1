@@ -8,7 +8,7 @@ $result = DataProvider::GetRows("select bh_ID, bh_HinhDaiDien, bh_LoaiBaiHoc fro
     <div class="swiper-container">
         <div class="swiper-wrapper">
 <?php	foreach ($result as $value) { ?>
-            <div class="swiper-slide"><a href="baihoc.php?bh=<?php echo $value[0] ?>&lbh=<?php echo $value[2]?>"><img src="<?php echo $value[1];?>" width="100%"/></a></div>
+            <div class="swiper-slide"><a href="baihoc.php?bh=<?php echo $value[0] ?>&lbh=<?php echo $value[2]?>"><img src="<?php echo $value[1];?>" width="100px;"/></a></div>
 <?php } ?>
 <!--			<div class="swiper-slide">Slide 2</div>
             <div class="swiper-slide">Slide 3</div>
