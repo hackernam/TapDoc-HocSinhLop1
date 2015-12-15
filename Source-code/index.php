@@ -112,7 +112,12 @@
                     </a>
                 </div>
                 
-                <div class="decoration"></div>
+                <div class="decoration">
+
+                </div>
+                					<?php 
+                        include('include/inc-top.php');
+                    ?>
                 
                 <?php 
 	include('include/inc-footer.php');
