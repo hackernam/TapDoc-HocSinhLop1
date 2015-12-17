@@ -6,6 +6,25 @@ function triggerAudio(abc) {
 </script>
 
 <?php
+
+	if (isset($_SESSION['UID']) && isset($_GET['bh'])) {		
+		$userId = $_SESSION['UID'];
+		$bhId = $_GET['bh'];
+		// Check history exists
+		$lichSuBaiHocModel = DataProvider::GetOneRow("select * from lichsubaihoc where lsbh_TaiKhoan=$userId AND lsbh_BaiHoc=$bhId");
+		if ($lichSuBaiHocModel) {
+			// If exist, update counter
+			$result = DataProvider::ExecuteQuery("update lichsubaihoc set lsbh_SoLanHoc=lsbh_SoLanHoc+1 where lsbh_ID={$lichSuBaiHocModel['lsbh_ID']}");
+			//var_dump($result);
+			//echo 'count';exit;
+		} else {
+			// If not exist, insert
+			$result = DataProvider::ExecuteQuery("insert into lichsubaihoc(`lsbh_TaiKhoan`, `lsbh_BaiHoc`, `lsbh_ThoiGian`, `lsbh_SoLanHoc`) values ($userId, $bhId, now(), 1)");
+			//var_dump($result);
+			//echo 'insert';exit;
+		}
+	}
+
 	$idBaiHoc = $_GET["bh"];
 	$idLoaiBaiHoc = $_GET["lbh"];
 	$result = DataProvider::GetRows("select * from am where a_BaiHoc = $idBaiHoc");
