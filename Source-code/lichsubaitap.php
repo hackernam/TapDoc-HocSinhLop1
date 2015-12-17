@@ -13,7 +13,6 @@
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-
 <link rel="icon" type="image/png" href="images/splash/android-chrome-192x192.png" sizes="192x192">
 <link rel="apple-touch-icon" sizes="196x196" href="images/splash/apple-touch-icon-196x196.png">
 <link rel="apple-touch-icon" sizes="180x180" href="images/splash/apple-touch-icon-180x180.png">
@@ -30,31 +29,53 @@
 <link rel="icon" type="image/png" href="images/splash/favicon-16x16.png" sizes="16x16">
 <link rel="shortcut icon" href="images/splash/favicon.ico" type="image/x-icon" /> 
     
-<title>Bài học</title>
+<title>Lịch sử bài tập</title>
 
 <link href="styles/style.css"           rel="stylesheet" type="text/css">
 <link href="styles/framework.css"       rel="stylesheet" type="text/css">
 <link href="styles/font-awesome.css"    rel="stylesheet" type="text/css">
 <link href="styles/animate.css"         rel="stylesheet" type="text/css">
-
-<link rel="stylesheet" href="player/css/reset.css" />
-
+<link href="styles/custom.css"         rel="stylesheet" type="text/css">
+<link href="styles/jquery-ui.css"         rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/jqueryui.js"></script>
 <script type="text/javascript" src="scripts/framework-plugins.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
-
-
-</head>
+<script type="text/javascript" src="scripts/table.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>
+  $(function() {
+    $( "#accordion" ).accordion({
+      heightStyle: "content"
+    });
+  });
+  </script>
+  <style>
+	.table th{
+		text-align: center;
+		background : #4caf50;
+		color: white;
+		text-shadow: none;
+	}
+	.table-responsive {
+		height:auto;
+	}
+  </style>
+</head> 
 
 <body class="dual-sidebar"> 
 
-<?php
-				include_once("include/inc-loading.php");
-			?> 
+<?php 
+	include('include/inc-loading.php');
+?>      
     
 <div class="gallery-fix"></div> <!-- Important for all pages that have galleries or portfolios -->
-    
+    <script>
+	function goback() {
+    history.back(-1)
+}
+	</script>
 <div id="header-fixed">
     <a class="open-left-sidebar" href="#"><i class="fa fa-navicon"></i></a>
     <a class="header-logo" href="index.php"><img src="images/logo-light.png" alt="img"></a>
@@ -63,61 +84,16 @@
             
 <div class="all-elements">
     <div class="snap-drawers">
-        <?php
-				include_once("include/inc-leftside.php");
-			?> 
-
-		</div>
+    <?php 
+	include('include/inc-leftside.php');
+?>                   
         
         <div id="content" class="snap-content">
-            <div class="content">
-            <div class="header-clear-large"></div>
-            <!--Page content goes here, fixed elements go above the all elements class-->
-                 <?php
-					include_once 'dataconfig/dataprovider.php';
-				?>
-                <?php $id_BaiHoc = $_GET["bh"];
-					$id_LoaiBaiHoc = $_GET["lbh"];
-					$sql_tieude = "select bh_TenBaiHoc from baihoc where bh_ID = $id_BaiHoc and bh_LoaiBaiHoc = $id_LoaiBaiHoc";
-					$result = DataProvider::GetRows($sql_tieude);
-					$tieude;
-					foreach ($result as $value) 
-					{
-						$tieude = $value;
-					}
-				?>
-                <div class="container heading-style-5">
-                    <h4 class="heading-title"><?php echo $tieude[0]; ?></h4>
-                    <i class="fa fa-bolt heading-icon"></i>
-                    <div class="line bg-black"></div>
-                    <p class="heading-subtitle">
-                        Chọn hình cái loa để phát âm nhé !
-                    </p>
-                </div>  
-                                
-<?php 
-if($id_LoaiBaiHoc == 2)
-	include('include/inc-baihoc-tungu.php');
-else if($id_LoaiBaiHoc == 1)
-	include('include/inc-baihoc-am.php');
-else if($id_LoaiBaiHoc == 4)
-	include('include/inc-baihoc-hinhanh.php');
-?>
-
-                
-             
-                
-                <div class="decoration"></div>
-                
-                <?php
-				include_once("include/inc-footer.php");
+            <?php
+				include_once("include/inc-lichsubaitap.php");
 			?> 
-                                
-                
-                
-            <!-- End of entire page content-->
-            </div> 
         </div>
+    </div>  
     <a href="#" class="back-to-top-badge"><i class="fa fa-caret-up"></i>Back to top</a>
 </div>
     

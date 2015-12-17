@@ -865,9 +865,11 @@ $( document ).ready(function() {
         $('.open-right-sidebar').click(function() {
             //$(this).toggleClass('remove-sidebar');
             if( snapper.state().state=="right" ){
-                snapper.close();
+                //snapper.close();
+				 history.back(-1);
             } else {
-                snapper.open('right');
+				 history.back(-1);
+                //snapper.open('right');
             }
             return false;
         });
