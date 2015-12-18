@@ -4,42 +4,58 @@ var sel_id = -1;
 
 function submitThem(){				
 	myFrmObj = document.Them;
-	var formData = {mode: '1', id: '-1', td:  myFrmObj.txtTD.value};
-	$.ajax(
-	{
-		url : "process/xuly_baitap_post.php",
-		type: "POST",
-		data : formData,
-		success: function(data, textStatus, jqXHR)
+	if(myFrmObj.txtTD.value.length > 0){
+		//document.getElementById('home-tabb').click();
+		var formData = {mode: '1', id: '-1', td:  myFrmObj.txtTD.value};
+		$.ajax(
 		{
-			//alert("OK " + data + " " +textStatus);
-		},
-		error: function(jqXHR, textStatus, errorThrown)
-		{
-			//alert("Err " + textStatus + " " + errorThrown);
-		}
-	});
-	location.reload();
+			url : "process/xuly_baitap_post.php",
+			type: "POST",
+			data : formData,
+			success: function(data, textStatus, jqXHR)
+			{
+				//alert("OK " + data + " " +textStatus);
+			},
+			error: function(jqXHR, textStatus, errorThrown)
+			{
+				//alert("Err " + textStatus + " " + errorThrown);
+			}
+		});
+		
+		location.reload();
+	}
 }
 
 function submitCapNhat(){				
 	myFrmObj = document.CapNhat;
-	var formData = {mode: '2', id: sel_id, td: myFrmObj.txtTD2.value};
-	$.ajax(
-	{
-		url : "process/xuly_baitap_post.php",
-		type: "POST",
-		data : formData,
-		success: function(data, textStatus, jqXHR)
+	if(myFrmObj.txtTD2.value.length > 0){
+		var formData = {"mode": '2', "id": sel_id, "td": myFrmObj.txtTD2.value};
+		var t;
+		$.ajax(
 		{
-			//alert("OK " + data + " " +textStatus);
-		},
-		error: function(jqXHR, textStatus, errorThrown)
-		{
-			//alert("Err " + textStatus + " " + errorThrown);
-		}
-	});
-	location.reload();
+			url : "process/xuly_baitap_post.php",
+			type: "POST",
+			data : formData,
+			timeout: 3000,
+			success: function(data, textStatus, jqXHR)
+			{			
+				//alert(textStatus +": " + data);
+			},
+			error: function(jqXHR, textStatus, errorThrown)
+			{			
+					/*if(textStatus==="timeout") {
+						alert("got timeout");
+					} else {
+						alert(textStatus + ": " + errorThrown);
+					}*/
+			},
+			complete: function(jqXHR, textStatus)
+			{			
+				//alert("Com " + " " + textStatus);
+			}
+		});	
+		location.reload();
+	}
 }
 
 function refresher(){
@@ -117,27 +133,28 @@ function refresher(){
 								<div class="x_panel">
                                 <div class="x_content">
                                     <br />
-                                    <form name="Them" class="form-horizontal form-label-left" onsubmit="submitThem()">
+                                    <form name="Them" class="form-horizontal form-label-left"  >
 
                                         
-                                        <div class="form-group">
+                                        <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Tiêu đề<span class="required">*</span>
                                             </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtTD" type="text" class="form-control" placeholder="Tiêu đề">
+                                                <input id="txtTD" type="text" class="form-control" placeholder="Tiêu đề"
+												required="required" >
                                             </div>
                                         </div>
-										
 										
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-												<a type="submit" onclick="submitThem()" href="#tab_content1" role="tab" 
+                                                <button id="send" onclick="submitThem()" type="submit" class="btn btn-primary">Thêm</button>
+												<!--a onclick="submitThem()" href="#tab_content1" role="tab" 
 															id="profile-tabb3" 
 															data-toggle="tab" aria-controls="profile" aria-expanded="false" 
 															class="btn btn-primary">
 															Thêm
-														</a>
+														</a-->
                                             </div>
                                         </div>
 
@@ -152,19 +169,17 @@ function refresher(){
 								<div class="x_panel">
                                 <div class="x_content">
                                     <br />
-                                    <form name="CapNhat" class="form-horizontal form-label-left" onsubmit="submitCapNhat()">
-
-                                        
-                                        <div class="form-group">
+                                    <form name="CapNhat" class="form-horizontal form-label-left">
+										<div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Tiêu đề<span class="required">*</span>
                                             </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtTD2" type="text" class="form-control" placeholder="">
+                                                <input id="txtTD2" type="text" class="form-control" placeholder="Tiêu đề"
+												 required="required" >
                                             </div>
                                         </div>
-										
                                         <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngay Tao</label>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngày Tạo</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
                                                 <input id="txtNT2" type="text" class="form-control" disabled="disabled" placeholder="" value="sdf">
                                             </div>
@@ -174,7 +189,7 @@ function refresher(){
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                                <button type="submit" class="btn btn-primary">Sửa</button>
+                                                <button onclick="submitCapNhat()" type="submit" class="btn btn-primary">Sửa</button>
 																								
 												<a  href="#tab_content1" role="tab" 
 															id="profile-tabb4" 
@@ -183,9 +198,9 @@ function refresher(){
 															Hủy
 														</a>
                                             </div>
-                                        </div>
+                                        </form>
 
-                                    </form>
+                                    </div>
                                 </div>
 								</div>
 								
@@ -218,7 +233,7 @@ function refresher(){
 				document.getElementById("txtNT2").value = nt ;
 			}
 			
-			function newRows() {
+			function newRow() {
 				var tableRef = document.getElementById('example').getElementsByTagName('tbody')[0];
 
 				// Insert a row in the table at the last row
@@ -231,7 +246,50 @@ function refresher(){
 				cell2.innerHTML = "NEW CELL2 " ;
 			}
 			
-			function myFunction(id) {
+			function delRow(id) {
 				document.getElementById('example').getElementsByTagName('tbody')[0].deleteRow(id);
 			}
 </script>
+<!-- form validation -->
+    <script>
+        // initialize the validator function
+        validator.message['date'] = 'not a real date';
+
+        // validate a field on "blur" event, a 'select' on 'change' event & a '.reuired' classed multifield on 'keyup':
+        $('form')
+            .on('blur', 'input[required], input.optional, select.required', validator.checkField)
+            .on('change', 'select.required', validator.checkField)
+            .on('keypress', 'input[required][pattern]', validator.keypress);
+
+        $('.multi.required')
+            .on('keyup blur', 'input', function () {
+                validator.checkField.apply($(this).siblings().last()[0]);
+            });
+
+        // bind the validation to the form submit event
+        //$('#send').click('submit');//.prop('disabled', true);
+
+        $('form').submit(function (e) {
+            e.preventDefault();
+            var submit = true;
+            // evaluate the form using generic validaing
+            if (!validator.checkAll($(this))) {
+                submit = false;
+            }
+
+            if (submit)
+                this.submit();
+            return false;
+        });
+
+        /* FOR DEMO ONLY */
+        $('#vfields').change(function () {
+            $('form').toggleClass('mode2');
+        }).prop('checked', false);
+
+        $('#alerts').change(function () {
+            validator.defaults.alerts = (this.checked) ? false : true;
+            if (this.checked)
+                $('form .alert').remove();
+        }).prop('checked', false);
+    </script>

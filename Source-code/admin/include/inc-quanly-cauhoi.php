@@ -1,74 +1,82 @@
 <script>
 var sel_id = -1;
 var bt_id = -1;
-			
-
-				document.getElementById("txtTD2").value = td;
-				document.getElementById("txtHA2").value = ha;
-				document.getElementById("txtGA2").value = ga;
-				document.getElementById("txtL12").value = l1;
-				document.getElementById("txtL22").value = l2;
-				document.getElementById("txtL32").value = l3;
-				document.getElementById("txtL42").value = l4;
-				document.getElementById("txtDA2").text = da;
 				
 function submitThem(){				
 	myFrmObj = document.Them;
-	var e = document.getElementById("sltDA1");
-	var strUser = e.options[e.selectedIndex].value;
-	
-	alert(strUser);
-	var formData = {mode: '1', id: '-1', td: bt_id, ha: myFrmObj.txtHA1.value, 
-		ga: myFrmObj.txtGA1.value, l1: myFrmObj.txtL11.value, l2: myFrmObj.txtL21.value,
-		l3: myFrmObj.txtL31.value, l4: myFrmObj.txtL41.value, da: strUser};
-	$.ajax(
-	{
-		url : "process/xuly_cauhoi_post.php",
-		type: "POST",
-		data : formData,
-		success: function(data, textStatus, jqXHR)
+	if(myFrmObj.txtHA1.value.length > 0 &&
+		myFrmObj.txtGA1.value.length > 0 &&
+		myFrmObj.txtL11.value.length > 0 &&
+		myFrmObj.txtL21.value.length > 0 &&
+		myFrmObj.txtL31.value.length > 0 &&
+		myFrmObj.txtL41.value.length > 0){
+		
+		var e = document.getElementById("sltDA1");
+		var strUser = e.options[e.selectedIndex].value;
+		
+		var formData = {mode: '1', id: '-1', td: bt_id, ha: myFrmObj.txtHA1.value, 
+			ga: myFrmObj.txtGA1.value, l1: myFrmObj.txtL11.value, l2: myFrmObj.txtL21.value,
+			l3: myFrmObj.txtL31.value, l4: myFrmObj.txtL41.value, da: strUser};
+		$.ajax(
 		{
-			//alert("OK " + data + " " +textStatus);
-		},
-		error: function(jqXHR, textStatus, errorThrown)
-		{
-			//alert("Err " + textStatus + " " + errorThrown);
-		}
-	});
-	location.reload();
+			url : "process/xuly_cauhoi_post.php",
+			type: "POST",
+			data : formData,
+			success: function(data, textStatus, jqXHR)
+			{
+				//alert("OK " + data + " " +textStatus);
+			},
+			error: function(jqXHR, textStatus, errorThrown)
+			{
+				//alert("Err " + textStatus + " " + errorThrown);
+			}
+		});
+	window.location.href = 'quanly_cauhoi.php?id=<?php echo $bt_id; ?>&td=<?php echo $bt_td; ?>';
+	}
 }
 
 function submitCapNhat(){				
 	myFrmObj = document.CapNhat;
+	if(myFrmObj.txtHA2.value.length > 0 &&
+		myFrmObj.txtGA2.value.length > 0 &&
+		myFrmObj.txtL12.value.length > 0 &&
+		myFrmObj.txtL22.value.length > 0 &&
+		myFrmObj.txtL32.value.length > 0 &&
+		myFrmObj.txtL42.value.length > 0){
 	
-	var e = document.getElementById("sltDA2");			
-	var strUser = e.options[e.selectedIndex].value;
-				
-	var formData = {mode: '2', id: sel_id, td: "-1", ha: myFrmObj.txtHA2.value, 
-		ga: myFrmObj.txtGA2.value, l1: myFrmObj.txtL12.value, l2: myFrmObj.txtL22.value,
-		l3: myFrmObj.txtL32.value, l4: myFrmObj.txtL42.value, da: strUser};
-	$.ajax(
-	{
-		url : "process/xuly_cauhoi_post.php",
-		type: "POST",
-		data : formData,
-		success: function(data, textStatus, jqXHR)
+		var e = document.getElementById("sltDA2");			
+		var strUser = e.options[e.selectedIndex].value;
+					
+		var formData = {mode: '2', id: sel_id, td: "-1", ha: myFrmObj.txtHA2.value, 
+			ga: myFrmObj.txtGA2.value, l1: myFrmObj.txtL12.value, l2: myFrmObj.txtL22.value,
+			l3: myFrmObj.txtL32.value, l4: myFrmObj.txtL42.value, da: strUser};
+		$.ajax(
 		{
-			//alert("OK " + data + " " +textStatus);
-		},
-		error: function(jqXHR, textStatus, errorThrown)
-		{
-			//alert("Err " + textStatus + " " + errorThrown);
-		}
-	});
-	location.reload();
+			url : "process/xuly_cauhoi_post.php",
+			type: "POST",
+			data : formData,
+			success: function(data, textStatus, jqXHR)
+			{
+				//alert("OK " + data + " " +textStatus);
+			},
+			error: function(jqXHR, textStatus, errorThrown)
+			{
+				//alert("Err " + textStatus + " " + errorThrown);
+			}
+		});
+	window.location.href = 'quanly_cauhoi.php?id=<?php echo $bt_id; ?>&td=<?php echo $bt_td; ?>';
+	}
 }
 
+function alwaysFalse(){
+	return false;
+}
 
 function refresher(){
-	location.reload();
+	window.location.href = 'quanly_cauhoi.php?id=<?php echo $bt_id; ?>&td=<?php echo $bt_td; ?>';
 }
 </script>
+
 				<!-- inc-php-->
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -107,7 +115,7 @@ function refresher(){
 											<?php
 											if(isset($_GET['id']))
 											{
-												$bt_id = $_GET['id'];
+												
 												$i = 0;
 												
 												$sql = "SELECT ch_ID, ch_DuongDanHinhAnh,
@@ -138,7 +146,7 @@ function refresher(){
 															data-toggle="tab" aria-controls="profile" aria-expanded="false" 
 															onclick="edit(
 																'<?php echo $value['ch_ID'];?>',
-																'<?php echo $_GET['td'];?>',
+																'<?php echo $bt_td;?>',
 																'<?php echo $value['ch_DuongDanHinhAnh'];?>',
 																'<?php echo $value['ch_DuongDanGhiAm'];?>',
 																'<?php echo $value['ch_LuaChon1'];?>',
@@ -150,7 +158,7 @@ function refresher(){
 															Cập nhật
 														</a>
 														
-														<a  href="process/xuly_cauhoi_get?mode=3&id=<?php echo $value['ch_ID'];?>&bt=<?php echo $bt_id;?>&td=<?php echo $_GET['td'];?>" class="btnx btnx-red" > Xóa</a>
+														<a  href="process/xuly_cauhoi_get?mode=3&id=<?php echo $value['ch_ID'];?>&bt=<?php echo $bt_id;?>&td=<?php echo $bt_td;?>" class="btnx btnx-red" > Xóa</a>
 													</td>
 												</tr>
 											<?php
@@ -171,7 +179,7 @@ function refresher(){
 								<div class="x_panel">
                                 <div class="x_content">
                                     <br />
-                                    <form name="Them" class="form-horizontal form-label-left" onsubmit="submitThem()">
+                                    <form name="Them" class="form-horizontal form-label-left" onsubmit="return false">
 									
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Tiêu đề</label>
@@ -183,42 +191,48 @@ function refresher(){
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Hình ảnh<span class="required">*</span>
 											</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtHA1" type="text" class="form-control" placeholder="Default Input">
+                                                <input id="txtHA1" type="text" class="form-control" placeholder="Default Input"
+												required="required" >
                                             </div>
                                         </div>
 										<div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Ghi âm<span class="required">*</span>
 											</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtGA1" type="text" class="form-control" placeholder="Default Input">
+                                                <input id="txtGA1" type="text" class="form-control" placeholder="Default Input"
+												required="required" >
                                             </div>
                                         </div>
 										<div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Lựa chọn 1<span class="required">*</span>
 											</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtL11" type="text" class="form-control" placeholder="Default Input">
+                                                <input id="txtL11" type="text" class="form-control" placeholder="Default Input"
+												required="required" >
                                             </div>
                                         </div>
 										<div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Lựa chọn 2<span class="required">*</span>
 											</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtL21" type="text" class="form-control" placeholder="Default Input">
+                                                <input id="txtL21" type="text" class="form-control" placeholder="Default Input"
+												required="required" >
                                             </div>
                                         </div>
 										<div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Lựa chọn 3<span class="required">*</span>
 											</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtL31" type="text" class="form-control" placeholder="Default Input">
+                                                <input id="txtL31" type="text" class="form-control" placeholder="Default Input"
+												required="required" >
                                             </div>
                                         </div>
 										<div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Lựa chọn 4<span class="required">*</span>
 											</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtL41" type="text" class="form-control" placeholder="Default Input">
+                                                <input id="txtL41" type="text" class="form-control" placeholder="Default Input"
+												required="required" >
                                             </div>
                                         </div>
 										
@@ -238,12 +252,13 @@ function refresher(){
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-												<a  type="submit" onclick="submitThem()"  href="#tab_content1" role="tab" 
+											<button id="" onclick="submitThem()" type="submit" class="btn btn-primary">Thêm</button>
+												<!--a  type="submit" onclick="submitThem()"  href="#tab_content1" role="tab" 
 															id="profile-tabb3" 
 															data-toggle="tab" aria-controls="profile" aria-expanded="false" 
 															class="btn btn-primary">
 															Thêm
-														</a>
+														</a-->
                                             </div>
                                         </div>
 
@@ -257,7 +272,7 @@ function refresher(){
 								<div class="x_panel">
                                 <div class="x_content">
                                     <br />
-                                    <form name="CapNhat" class="form-horizontal form-label-left" onsubmit="submitCapNhat()">
+                                    <form name="CapNhat" action="" class="form-horizontal form-label-left" onsubmit="return false">
 									
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Tiêu đề</label>
@@ -269,42 +284,48 @@ function refresher(){
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Hình ảnh<span class="required">*</span>
 											</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtHA2" type="text" class="form-control" placeholder="Default Input">
+                                                <input id="txtHA2" type="text" class="form-control" placeholder="Default Input"
+												required="required" >
                                             </div>
                                         </div>
 										<div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Ghi âm<span class="required">*</span>
 											</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtGA2" type="text" class="form-control" placeholder="Default Input">
+                                                <input id="txtGA2" type="text" class="form-control" placeholder="Default Input"
+												required="required" >
                                             </div>
                                         </div>
 										<div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Lựa chọn 1<span class="required">*</span>
 											</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtL12" type="text" class="form-control" placeholder="Default Input">
+                                                <input id="txtL12" type="text" class="form-control" placeholder="Default Input"
+												required="required" >
                                             </div>
                                         </div>
 										<div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Lựa chọn 2<span class="required">*</span>
 											</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtL22" type="text" class="form-control" placeholder="Default Input">
+                                                <input id="txtL22" type="text" class="form-control" placeholder="Default Input"
+												required="required" >
                                             </div>
                                         </div>
 										<div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Lựa chọn 3<span class="required">*</span>
 											</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtL32" type="text" class="form-control" placeholder="Default Input">
+                                                <input id="txtL32" type="text" class="form-control" placeholder="Default Input"
+												required="required" >
                                             </div>
                                         </div>
 										<div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Lựa chọn 4<span class="required">*</span>
 											</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtL42" type="text" class="form-control" placeholder="Default Input">
+                                                <input id="txtL42" type="text" class="form-control" placeholder="Default Input"
+												required="required" >
                                             </div>
                                         </div>
 										
@@ -323,13 +344,14 @@ function refresher(){
 
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
-                                            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-												<a onclick="submitCapNhat()" href="#tab_content1" role="tab" 
+                                            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">											
+                                                <button onclick="submitCapNhat()" type="submit" class="btn btn-primary">Lưu</button>
+												<!--a onclick="submitCapNhat()" href="#tab_content1" role="tab" 
 															id="profile-tabb4" 
 															data-toggle="tab" aria-controls="profile" aria-expanded="false" 
 															class="btn btn-primary">
 															Lưu
-														</a>											
+														</a-->											
 												<a  href="#tab_content1" role="tab" 
 															id="profile-tabb5" 
 															data-toggle="tab" aria-controls="profile" aria-expanded="false" 
@@ -397,3 +419,46 @@ bt_id = <?php echo $bt_id;?>;
 				document.getElementById('example').getElementsByTagName('tbody')[0].deleteRow(id);
 			}
 </script>
+<!-- form validation -->
+    <script>
+        // initialize the validator function
+        validator.message['date'] = 'not a real date';
+
+        // validate a field on "blur" event, a 'select' on 'change' event & a '.reuired' classed multifield on 'keyup':
+        $('form')
+            .on('blur', 'input[required], input.optional, select.required', validator.checkField)
+            .on('change', 'select.required', validator.checkField)
+            .on('keypress', 'input[required][pattern]', validator.keypress);
+
+        $('.multi.required')
+            .on('keyup blur', 'input', function () {
+                validator.checkField.apply($(this).siblings().last()[0]);
+            });
+
+        // bind the validation to the form submit event
+        //$('#send').click('submit');//.prop('disabled', true);
+
+        $('form').submit(function (e) {
+            e.preventDefault();
+            var submit = true;
+            // evaluate the form using generic validaing
+            if (!validator.checkAll($(this))) {
+                submit = false;
+            }
+
+            if (submit)
+                this.submit();
+            return false;
+        });
+
+        /* FOR DEMO ONLY */
+        $('#vfields').change(function () {
+            $('form').toggleClass('mode2');
+        }).prop('checked', false);
+
+        $('#alerts').change(function () {
+            validator.defaults.alerts = (this.checked) ? false : true;
+            if (this.checked)
+                $('form .alert').remove();
+        }).prop('checked', false);
+    </script>
