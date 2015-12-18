@@ -2,7 +2,7 @@
 	define("HOSTNAME", "localhost");
 	define("USERNAME", "root");
 	define("PASSWORD", "");
-	define("DATABASE", "tapdoc");
+	define("DATABASE", "betapdoc");
 
 class DataProvider  
 { 

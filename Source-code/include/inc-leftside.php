@@ -47,8 +47,13 @@
                     <em>Trò chơi</em>
                     <i class="fa fa-circle"></i>
                 </a>
+<<<<<<< HEAD
 				<a class="menu-item" href="lichsubaihoc.php">
                     <i class="fa fa-picture-o"></i>
+=======
+				<a class="menu-item close-sidebar" href="lichsubaihoc.php">
+                    <i class="fa fa-pencil"></i>
+>>>>>>> refs/remotes/origin/tien
                     <em>Lịch sử bài học</em>
                     <i class="fa fa-circle"></i>
                 </a>
