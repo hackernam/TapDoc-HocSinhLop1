@@ -3,7 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Dec 14, 2015 at 05:23 AM
+=======
+-- Generation Time: Dec 09, 2015 at 03:30 PM
+>>>>>>> refs/remotes/origin/Thinh-2091
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -40,12 +44,21 @@ CREATE TABLE IF NOT EXISTS `am` (
 --
 
 INSERT INTO `am` (`a_ID`, `a_NoiDung`, `a_DuongDanGhiAm`, `a_BaiHoc`) VALUES
+<<<<<<< HEAD
 (1, 'a', 'upload/GhiAm/Am/a.wav', 2),
 (2, 'á', 'upload/GhiAm/Am/a sac.wav', 2),
 (3, 'à', 'upload/GhiAm/Am/a huyen.wav', 2),
 (4, 'ạ', 'upload/GhiAm/Am/a nang.wav', 2),
 (5, 'ã', 'upload/GhiAm/Am/a nga.wav', 2),
 (6, 'ả', 'upload/GhiAm/Am/a hoi.wav', 2);
+=======
+(1, 'a', 'upload\\GhiAm\\Am\\a.mp3', 2),
+(2, 'á', 'upload\\GhiAm\\Am\\a.mp3', 2),
+(3, 'à', 'upload\\GhiAm\\Am\\a.mp3', 2),
+(4, 'ạ', 'sdfsdf', 2),
+(5, 'ã', 'fdgd', 2),
+(6, 'ả', 'dgdfg', 2);
+>>>>>>> refs/remotes/origin/Thinh-2091
 
 -- --------------------------------------------------------
 
@@ -69,6 +82,7 @@ CREATE TABLE IF NOT EXISTS `baihoc` (
 --
 
 INSERT INTO `baihoc` (`bh_ID`, `bh_TenBaiHoc`, `bh_LoaiBaiHoc`, `bh_NgayTao`, `bh_HinhDaiDien`, `bh_SoLanChon`) VALUES
+<<<<<<< HEAD
 (1, 'Bài 1', 2, '2015-12-04 00:00:00', 'upload/HinhAnh/doccau.png', 10),
 (2, 'Âm "a"', 1, '2015-12-08 00:00:00', 'upload/HinhAnh/Am/bangchucai.png', 11),
 (3, 'Hình Ảnh 1', 4, '2015-12-08 00:00:00', 'upload/HinhAnh/HinhAnh/bangchucai.png', 12);
@@ -85,6 +99,11 @@ CREATE TABLE IF NOT EXISTS `baitap` (
   `bt_NgayTao` datetime DEFAULT NULL,
   PRIMARY KEY (`bt_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+=======
+(1, 'Bài 1', 2, '2015-12-04 00:00:00', 'upload\\HinhAnh\\doccau.png', 10),
+(2, 'Âm "a"', 1, '2015-12-08 00:00:00', 'upload\\HinhAnh\\Am\\bangchucai.png', 11),
+(3, 'Hình Ảnh 1', 4, '2015-12-08 00:00:00', 'upload\\HinhAnh\\HinhAnh\\bangchucai.png', 12);
+>>>>>>> refs/remotes/origin/Thinh-2091
 
 -- --------------------------------------------------------
 
@@ -161,7 +180,11 @@ CREATE TABLE IF NOT EXISTS `hinhanh` (
 --
 
 INSERT INTO `hinhanh` (`ha_ID`, `ha_NoiDung`, `ha_DuongDanHinhAnh`, `ha_DuongDanGhiAm`, `ha_BaiHoc`) VALUES
+<<<<<<< HEAD
 (1, 'Con Bò', 'upload/HinhAnh/HinhAnh/conbo.jpg', 'upload/GhiAm/HinhAnh/con bo.mp3', 3);
+=======
+(1, 'Con Bò', 'upload\\HinhAnh\\HinhAnh\\conbo.jpg', 'upload\\GhiAm\\HinhAnh\\con bo.mp3', 3);
+>>>>>>> refs/remotes/origin/Thinh-2091
 
 -- --------------------------------------------------------
 
@@ -219,6 +242,7 @@ INSERT INTO `loaibaihoc` (`lbh_ID`, `lbh_LoaiBaiHoc`) VALUES
 (2, 'Phát Âm Từ ngữ'),
 (3, 'Phát ÂM Theo Câu'),
 (4, 'Phát Âm Theo Hình Ảnh');
+<<<<<<< HEAD
 
 -- --------------------------------------------------------
 
@@ -239,6 +263,8 @@ CREATE TABLE IF NOT EXISTS `loainguoidung` (
 INSERT INTO `loainguoidung` (`lnd_ID`, `lnd_LoaiNguoiDung`) VALUES
 (1, 'Học sinh'),
 (2, 'Quản trị');
+=======
+>>>>>>> refs/remotes/origin/Thinh-2091
 
 -- --------------------------------------------------------
 
@@ -255,14 +281,20 @@ CREATE TABLE IF NOT EXISTS `taikhoan` (
   `tk_DangNhapLanCuoi` datetime NOT NULL,
   `tk_LoaiNguoiDung` int(11) NOT NULL,
   PRIMARY KEY (`tk_ID`),
+<<<<<<< HEAD
   KEY `fk_taikhoan_gioitinh_idx` (`tk_GioiTinh`),
   KEY `fk_taikhoan_loainguoidung_idx` (`tk_LoaiNguoiDung`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
+=======
+  KEY `fk_taikhoan_gioitinh_idx` (`tk_GioiTinh`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+>>>>>>> refs/remotes/origin/Thinh-2091
 
 --
 -- Dumping data for table `taikhoan`
 --
 
+<<<<<<< HEAD
 INSERT INTO `taikhoan` (`tk_ID`, `tk_HoTen`, `tk_GioiTinh`, `tk_TenDangNhap`, `tk_MatKhau`, `tk_DangNhapLanCuoi`, `tk_LoaiNguoiDung`) VALUES
 (1, 'ABC', 1, 'test', '123', '0000-00-00 00:00:00', 1),
 (3, 'asdasfds', 1, 'test123', '123456', '0000-00-00 00:00:00', 1),
@@ -272,6 +304,13 @@ INSERT INTO `taikhoan` (`tk_ID`, `tk_HoTen`, `tk_GioiTinh`, `tk_TenDangNhap`, `t
 (9, 'sdfgdsgdf', 2, 'hoangnam123', '1234567', '0000-00-00 00:00:00', 1),
 (10, 'Nguyễn Văn A', 1, 'hocsinhabc', '1234567', '0000-00-00 00:00:00', 1),
 (11, 'Nguyễn Văn V', 1, 'hocsinh123', '1234567', '0000-00-00 00:00:00', 1);
+=======
+INSERT INTO `taikhoan` (`tk_ID`, `tk_HoTen`, `tk_GioiTinh`, `tk_TenDangNhap`, `tk_MatKhau`) VALUES
+(1, 'ABC', 1, 'test', '123'),
+(3, 'asdasfds', 1, 'test123', '123456'),
+(6, 'Hoc Sinh', 1, 'hocsinh123', '123456'),
+(7, 'fghdgdfg', 1, 'testasdfs', 'asfdfsdg');
+>>>>>>> refs/remotes/origin/Thinh-2091
 
 -- --------------------------------------------------------
 
@@ -293,6 +332,7 @@ CREATE TABLE IF NOT EXISTS `tu` (
 --
 
 INSERT INTO `tu` (`t_ID`, `t_NoiDung`, `t_DuongDanGhiAm`, `t_BaiHoc`) VALUES
+<<<<<<< HEAD
 (1, 'Con heo', 'upload/GhiAm/Tu/con heo.mp3', 1),
 (2, 'Con bò', 'upload/GhiAm/Tu/con bo.mp3', 1),
 (3, 'Con cá', 'upload/GhiAm/Tu/con ca.mp3', 1),
@@ -303,6 +343,18 @@ INSERT INTO `tu` (`t_ID`, `t_NoiDung`, `t_DuongDanGhiAm`, `t_BaiHoc`) VALUES
 (8, 'Con ngựa', 'upload/GhiAm/Tu/con ngua.mp3', 1),
 (9, 'Con trâu', 'upload/GhiAm/Tu/con trau.mp3', 1),
 (10, 'Con voi', 'upload/GhiAm/Tu/con voi.mp3', 1);
+=======
+(1, 'Con heo', 'upload\\GhiAm\\Tu\\con heo.mp3', 1),
+(2, 'Con bò', 'upload\\GhiAm\\Tu\\con bo.mp3', 1),
+(3, 'Con cá', 'upload\\GhiAm\\Tu\\con ca.mp3', 1),
+(4, 'Con chuột', 'upload\\GhiAm\\Tu\\con chuot.mp3', 1),
+(5, 'Con gấu', 'upload\\GhiAm\\Tu\\con gau.mp3', 1),
+(6, 'Con khỉ', 'upload\\GhiAm\\Tu\\con khi.mp3', 1),
+(7, 'Con mèo', 'upload\\GhiAm\\Tu\\con meo.mp3', 1),
+(8, 'Con ngựa', 'upload\\GhiAm\\Tu\\con ngua.mp3', 1),
+(9, 'Con trâu', 'upload\\GhiAm\\Tu\\con trau.mp3', 1),
+(10, 'Con voi', 'upload\\GhiAm\\Tu\\con voi.mp3', 1);
+>>>>>>> refs/remotes/origin/Thinh-2091
 
 --
 -- Constraints for dumped tables

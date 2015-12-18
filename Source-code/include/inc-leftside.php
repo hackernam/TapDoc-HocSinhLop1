@@ -48,6 +48,7 @@
                     <i class="fa fa-circle"></i>
                 </a>
 <<<<<<< HEAD
+<<<<<<< HEAD
 				<a class="menu-item" href="lichsubaihoc.php">
                     <i class="fa fa-picture-o"></i>
 =======
@@ -57,6 +58,8 @@
                     <em>Lịch sử bài học</em>
                     <i class="fa fa-circle"></i>
                 </a>
+=======
+>>>>>>> refs/remotes/origin/Thinh-2091
             </div>
             
             <p class="sidebar-divider">Hệ thống</p>
