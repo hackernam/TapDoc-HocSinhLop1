@@ -37,29 +37,21 @@
                     <em>Đọc theo hình ảnh</em>
                     <i class="fa fa-circle"></i>
                 </a>
-				<a class="menu-item close-sidebar" href="#">
+				<a class="menu-item" href="danhsachbaitap.php">
                     <i class="fa fa-check-square-o"></i>
                     <em>Bài tập</em>
                     <i class="fa fa-circle"></i>
                 </a>
-				<a class="menu-item close-sidebar" href="#">
+				<a class="menu-item" href="#">
                     <i class="fa fa-gamepad"></i>
                     <em>Trò chơi</em>
                     <i class="fa fa-circle"></i>
                 </a>
-<<<<<<< HEAD
-<<<<<<< HEAD
 				<a class="menu-item" href="lichsubaihoc.php">
-                    <i class="fa fa-picture-o"></i>
-=======
-				<a class="menu-item close-sidebar" href="lichsubaihoc.php">
                     <i class="fa fa-pencil"></i>
->>>>>>> refs/remotes/origin/tien
                     <em>Lịch sử bài học</em>
                     <i class="fa fa-circle"></i>
                 </a>
-=======
->>>>>>> refs/remotes/origin/Thinh-2091
             </div>
             
             <p class="sidebar-divider">Hệ thống</p>

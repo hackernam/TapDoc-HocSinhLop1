@@ -13,10 +13,7 @@ if(isset($_POST['btnLogin']))
 			session_start();
 		}
 		$_SESSION['UID'] = $id;
-<<<<<<< HEAD
-=======
 		$_SESSION["user_name"] = $_POST['txtUsername'];
->>>>>>> refs/remotes/origin/Thinh-2091
 		$_SESSION['DaDangNhap'] = 1;
 		$xx->RedirectToURL("index.php");
 	}
@@ -64,19 +61,11 @@ if(isset($_POST['btnLogin']))
 								<a class="pageapp-login-logo" href="#"></a>
 								<div class="pageapp-login-field">
 									<i class="fa fa-user"></i>
-<<<<<<< HEAD
-									<input type="text" value="Tên đăng nhập" onfocus="if (this.value=='Tên đăng nhập') this.value = ''" onblur="if (this.value=='') this.value = 'Tên đăng nhập'" id="txtUsername" name="txtUsername">
-								</div>
-								<div class="pageapp-login-field">
-									<i class="fa fa-lock"></i>
-									<input type="password" value="password" onfocus="if (this.value=='password') this.value = ''" onblur="if (this.value=='') this.value = 'password'" id="txtPassword" name="txtPassword">
-=======
 									<input type="text" value="" placeholder="Tên đăng nhập" id="txtUsername" name="txtUsername">
 								</div>
 								<div class="pageapp-login-field">
 									<i class="fa fa-lock"></i>
 									<input type="password" value="" placeholder="password" id="txtPassword" name="txtPassword">
->>>>>>> refs/remotes/origin/Thinh-2091
 								</div>
 								<input type="submit" name="btnLogin" value="Đăng nhập" class="pageapp-login-button button button-m button-green button-fullscreen" />
 								<input onclick="window.location.href='dangky.php'" name="btnLogin" value="Đăng ký" class="pageapp-login-button button button-m button-red button-fullscreen" />

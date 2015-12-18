@@ -59,7 +59,7 @@ class DataProvider
       	die ("couldn't connect to localhost"); 
          
     mysqli_query($connection,"set names 'utf8'"); 
-    
+    $returnresult = null;
     $result = mysqli_query($connection,$sql);
 	$i = 0;
 	while ($row = mysqli_fetch_array($result))

@@ -1,5 +1,5 @@
 <?php 
-	session_start();
+	//session_start();
 	if(!($_SESSION['DaDangNhap'] == 1))
 	{
 		header("Location: dangnhap.php");
@@ -18,7 +18,7 @@
                     <i class="fa fa-th heading-icon"></i>
                     <div class="line bg-black"></div>
                     <p class="heading-subtitle">
-                        Bạn hãy chọn một trong những bài học dưới đây để học nhé !
+                        Bạn có thể xem danh sách những bài học mình đã học !
                     </p>
                 </div> 
                 

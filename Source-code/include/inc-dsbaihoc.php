@@ -52,7 +52,6 @@
 					?> 
                 </div>
                 
-<<<<<<< HEAD
 				<div class="decoration"></div>
 				
 				<div class="thumbnail-menu">
@@ -100,25 +99,12 @@
 						freeMode: true
 					});
 				</script>
-=======
->>>>>>> refs/remotes/origin/Thinh-2091
                 <div class="decoration"></div>
                 
                 <?php
 				include_once("include/inc-footer.php");
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> refs/remotes/origin/Thinh-2091
 			?> 
-                                
-                
-                
-<<<<<<< HEAD
-=======
-			?>     
->>>>>>> refs/remotes/origin/tien
-=======
->>>>>>> refs/remotes/origin/Thinh-2091
+
+
             <!-- End of entire page content-->
             </div> 
