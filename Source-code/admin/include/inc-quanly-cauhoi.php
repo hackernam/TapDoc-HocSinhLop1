@@ -1,16 +1,6 @@
 <script>
 var sel_id = -1;
 var bt_id = -1;
-			
-
-				document.getElementById("txtTD2").value = td;
-				document.getElementById("txtHA2").value = ha;
-				document.getElementById("txtGA2").value = ga;
-				document.getElementById("txtL12").value = l1;
-				document.getElementById("txtL22").value = l2;
-				document.getElementById("txtL32").value = l3;
-				document.getElementById("txtL42").value = l4;
-				document.getElementById("txtDA2").text = da;
 				
 function submitThem(){				
 	myFrmObj = document.Them;
