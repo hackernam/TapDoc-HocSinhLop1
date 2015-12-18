@@ -102,7 +102,7 @@
                         <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/hinhanh.png" class="responsive-image" alt="img"></i>
                         <em>Hình ảnh</em>
                     </a>
-					<a href="index.html">
+					<a href="danhsachbaitap.php">
                         <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/baitap.png" class="responsive-image" alt="img"></i>
                         <em>Bài tập</em>
                     </a>
