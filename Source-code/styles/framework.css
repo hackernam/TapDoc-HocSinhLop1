@@ -2210,6 +2210,15 @@ ul.tabs li.active-tab{
     margin-bottom:5px;
 }
 
+.switch-box h2{
+    font-size:40px;
+    line-height:29px;
+    float:left;
+    font-weight:600;
+    padding-top:2px;
+    margin-bottom:5px;
+}
+
 .switch-box .switch{
     float:right!important;   
 }

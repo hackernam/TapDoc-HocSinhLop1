@@ -109,8 +109,8 @@
                                    <option value="Nữ">Nữ</option>
                                 </select>
                             </div>  
-                          <input type="submit" name="btnRegister" value="Register" class="pageapp-signup-button button button-small button-green button-fullscreen" />
-                          <input type="reset" value="Reset" class="pageapp-signup-button button button-small button-green button-fullscreen"/>
+                          <input type="submit" name="btnRegister" value="Đăng ký" class="pageapp-signup-button button button-small button-green button-fullscreen" />
+                          <input type="reset" value="Tạo lại" class="pageapp-signup-button button button-small button-green button-fullscreen"/>
                         </div>
                         </form>
                     </div>

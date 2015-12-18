@@ -20,7 +20,6 @@
 		
 		function CheckLoginInDB($username,$password)
 		{
-
 			if (empty($username) || empty($password))
 			{
 				 $this->HandleError("Tên đăng nhập / Mật khẩu không được để trống");

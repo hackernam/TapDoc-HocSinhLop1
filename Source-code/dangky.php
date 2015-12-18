@@ -35,7 +35,7 @@
 <script type="text/javascript" src="scripts/custom.js"></script>
 </head>
 
-<body class="dual-sidebar"> 
+<body> 
 <?php
 	include_once 'dataconfig/dataprovider.php';
 ?>
@@ -48,12 +48,12 @@
     
 <div id="header-fixed">
     <a class="header-logo" href="#"><img src="images/logo-light.png" alt="img"></a>
+	<a class="open-right-sidebar" href='#'><i class="fa fa-chevron-left"></i></a>
 </div>    
             
 <?php 
 	include('include/inc-dangky.php');
 ?>
-    
 </body>
 
 

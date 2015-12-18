@@ -45,27 +45,20 @@
 ?>
     
 <div class="gallery-fix"></div> <!-- Important for all pages that have galleries or portfolios -->
+    
 <div id="header-fixed">
     <a class="header-logo" href="#"><img src="images/logo-light.png" alt="img"></a>
-</div>  
-
-<!-- 
-
-<div id="header-fixed">
-    <a class="header-logo" href="#"><img src="images/logo-light.png" alt="img"></a>
-</div>   
+</div>    
 <div class="all-elements">
     <div class="snap-drawers"> 
--->
 <?php 
 	include('include/inc-dangnhap.php');
 ?>
-<!--
 </div>
 <a href="#" class="back-to-top-badge"><i class="fa fa-caret-up"></i>Back to top</a>
 </div>
-<!--Fly up share box and notifications go here ->
-<!--These are the only features that should be placed outside the all-elements class->
+<!--Fly up share box and notifications go here -->
+<!--These are the only features that should be placed outside the all-elements class-->
     
 <div class="share-bottom">
     <h3>Share Page</h3>
@@ -120,7 +113,7 @@
         I'll go away on my own after a few seconds!
     </p>
 </div>
--->
+
     
 </body>
 
