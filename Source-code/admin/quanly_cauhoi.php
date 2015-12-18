@@ -233,13 +233,18 @@
 					<br/>
                     <small>
                         <?php 
-						if(isset($_GET['td']))
-						{
-							echo $_GET['td'];
+						$bt_td = "Không có bài";
+						$bt_id = -1;
+						if(isset($_GET['td'])){
+							$bt_td = $_GET['td'];
 						}
-						else{
-							echo "Không có bài";
-						}?>
+						
+						if(isset($_GET['id'])){																									
+							$bt_id = $_GET['id'];
+						}
+						
+						echo $bt_td;
+						?>
                     </small>
                 </h3>
                         </div>
@@ -286,6 +291,9 @@
         <script src="js/icheck/icheck.min.js"></script>
 
         <script src="js/custom.js"></script>
+
+		<!-- form validation -->		
+		<script src="js/validator/validator.js"></script>
 
 
         <!-- Datatables -->
