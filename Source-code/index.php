@@ -94,7 +94,7 @@
                         <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/phattu.png" class="responsive-image" alt="img"></i>
                         <em>Đọc từ</em>
                     </a>
-					<a href="index.html">
+					<a href="danhsachbaihoc.php?lsid=3">
                         <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/doccau.png" class="responsive-image" alt="img"></i>
                         <em>Đọc câu</em>
                     </a>

@@ -100,6 +100,8 @@ if($id_LoaiBaiHoc == 2)
 	include('include/inc-baihoc-tungu.php');
 else if($id_LoaiBaiHoc == 1)
 	include('include/inc-baihoc-am.php');
+else if($id_LoaiBaiHoc == 3)
+	include('include/inc-baihoc-cau.php');
 else if($id_LoaiBaiHoc == 4)
 	include('include/inc-baihoc-hinhanh.php');
 ?>

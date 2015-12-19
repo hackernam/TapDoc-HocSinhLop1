@@ -27,7 +27,7 @@
                     <em style="color: green;">Đọc từ</em>
                     <i class="fa fa-circle"></i>
                 </a>                
-                <a class="menu-item" href="#">
+                <a class="menu-item" href="danhsachbaihoc.php?lsid=3">
                     <i class="fa fa-cc-stripe"></i>
                     <em>Đọc câu</em>
                     <i class="fa fa-circle"></i>
