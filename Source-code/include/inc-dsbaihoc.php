@@ -103,6 +103,8 @@
                 
                 <?php
 				include_once("include/inc-footer.php");
-			?>     
+			?> 
+
+
             <!-- End of entire page content-->
             </div> 

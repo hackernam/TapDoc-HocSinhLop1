@@ -2,7 +2,7 @@
 	define("HOSTNAME", "localhost");
 	define("USERNAME", "root");
 	define("PASSWORD", "");
-	define("DATABASE", "betapdoc");
+	define("DATABASE", "tapdoc");
 
 class DataProvider  
 { 
@@ -59,10 +59,9 @@ class DataProvider
       	die ("couldn't connect to localhost"); 
          
     mysqli_query($connection,"set names 'utf8'"); 
-    
+    $returnresult = null;
     $result = mysqli_query($connection,$sql);
 	$i = 0;
-	$returnresult = [];
 	while ($row = mysqli_fetch_array($result))
 	{
 		$returnresult[$i++] = $row;

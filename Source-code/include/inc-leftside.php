@@ -37,17 +37,17 @@
                     <em>Đọc theo hình ảnh</em>
                     <i class="fa fa-circle"></i>
                 </a>
-				<a class="menu-item close-sidebar" href="#">
+				<a class="menu-item" href="danhsachbaitap.php">
                     <i class="fa fa-check-square-o"></i>
                     <em>Bài tập</em>
                     <i class="fa fa-circle"></i>
                 </a>
-				<a class="menu-item close-sidebar" href="#">
+				<a class="menu-item" href="#">
                     <i class="fa fa-gamepad"></i>
                     <em>Trò chơi</em>
                     <i class="fa fa-circle"></i>
                 </a>
-				<a class="menu-item close-sidebar" href="lichsubaihoc.php">
+				<a class="menu-item" href="lichsubaihoc.php">
                     <i class="fa fa-pencil"></i>
                     <em>Lịch sử bài học</em>
                     <i class="fa fa-circle"></i>

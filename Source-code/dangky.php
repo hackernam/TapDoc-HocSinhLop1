@@ -22,7 +22,7 @@
 <link rel="icon" type="image/png" href="images/splash/favicon-16x16.png" sizes="16x16">
 <link rel="shortcut icon" href="images/splash/favicon.ico" type="image/x-icon" /> 
     
-<title>Epsilon 4.0</title>
+<title>Đăng ký</title>
 
 <link href="styles/style.css"           rel="stylesheet" type="text/css">
 <link href="styles/framework.css"       rel="stylesheet" type="text/css">
@@ -35,7 +35,7 @@
 <script type="text/javascript" src="scripts/custom.js"></script>
 </head>
 
-<body class="dual-sidebar"> 
+<body> 
 <?php
 	include_once 'dataconfig/dataprovider.php';
 ?>
@@ -48,12 +48,12 @@
     
 <div id="header-fixed">
     <a class="header-logo" href="#"><img src="images/logo-light.png" alt="img"></a>
+	<a class="open-right-sidebar" href='#'><i class="fa fa-chevron-left"></i></a>
 </div>    
             
 <?php 
 	include('include/inc-dangky.php');
 ?>
-    
 </body>
 
 
