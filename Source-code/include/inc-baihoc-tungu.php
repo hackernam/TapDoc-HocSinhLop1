@@ -6,8 +6,6 @@ function triggerAudio(abc) {
 </script>
 
 <?php
-<<<<<<< HEAD
-<<<<<<< HEAD
 	if (isset($_SESSION['UID']) && isset($_GET['bh'])) {		
 		$userId = $_SESSION['UID'];
 		$bhId = $_GET['bh'];
@@ -25,10 +23,6 @@ function triggerAudio(abc) {
 			//echo 'insert';exit;
 		}
 	}
-=======
->>>>>>> refs/remotes/origin/tien
-=======
->>>>>>> refs/remotes/origin/Thinh-2091
 	$idBaiHoc = $_GET["bh"];
 	$idLoaiBaiHoc = $_GET["lbh"];
 	$result = DataProvider::GetRows("select * from tu where t_BaiHoc = $idBaiHoc");

@@ -24,18 +24,43 @@ function triggerAudio(abc) {
 		}
 	}
 	$idBaiHoc = $_GET["bh"];
-	$sql = "select * from hinhanh where ha_BaiHoc = $idBaiHoc";
-	$result = DataProvider::GetRows($sql);
+	$idLoaiBaiHoc = $_GET["lbh"];
+	$result = DataProvider::GetRows("select * from cau where c_BaiHoc = $idBaiHoc");
 	foreach ($result as $value) 
 			{
-				?>	
-				<div class="container switch-box" align="center" >
-                   
-					<p style="margin-bottom:0px;" id="play<?php echo $value[0];?>" onclick="triggerAudio(this)"><img src="<?php echo $value[2]; ?>"/></p>  
-                    <p style="font-weight:bold; font-size:24px;color:#0F3"><?php echo $value[1];?></p>
-                </div>			
-				<audio id="audio<?php echo $value[0];?>">
-					<source src="<?php echo $value[3];?>" type="audio/mpeg" />
+				$chon = rand(1, 5);
+				if($chon == 1)
+				{
+					$mau = "blue";
+				}
+				if($chon == 2)
+				{
+					$mau = "green";
+				}
+				if($chon == 3)
+				{
+					$mau = "red";
+				}
+				if($chon == 4)
+				{
+					$mau = "orange";
+				}
+				if($chon == 5)
+				{
+					$mau = "black";
+				}
+				?>
+				
+			
+				<div class="container switch-box">
+                    <h2 style="color: <?php echo $mau ?>;text-shadow: 0 0 3px #FF0000;"><?php echo $value['c_NoiDung'];?></h2>
+                    <a href="#" class="switch-icon">
+					<p id="play<?php echo $value['c_ID'];?>" onclick="triggerAudio(this)"><img style="width: 50px;height: 50px;" src="images/loa.png"/></p> 
+                    </a>
+                </div>
+				
+				<audio id="audio<?php echo $value['c_ID'];?>">
+					<source src="<?php echo $value['c_DuongDanGhiAm'];?>" type="audio/mpeg" />
 				</audio>
 			<?php
 			}
