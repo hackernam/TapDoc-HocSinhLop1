@@ -52,6 +52,11 @@
                     <em>Lịch sử bài học</em>
                     <i class="fa fa-circle"></i>
                 </a>
+				<a class="menu-item" href="lichsubaitap.php">
+                    <i class="fa fa-pencil"></i>
+                    <em>Lịch sử bài tập</em>
+                    <i class="fa fa-circle"></i>
+                </a>
             </div>
             
             <p class="sidebar-divider">Hệ thống</p>
