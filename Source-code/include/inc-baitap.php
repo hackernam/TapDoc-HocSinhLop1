@@ -30,6 +30,7 @@ function done() {
 		}
 		document.getElementById("btnXong").innerHTML = "Điểm: " + score +"/"+ dsDA.length;
 		xong = true;
+		$("#dSubmit").append("<a class=\"button button-xl button-magenta button-round\" onclick=\"reload()\">Làm lại</a>");
 		
 		var formData = {idbt:<?php echo $_GET["bt"];?>, sr: score};
 		$.ajax(
@@ -66,6 +67,9 @@ function answer(c,d){
 		}
 		//document.getElementsById("cautraloi"+c).innerHTML = "Chọn đán án " + d;
 	}
+}
+function reload(){
+	location.reload();
 }
 </script>
 
@@ -118,17 +122,16 @@ function answer(c,d){
 									
 								<div class="thumbnail-menu" style="padding-bottom: 50px;">
 									<div class="container switch-box" align="center">
-									   
-									   
-										<p style="font-weight:bold; font-size:36px; color:darkgreen; text-shadow: 0 0 3px #FF0000;">
-											Câu <?php echo $num;?>
-										</p>
 										
 										<p style="margin-bottom:0px;" id="play<?php echo $ch_id;?>" onclick="triggerAudio(this)">
 											<img src="<?php echo $ch_ha; ?>"/>
 										</p>
 										
-										<p class="cautraloi<?php echo $ch_id; ?>" style="font-weight:bold; font-size:24px;color:darkblue; text-shadow: 0 0 3px #ff33b1;">Chọn đáp án</p>
+										<p style="font-weight:bold; font-size:36px; color:darkgreen; text-shadow: 0 0 3px #FF0000; margin-top:15px; ">
+											Câu <?php echo $num;?>
+										</p>
+										
+										<p class="cautraloi<?php echo $ch_id; ?>" style="font-weight:bold; font-size:24px;color:darkblue; text-shadow: 0 0 3px #ff33b1;">Hãy chọn đáp án</p>
 										
 									
 									
@@ -139,16 +142,16 @@ function answer(c,d){
 									
 									<div class="portfolio-adaptive portfolio-adaptive-two" style="margin-right: 8%;">
 										<div class="portfolio-item">
-											<a class="button button-fullscreen button-green button-round" onclick="answer(<?php echo $ch_id;?>, 1)"><?php echo $ch_c1;?></a>
+											<a class="button button-fullscreen button-green button-round" style="color: white;" onclick="answer(<?php echo $ch_id;?>, 1)"><?php echo $ch_c1;?></a>
 										</div>
 										<div class="portfolio-item">
-											<a class="button button-fullscreen button-blue button-round" onclick="answer(<?php echo $ch_id;?>, 2)"><?php echo $ch_c2;?></a>
+											<a class="button button-fullscreen button-blue button-round" style="color: white;" onclick="answer(<?php echo $ch_id;?>, 2)"><?php echo $ch_c2;?></a>
 										</div>
 										<div class="portfolio-item">
-											<a class="button button-fullscreen button-red button-round" onclick="answer(<?php echo $ch_id;?>, 3)"><?php echo $ch_c3;?></a>
+											<a class="button button-fullscreen button-red button-round" style="color: white;" onclick="answer(<?php echo $ch_id;?>, 3)"><?php echo $ch_c3;?></a>
 										</div>
 										<div class="portfolio-item">
-											<a class="button button-fullscreen button-yellow button-round" onclick="answer(<?php echo $ch_id;?>, 4)"><?php echo $ch_c4;?></a>
+											<a class="button button-fullscreen button-orange button-round" style="color: white;" onclick="answer(<?php echo $ch_id;?>, 4)"><?php echo $ch_c4;?></a>
 										</div>
 									</div>
 									
@@ -164,8 +167,8 @@ function answer(c,d){
 				
 			
 				
-				<div align="center" style="padding-left: 15px;">                       
-					<a id="btnXong" class="button button-xl button-green button-round" onclick="done()">Xong</a>
+				<div id="dSubmit" align="center" style="padding-left: 15px;">                       
+					<a id="btnXong" class="button button-xl button-teal button-round" onclick="done()">Xong</a>
                 </div>
 					<?php
 					}

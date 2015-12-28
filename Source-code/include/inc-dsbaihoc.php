@@ -52,13 +52,59 @@
 					?> 
                 </div>
                 
+				<div class="decoration"></div>
+				
+				<div class="thumbnail-menu">
+					<h4 style="text-align: center;">Danh sách các bài bạn chưa học</h4>
+				</div>
+				<?php
+					$id = $_SESSION['UID'];
+					$sql_goiy = 'SELECT bh.bh_ID, bh.bh_LoaiBaiHoc, bh.bh_HinhDaiDien
+								FROM baihoc bh					
+								WHERE bh.bh_LoaiBaiHoc = '.$id_LoaiBaiHoc.' 
+								AND bh.bh_ID NOT IN(
+													SELECT ls.lsbh_BaiHoc
+													FROM lichsubaihoc ls
+													WHERE ls.lsbh_TaiKhoan = '.$id.')';
+					$dsgoiy = DataProvider::GetRows($sql_goiy);
+				?>
+				<!-- Swiper -->
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+					<?php
+						if($dsgoiy != null){
+							foreach ($dsgoiy as $goiy) { 
+					?>
+							<div class="swiper-slide">
+								<a href="baihoc.php?bh=<?php echo $goiy['bh_ID'] ?>&lbh=<?php echo $goiy['bh_LoaiBaiHoc']?>">
+									<img src="<?php echo $goiy['bh_HinhDaiDien'];?>" width="100px;"/>
+								</a>
+							</div>
+					<?php 
+							} 
+						}
+					?>
+					</div>
+				</div>
+				<!-- Swiper JS -->
+				<script src="scripts/swiper.min.js"></script>
+
+				<!-- Initialize Swiper -->
+				<script>
+					var swiper = new Swiper('.swiper-container', {
+						pagination: '.swiper-pagination',
+						slidesPerView: 3,
+						paginationClickable: true,
+						spaceBetween: 30,
+						freeMode: true
+					});
+				</script>
                 <div class="decoration"></div>
                 
                 <?php
 				include_once("include/inc-footer.php");
 			?> 
-                                
-                
-                
+
+
             <!-- End of entire page content-->
             </div> 

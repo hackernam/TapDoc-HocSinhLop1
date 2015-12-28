@@ -1,11 +1,12 @@
-<!DOCTYPE HTML>
 <?php
 	session_start();
-	if(($_SESSION['DaDangNhap'] == 1))
+	if(!($_SESSION['DaDangNhap'] == 1))
 	{
-		header("Location: index.php");
+		header("Location: dangnhap.php");
 	}
 ?>
+
+<!DOCTYPE HTML>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui"/>
@@ -29,41 +30,80 @@
 <link rel="icon" type="image/png" href="images/splash/favicon-16x16.png" sizes="16x16">
 <link rel="shortcut icon" href="images/splash/favicon.ico" type="image/x-icon" /> 
     
-<title>Đăng nhập</title>
+<title>Xếp chữ</title>
 
 <link href="styles/style.css"           rel="stylesheet" type="text/css">
 <link href="styles/framework.css"       rel="stylesheet" type="text/css">
+<link href="styles/custom.css"       rel="stylesheet" type="text/css">
 <link href="styles/font-awesome.css"    rel="stylesheet" type="text/css">
 <link href="styles/animate.css"         rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" href="player/css/reset.css" />
 
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/jqueryui.js"></script>
 <script type="text/javascript" src="scripts/framework-plugins.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
+
+
 </head>
 
-<body> 
-<?php
-	include_once 'dataconfig/dataprovider.php';
-?>
+<body class="dual-sidebar"> 
 
-<?php 
-	include('include/inc-loading.php');
-?>
+<?php
+    include_once 'dataconfig/dataprovider.php';
+	include_once("include/inc-loading.php");
+				
+?> 
     
 <div class="gallery-fix"></div> <!-- Important for all pages that have galleries or portfolios -->
     
 <div id="header-fixed">
-    <a class="header-logo" href="#"><img src="images/logo-light.png" alt="img"></a>
+    <a class="open-left-sidebar" href="#"><i class="fa fa-navicon"></i></a>
+    <a class="header-logo" href="index.php"><img src="images/logo-light.png" alt="img"></a>
+	<a class="open-right-sidebar" href='#'><i class="fa fa-chevron-left"></i></a>
 </div>    
+            
 <div class="all-elements">
-    <div class="snap-drawers"> 
-<?php 
-	include('include/inc-dangnhap.php');
-?>
+    <div class="snap-drawers">
+        <?php
+				include_once("include/inc-leftside.php");
+			?> 
+
+		</div>
+        
+        <div id="content" class="snap-content">
+            <div class="content">
+            <div class="header-clear-large"></div>
+                <div class="container heading-style-5">
+                    <h4 class="heading-title"><?php echo $_GET["td"]; ?></h4>
+                    <i class="fa fa-bolt heading-icon"></i>
+                    <div class="line bg-black"></div>
+                    <p class="heading-subtitle">
+                    </p>
+                </div>          
+				<?php 
+					include('include/inc-xepchu.php');
+				?>
+
+                
+             
+                
+                <div class="decoration"></div>
+                
+                <?php
+				include_once("include/inc-footer.php");
+			?> 
+                                
+                
+                
+            <!-- End of entire page content-->
+            </div> 
+        </div>
+    <a href="#" class="back-to-top-badge"><i class="fa fa-caret-up"></i>Back to top</a>
 </div>
-<a href="#" class="back-to-top-badge"><i class="fa fa-caret-up"></i>Back to top</a>
-</div>
+    
+    
 <!--Fly up share box and notifications go here -->
 <!--These are the only features that should be placed outside the all-elements class-->
     
@@ -120,7 +160,12 @@
         I'll go away on my own after a few seconds!
     </p>
 </div>
-
+<div class="top-notification-2 top-notification bg-red-dark timeout-notification">
+    <h4>Timeout: 5 Seconds</h4>
+    <p>
+        I'll go away on my own after a few seconds!
+    </p>
+</div>
     
 </body>
 

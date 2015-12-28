@@ -1,27 +1,10 @@
             <div class="content">
             <div class="header-clear-large"></div>
-            <!--Page content goes here, fixed elements go above the all elements class
-                ?php
-					include_once 'dataconfig/dataprovider.php';
-					$id_LoaiBaiHoc = $_GET["lsid"];
-					$sql_tieude = "select lbh_LoaiBaiHoc from loaibaihoc where lbh_ID = $id_LoaiBaiHoc";
-					$result = DataProvider::GetRows($sql_tieude);
-					$tieude;
-					foreach ($result as $value) 
-					{
-						$tieude = $value;
-					}
-				?>-->
                 <div class="container heading-style-5">
-                    <h4 class="heading-title">Bài tập</h4>
+                    <h4 class="heading-title"><?php echo $_GET['td'];?></h4>
                     <i class="fa fa-th heading-icon"></i>
                     <div class="line bg-black"></div>
-                    <p class="heading-subtitle">
-                        Bạn hãy chọn một trong những bài học dưới đây để học nhé !
-                    </p>
                 </div> 
-                
-                <div class="decoration"></div>
 				<!-- ===============================================================-->
                 <div class="thumbnail-menu">
 					
@@ -36,14 +19,14 @@
 						{
 							$skip = 0;
 						}
-						$sql = "SELECT count(bt_ID) rows FROM baitap";
+						$sql = "SELECT count(xc_ID) rows FROM xepchu";
 						$result = DataProvider::GetRows($sql);
 						$frow =  $result[0];
 						
 						$nRows = $frow['rows'];
 						
 						
-						$sql = "SELECT bt_ID, bt_TieuDe FROM baitap LIMIT $skip, 9";
+						$sql = "SELECT xc_ID, xc_level, xc_Khoa FROM xepchu LIMIT $skip, 9";
 						$result = DataProvider::GetRows($sql);
 						if($result != null)
 						{
@@ -51,17 +34,19 @@
 								?>
 								<!-- ===============================================================
 								baihoc.php?bh=?php echo $value['bh_ID']; ?>&lbh=?php echo $lessonid; ?>
+								pointer-events: none;
 								-->
-								<a href="baitap.php?bt=<?php echo $value['bt_ID']; ?>&td=<?php echo $value['bt_TieuDe']; ?>">
+								<a style="<?php echo $value['xc_Khoa'] == 1 ? "" : ""; ?>" 
+									href="xepchu.php?id=<?php echo $value['xc_ID']; ?>&lvl=<?php echo $value['xc_level']; ?>">
 									<i class="bg-green-dark bg-hover-green-dark fa border-radius-img">
-										<img class="img-responsive img-circle" src="images/pictures/sachbaitap.png">
+										<img class="img-responsive img-circle" src="images/pictures/<?php echo $value['xc_Khoa'] == 1 ? "lvl_lock" : "lvl_unlock"; ?>.png">
 										<!--?php echo $value['bh_HinhDaiDien']; ?-->
 									</i>
 									<!--<em style="position: absolute; top: 50%; left: 0; width: 100%; color: Bisque;">
 										5/10
 									</em>-->
 									<em style="position: absolute; top: 85%; left: 0; width: 100%; ">
-										<?php echo $value['bt_TieuDe'];?>
+										Màng <?php echo $value['xc_level'];?>
 									</em>
 								</a>                    
 								<?php
@@ -74,7 +59,7 @@
 				<div class="col-md-12 text-center">
                     <!--p style="align=center;">
                        
-					<?php echo $skip  / 9 + 1; echo '/'; echo ($nRows - $nRows % 9)  / 9 + 1;?>
+					<php echo $skip  / 9 + 1; echo '/'; echo ($nRows - $nRows % 9)  / 9 + 1;?>
 					
                     </p-->
 					<ul class="pagination pagination-lg pager" >
@@ -84,7 +69,7 @@
 						while($iPage < $nPages){
 							?>
 							<li class="<?php echo (($iPage * 9) == $skip) ? "active" : ""; ?>">
-								<a href="danhsachbaitap.php?skip=<?php echo ($iPage * 9) ?>" class="page_link active">
+								<a href="danhsachmangtc.php?id=<?php echo $_GET['id']; ?>&td=<?php echo $_GET['td']; ?>&skip=<?php echo ($iPage * 9) ?>" class="page_link active">
 									<?php echo $iPage + 1?>
 								</a>
 							</li>

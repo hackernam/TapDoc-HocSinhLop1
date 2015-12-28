@@ -13,12 +13,9 @@
 					}
 				?>-->
                 <div class="container heading-style-5">
-                    <h4 class="heading-title">Bài tập</h4>
+                    <h4 class="heading-title">Trò chơi</h4>
                     <i class="fa fa-th heading-icon"></i>
                     <div class="line bg-black"></div>
-                    <p class="heading-subtitle">
-                        Bạn hãy chọn một trong những bài học dưới đây để học nhé !
-                    </p>
                 </div> 
                 
                 <div class="decoration"></div>
@@ -36,14 +33,14 @@
 						{
 							$skip = 0;
 						}
-						$sql = "SELECT count(bt_ID) rows FROM baitap";
+						$sql = "SELECT count(tc_ID) rows FROM trochoi";
 						$result = DataProvider::GetRows($sql);
 						$frow =  $result[0];
 						
 						$nRows = $frow['rows'];
 						
 						
-						$sql = "SELECT bt_ID, bt_TieuDe FROM baitap LIMIT $skip, 9";
+						$sql = "SELECT tc_ID, tc_TieuDe FROM trochoi LIMIT $skip, 9";
 						$result = DataProvider::GetRows($sql);
 						if($result != null)
 						{
@@ -52,16 +49,16 @@
 								<!-- ===============================================================
 								baihoc.php?bh=?php echo $value['bh_ID']; ?>&lbh=?php echo $lessonid; ?>
 								-->
-								<a href="baitap.php?bt=<?php echo $value['bt_ID']; ?>&td=<?php echo $value['bt_TieuDe']; ?>">
+								<a href="danhsachmangtc.php?id=<?php echo $value['tc_ID']; ?>&td=<?php echo $value['tc_TieuDe']; ?>">
 									<i class="bg-green-dark bg-hover-green-dark fa border-radius-img">
-										<img class="img-responsive img-circle" src="images/pictures/sachbaitap.png">
+										<img class="img-responsive img-circle" src="images/pictures/trochoi.png">
 										<!--?php echo $value['bh_HinhDaiDien']; ?-->
 									</i>
 									<!--<em style="position: absolute; top: 50%; left: 0; width: 100%; color: Bisque;">
 										5/10
 									</em>-->
 									<em style="position: absolute; top: 85%; left: 0; width: 100%; ">
-										<?php echo $value['bt_TieuDe'];?>
+										<?php echo $value['tc_TieuDe'];?>
 									</em>
 								</a>                    
 								<?php
@@ -84,7 +81,7 @@
 						while($iPage < $nPages){
 							?>
 							<li class="<?php echo (($iPage * 9) == $skip) ? "active" : ""; ?>">
-								<a href="danhsachbaitap.php?skip=<?php echo ($iPage * 9) ?>" class="page_link active">
+								<a href="danhsachtrochoi.php?skip=<?php echo ($iPage * 9) ?>" class="page_link active">
 									<?php echo $iPage + 1?>
 								</a>
 							</li>

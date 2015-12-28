@@ -1,3 +1,68 @@
 .border-radius-img img{
 	    border-radius: 90px !important;
 }
+
+/*3 Items*/
+
+.portfolio-adaptive-four .portfolio-item{
+    width:20%;
+    float:left;
+    transition:all 200ms ease;
+}
+/*
+
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:0.6px;
+    display:inline-block;
+    padding:8px 18px;
+    margin-bottom:15px;
+    margin-right:12px;
+*/
+.buttonx-center{
+    margin-left:auto!important;
+    margin-right:auto!important;
+    text-align:center;
+    display:inline-block;
+}
+.buttonx-flat{
+    padding:5px 15px;
+    font-weight: bold;
+	border-radius:3px;
+	border: 1px solid;
+	border-color: #999;
+}
+.buttonx-white{	
+	background-color:#FFF;
+}
+.buttonx-white:hover{	
+	background-color:#EEE;
+}
+
+.buttonx-square{
+    margin-bottom:5px;
+    font-size:12px;
+}
+
+.fx-item{
+    float:left;
+    transition:all 200ms ease;
+    padding-left:1px!important;
+    padding-right:1px!important;
+}
+/*
+.portfolio-adaptive-four .portfolio-item:nth-child(4n+1){
+    padding-right:10px!important;
+}
+
+.portfolio-adaptive-four .portfolio-item:nth-child(4n+2){
+    padding-right:10px!important;
+}
+
+.portfolio-adaptive-four .portfolio-item:nth-child(4n+3){
+    padding-right:10px!important;
+}
+
+.portfolio-adaptive-four .portfolio-item:nth-child(4n+4){
+    padding-right:10px!important;
+}*/
