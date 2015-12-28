@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <?php
 	session_start();
-	if(($_SESSION['DaDangNhap'] == 1))
+	if(isset($_SESSION['DaDangNhap']) && ($_SESSION['DaDangNhap'] == 1))
 	{
 		header("Location: index.php");
 	}
