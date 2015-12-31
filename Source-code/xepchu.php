@@ -40,11 +40,12 @@
 
 <link rel="stylesheet" href="player/css/reset.css" />
 
-		<script type="text/javascript"  src="scripts/jquery-1.9.0rc1.js"></script>
-		<script type="text/javascript"  src="scripts/jquery.sortable.js"></script>
-<script type="text/javascript" src="scripts/jqueryui.js"></script>
-<script type="text/javascript" src="scripts/framework-plugins.js"></script>
-<script type="text/javascript" src="scripts/custom.js"></script>
+		
+	<script type="text/javascript" src="scripts/jquery.js"></script>
+	<script type="text/javascript"  src="scripts/jquery.sortable.js"></script>
+	<script type="text/javascript" src="scripts/jqueryui.js"></script>
+	<script type="text/javascript" src="scripts/framework-plugins.js"></script>
+	<script type="text/javascript" src="scripts/custom.js"></script>
 
 
 </head>
