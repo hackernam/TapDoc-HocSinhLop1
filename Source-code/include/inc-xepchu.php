@@ -3,7 +3,6 @@ var xong = false;
 var next_id = -1;
 var next_lvl = -1;
 var da;
-var tlid = 0;
 function triggerAudio(abc) {
     var playid = abc.id.substring(4);
     document.getElementById("audio"+playid).play();
@@ -20,6 +19,7 @@ function done() {
 				$('#dSubmit').append("<a id=\"btnXong\" class=\"button button-xl button-teal button-round\" href=\"xepchu.php?id="+next_id+"&lvl="+next_lvl+"\">Tiếp theo</a>");
 		}else{
 			document.getElementById("btnXong").innerHTML = "Sai";
+			$('#dSubmit').append("<a id=\"btnXong\" class=\"button button-xl button-red button-round\" onclick=\"reload()\">Chơi lại</a>");
 		}
 	}
 }
@@ -49,27 +49,17 @@ function shuffle(array) {
 function answer(a){
 	if(!xong){
 		var txt = document.getElementById(a.id).innerHTML;
-		$('#dtraloi').append("<a id=\"z"+tlid+"\"  style=\"width: 50px; height: 40px;\" class=\"buttonx-center buttonx-flat buttonx-white\" onclick=\"clean(this)\">"+txt+"</a>");
-		tlid++;
-		resize();
+		$('#dtraloi').append("<a id=\"z"+a.id.substring(1)+"\"  style=\"width: 50px; height: 40px;\" class=\"buttonx-center buttonx-flat buttonx-white\" onclick=\"clean(this)\">"+txt+"</a>");
+		document.getElementById(a.id).remove();
 	}
 }
 
 function clean(a){
 	if(!xong){
-		tlid--;
+		var txt = document.getElementById(a.id).innerHTML;
+		$('#dLuaChon').append("<a id=\"a"+a.id.substring(1)+"\"  style=\"width: 50px; height: 40px;\" class=\"buttonx-center buttonx-flat buttonx-white\" onclick=\"answer(this)\">"+txt+"</a>");
 		document.getElementById(a.id).remove();
-		resize();
 	}
-}
-
-function resize(){
-	var xn = $(window).width() < 420 ? 5 : 7;
-	var a = Math.ceil(tlid / xn);
-	
-	a = a * 60;
-	a = a == 0 ? 60 : a;
-	document.getElementById('dtraloi').setAttribute("style","height:"+a+"px; border: 2px solid #aaa; background-color:#fff294 ; display: block; margin: 30px 0;");
 }
 
 </script>
@@ -194,7 +184,7 @@ function resize(){
 					a = a * 60;
 	
 					document.getElementById('dLuaChon').setAttribute("style","height:"+a+"px; border: 2px solid #aaa; background-color:#efefef; display: block;");
-					document.getElementById('dtraloi').setAttribute("style","height:60px; border: 2px solid #aaa; background-color:#fff294 ; display: block; margin: 30px 0;");
+					document.getElementById('dtraloi').setAttribute("style","height:"+a+"px; border: 2px solid #aaa; background-color:#fff294 ; display: block; margin: 30px 0;");
 				}); 
             }
            <?php
