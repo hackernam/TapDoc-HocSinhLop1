@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `baitap`
+-- Table structure for table `trochoi`
 --
 
 CREATE TABLE IF NOT EXISTS `trochoi` (
@@ -40,19 +40,22 @@ CREATE TABLE IF NOT EXISTS `trochoi` (
 INSERT INTO `trochoi` ( `tc_TieuDe`, `tc_NgayTao`) VALUES
 ( 'Xếp chữ', '0000-00-00 00:00:00')
 
+--
+-- Table structure for table `xepchu`
+--
 
-CREATE TABLE `xepchu` (
+CREATE TABLE IF NOT EXISTS `xepchu` (
   `xc_ID` int(11) NOT NULL,
   `xc_level` int(11) NOT NULL,
-  `xc_DuongDanHinhAnh` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `xc_DuongDanGhiAm` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `xc_NoiDung` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `xc_Khoa` int(11) NOT NULL
+  `xc_DuongDanHinhAnh` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `xc_DuongDanGhiAm` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `xc_NoiDung` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `xc_Khoa` int(11) NOT NULL,
   PRIMARY KEY (`xc_ID`)
-)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Dumping data for table `cauhoi`
+-- Dumping data for table `xepchu`
 --
 
 INSERT INTO `xepchu` (`xc_ID`, `xc_level`, `xc_DuongDanHinhAnh`, `xc_DuongDanGhiAm`, `xc_NoiDung`, `xc_Khoa`) VALUES
@@ -62,8 +65,8 @@ INSERT INTO `xepchu` (`xc_ID`, `xc_level`, `xc_DuongDanHinhAnh`, `xc_DuongDanGhi
 (4, 4, 'upload/HinhAnh/BaiTap/chiec_la.png', 'upload/GhiAm/BaiTap/chiec_la.mp3', 'Chiếc Lá', 1),
 (5, 5, 'upload/HinhAnh/BaiTap/con_dao.png', 'upload/GhiAm/BaiTap/con_dao.mp3', 'Con Dao', 1),
 (6, 6, 'upload/HinhAnh/BaiTap/con_de.png', 'upload/GhiAm/BaiTap/con_de.mp3', 'Con Dê', 1),
-(7, 7, 'upload/HinhAnh/BaiTap/lau_dai.png', 'upload/GhiAm/BaiTap/lau_dai.mp3','Lâu Đài', 1),
-(8, 8, 'upload/HinhAnh/BaiTap/trai_banh.png', 'upload/GhiAm/BaiTap/trai_banh.mp3', 'Trái Banh', 1)
+(7, 7, 'upload/HinhAnh/BaiTap/lau_dai.png', 'upload/GhiAm/BaiTap/lau_dai.mp3', 'Lâu Đài', 1),
+(8, 8, 'upload/HinhAnh/BaiTap/trai_banh.png', 'upload/GhiAm/BaiTap/trai_banh.mp3', 'Trái Banh', 1);
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
