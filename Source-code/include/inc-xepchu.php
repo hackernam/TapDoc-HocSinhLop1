@@ -66,7 +66,9 @@ function clean(a){
 function resize(){
 	var xn = $(window).width() < 420 ? 5 : 7;
 	var a = Math.ceil(tlid / xn);
-	var a = a * 60;
+	
+	a = a * 60;
+	a = a == 0 ? 1 : a;
 	document.getElementById('dtraloi').setAttribute("style","height:"+a+"px; border: 2px solid #aaa; background-color:#fff294 ; display: block; margin: 30px 0;");
 }
 
@@ -189,7 +191,7 @@ function resize(){
 					
 					var xn = $(window).width() < 420 ? 5 : 7;
 					var a = Math.ceil(n.length / xn);
-					var a = a * 60;
+					a = a * 60;
 	
 					document.getElementById('dLuaChon').setAttribute("style","height:"+a+"px; border: 2px solid #aaa; background-color:#efefef; display: block;");
 					document.getElementById('dtraloi').setAttribute("style","height:60px; border: 2px solid #aaa; background-color:#fff294 ; display: block; margin: 30px 0;");
