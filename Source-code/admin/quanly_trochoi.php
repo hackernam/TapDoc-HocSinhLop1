@@ -101,7 +101,7 @@
                     <div class="page-title">
                         <div class="title_left">
                             <h3>
-                    Quản Lý Bài Tập
+                    Quản Lý Trò Chơi Xếp Chữ
                 </h3>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
 
 <!-- inc php content -->
 					<?php 
-						include('include/inc-quanly-baitap.php');
+						include('include/inc-quanly-trochoixc.php');
 					?>
 <!-- /inc php content -->
 
