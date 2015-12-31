@@ -37,13 +37,16 @@
 <link href="styles/font-awesome.css"    rel="stylesheet" type="text/css">
 <link href="styles/animate.css"         rel="stylesheet" type="text/css">
 <link href="styles/custom.css"         rel="stylesheet" type="text/css">
+<link href="styles/bootstrap.min.css"        rel="stylesheet" type="text/css">
+
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/jqueryui.js"></script>
 <script type="text/javascript" src="scripts/framework-plugins.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
+<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
 </head>
 
-<body class="left-sidebar"> 
+<body class="dual-sidebar"> 
 
 <?php 
 	include('include/inc-loading.php');
