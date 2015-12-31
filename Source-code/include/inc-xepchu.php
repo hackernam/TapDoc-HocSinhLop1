@@ -68,7 +68,7 @@ function resize(){
 	var a = Math.ceil(tlid / xn);
 	
 	a = a * 60;
-	a = a == 0 ? 1 : a;
+	a = a == 0 ? 60 : a;
 	document.getElementById('dtraloi').setAttribute("style","height:"+a+"px; border: 2px solid #aaa; background-color:#fff294 ; display: block; margin: 30px 0;");
 }
 
