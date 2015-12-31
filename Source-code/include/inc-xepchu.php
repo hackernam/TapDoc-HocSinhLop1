@@ -3,6 +3,7 @@ var xong = false;
 var next_id = -1;
 var next_lvl = -1;
 var da;
+var tlid = 0;
 function triggerAudio(abc) {
     var playid = abc.id.substring(4);
     document.getElementById("audio"+playid).play();
@@ -44,19 +45,19 @@ function shuffle(array) {
 
   return array;
 }
-function allowDrop(ev) {
-    ev.preventDefault();
+
+function answer(a){
+	if(!xong){
+		var txt = document.getElementById(a.id).innerHTML;
+		$('#dtraloi').append("<a id=\"z"+tlid+"\"  style=\"width: 50px; height: 40px;\" class=\"buttonx-center buttonx-flat buttonx-white\" onclick=\"clean(this)\">"+txt+"</a>");
+		tlid++;
+	}
 }
 
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-}
-
-function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-	if(ev.target.id == "dLuaChon" || ev.target.id == "dtraloi")
-		ev.target.appendChild(document.getElementById(data));
+function clean(a){
+	if(!xong){
+		document.getElementById(a.id).remove();
+	}
 }
 
 </script>
@@ -111,11 +112,9 @@ function drop(ev) {
 										<audio id="audio<?php echo $xc_id;?>">
 											<source src="<?php echo $xc_ga;?>" type="audio/mpeg" />
 										</audio>
-										<div id="dtraloi" 
-											ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+										<div id="dtraloi" ></div>
 										
-										<div id="dLuaChon" 
-											ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+										<div id="dLuaChon" ></div>
 										
 									</div>
 								<?php
@@ -173,10 +172,11 @@ function drop(ev) {
 					next_id = <?php echo $xc_next_id;?>;
 					next_lvl = <?php echo $xc_next_lvl;?>;
 					var n = da.split('');
-					n = shuffle(n);
+					n = shuffle(n);//draggable=\"true\" ondragstart=\"drag(event)\"
 					for(var iz = 0; iz < n.length; iz++){
-						$('#dLuaChon').append("<a id=\"a"+iz+"\" draggable=\"true\" ondragstart=\"drag(event)\" style=\"width: 50px; height: 40px;\" class=\"buttonx-center buttonx-flat buttonx-white\" >"+n[iz]+"</a>");
+						$('#dLuaChon').append("<a id=\"a"+iz+"\"  style=\"width: 50px; height: 40px;\" class=\"buttonx-center buttonx-flat buttonx-white\" onclick=\"answer(this)\">"+n[iz]+"</a>");
 					}
+					
 					$xn = $(window).width() < 420 ? 5 : 7;
 					$a = n.length / $xn;
 					$a = n.length % $xn > 0 ? $a + 1 : $a;
@@ -187,9 +187,7 @@ function drop(ev) {
             }
            <?php
                echo "runxz();";
-           ?>		   
-		   
-		   
+           ?>
 			
        </script>
 

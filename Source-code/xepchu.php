@@ -40,11 +40,11 @@
 
 <link rel="stylesheet" href="player/css/reset.css" />
 
-<script type="text/javascript" src="scripts/jquery.js"></script>
+		<script type="text/javascript"  src="scripts/jquery-1.9.0rc1.js"></script>
+		<script type="text/javascript"  src="scripts/jquery.sortable.js"></script>
 <script type="text/javascript" src="scripts/jqueryui.js"></script>
 <script type="text/javascript" src="scripts/framework-plugins.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
-<script type="text/javascript" src="scripts/jquery.sortable.js"></script>
 
 
 </head>
@@ -72,10 +72,14 @@
 			?> 
 
 		</div>
-        
         <div id="content" class="snap-content">
             <div class="content">
             <div class="header-clear-large"></div>
+			
+				<?php 
+				if(isset($_GET["lvl"]) && isset($_GET["id"]))
+				{			
+				?>
                 <div class="container heading-style-5">
                     <h4 class="heading-title">Màng <?php echo $_GET["lvl"]; ?></h4>
                     <i class="fa fa-bolt heading-icon"></i>
@@ -85,6 +89,18 @@
                 </div>          
 				<?php 
 					include('include/inc-xepchu.php');
+				}
+				else{
+					?>
+				<div class="container heading-style-5">
+                    <h4 class="heading-title">Không tìm thấy màng</h4>
+                    <i class="fa fa-bolt heading-icon"></i>
+                    <div class="line bg-black"></div>
+                    <p class="heading-subtitle">
+                    </p>
+                </div>    
+					<?php
+				}
 				?>
 
                 
@@ -101,6 +117,7 @@
             <!-- End of entire page content-->
             </div> 
         </div>
+		
     <a href="#" class="back-to-top-badge"><i class="fa fa-caret-up"></i>Back to top</a>
 </div>
     

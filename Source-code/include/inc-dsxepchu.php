@@ -1,7 +1,7 @@
             <div class="content">
             <div class="header-clear-large"></div>
                 <div class="container heading-style-5">
-                    <h4 class="heading-title"><?php echo $_GET['td'];?></h4>
+                    <h4 class="heading-title">Xếp chữ</h4>
                     <i class="fa fa-th heading-icon"></i>
                     <div class="line bg-black"></div>
                 </div> 
@@ -39,7 +39,7 @@
 								<a style="<?php echo $value['xc_Khoa'] == 1 ? "" : ""; ?>" 
 									href="xepchu.php?id=<?php echo $value['xc_ID']; ?>&lvl=<?php echo $value['xc_level']; ?>">
 									<i class="bg-green-dark bg-hover-green-dark fa border-radius-img">
-										<img class="img-responsive img-circle" src="images/pictures/<?php echo $value['xc_Khoa'] == 1 ? "lvl_lock" : "lvl_unlock"; ?>.png">
+										<img class="img-responsive img-circle" src="images/pictures/lvl_unlock.png">
 										<!--?php echo $value['bh_HinhDaiDien']; ?-->
 									</i>
 									<!--<em style="position: absolute; top: 50%; left: 0; width: 100%; color: Bisque;">
@@ -69,7 +69,7 @@
 						while($iPage < $nPages){
 							?>
 							<li class="<?php echo (($iPage * 9) == $skip) ? "active" : ""; ?>">
-								<a href="danhsachmangtc.php?id=<?php echo $_GET['id']; ?>&td=<?php echo $_GET['td']; ?>&skip=<?php echo ($iPage * 9) ?>" class="page_link active">
+								<a href="danhsachmangtc.php?skip=<?php echo ($iPage * 9) ?>" class="page_link active">
 									<?php echo $iPage + 1?>
 								</a>
 							</li>

@@ -65,19 +65,12 @@
             
 <div class="all-elements">
     <div class="snap-drawers">
-    <?php 
+	<?php 
 	include('include/inc-leftside.php');
-	$id_tc = $_GET["id"];
-	?>
-				
-            
+?>        
         <div id="content" class="snap-content">                    
 			<?php
-			switch($id_tc){
-				case 1:
 					include_once("include/inc-dsxepchu.php");
-					break;
-			}
 			?>
         </div>
     </div>  
