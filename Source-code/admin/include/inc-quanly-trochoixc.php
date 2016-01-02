@@ -1,3 +1,139 @@
+<script language="javascript">
+function nodification(i){
+	$(document).ready( function() {
+		switch(i){
+			case 0:
+				$('#div_alert').append('<div class="alert alert-success"> '+
+						'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> '+
+						'<strong>Thêm thành công </strong></div>');
+				break;
+			case 1:
+				$('#div_alert').append('<div class="alert alert-danger"> '+
+						'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> '+
+						'<strong>Thêm thất bại </strong>/div>');
+				break;
+			case 2:
+				$('#div_alert').append('<div class="alert alert-success"> '+
+						'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> '+
+						'<strong>Cập nhật thành công </strong></div>');
+				break;
+			case 3:
+				$('#div_alert').append('<div class="alert alert-danger"> '+
+						'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> '+
+						'<strong>Cập nhật thất bại </strong></div>');
+				break;
+		}
+	});
+}
+</script>
+
+<?php 
+	include_once '../dataconfig/dataprovider.php';
+
+	if(isset($_REQUEST["btnThem"])){
+		
+		$lvl = $_REQUEST["txtLvl"];
+		$ha = $_REQUEST["txtHA"];
+		$ga = $_REQUEST["txtGA"];
+		$nd = $_REQUEST["txtND"];
+		$kh = 1;
+		
+		$hu_n = $_FILES["fileHA"]["name"];
+		$hu_te = $_FILES["fileHA"]["tmp_name"];
+		$hu_ty = $_FILES["fileHA"]["type"];
+		$hu_er = $_FILES["fileHA"]["error"];		
+		if($hu_er >  0 && $hu_n != null)
+		{
+			die("faile $hu_er");
+		}else{
+			move_uploaded_file($hu_te,"../upload/HinhAnh/TroChoi/".$hu_n);
+		}
+		if($hu_n != null){
+			$ha = 'upload/HinhAnh/TroChoi/'.$hu_n;
+		}
+		
+		$gu_n = $_FILES["fileGA"]["name"];
+		$gu_te = $_FILES["fileGA"]["tmp_name"];
+		$gu_ty = $_FILES["fileGA"]["type"];
+		$gu_er = $_FILES["fileGA"]["error"];
+		if($gu_er > 0 && $gu_n != null)
+		{
+			die("faile $gu_er");
+		}else{
+			move_uploaded_file($gu_te,"../upload/GhiAm/TroChoi/".$gu_n);
+		}
+		if($gu_n != null){
+			$ga = 'upload/GhiAm/TroChoi/'.$gu_n;
+		}
+				
+		$sql = "INSERT INTO xepchu(xc_level, xc_DuongDanHinhAnh, xc_DuongDanGhiAm, xc_NoiDung, xc_Khoa) 
+			VALUES ('$lvl', '$ha', '$ga', '$nd', '$kh')";
+		try {			
+			DataProvider::ExecuteQuery($sql);
+			echo '<script type="text/javascript">
+					nodification(0);
+				</script>';
+		}
+		catch (Exception $e) {
+			echo '<script type="text/javascript">
+					nodification(1);
+				</script>';
+		}
+			
+			
+	}
+	
+	if(isset($_REQUEST["btnSua"])){
+		
+		$id = $_REQUEST['txtID2'];
+		$lvl = $_REQUEST["txtLvl2"];
+		$ha = $_REQUEST["txtHA2"];
+		$ga = $_REQUEST["txtGA2"];
+		$nd = $_REQUEST["txtND2"];
+		
+		$hu_n = $_FILES["fileHA2"]["name"];
+		$hu_te = $_FILES["fileHA2"]["tmp_name"];
+		$hu_ty = $_FILES["fileHA2"]["type"];
+		$hu_er = $_FILES["fileHA2"]["error"];		
+		if($hu_er >  0 && $hu_n != null){
+			die("fail $hu_er");
+		}else{
+			move_uploaded_file($hu_te,"../upload/HinhAnh/TroChoi/".$hu_n);
+		}
+		
+		if($hu_er != 4){
+			$ha = 'upload/HinhAnh/TroChoi/'.$hu_n;
+		}
+					
+		$gu_n = $_FILES["fileGA2"]["name"];
+		$gu_te = $_FILES["fileGA2"]["tmp_name"];
+		$gu_ty = $_FILES["fileGA2"]["type"];
+		$gu_er = $_FILES["fileGA2"]["error"];
+		if($gu_er > 0 && $gu_n != null) {
+			die("faile $gu_er");
+		}else{
+			move_uploaded_file($gu_te,"../upload/HinhAnh/TroChoi/".$gu_n);
+		}
+		if($gu_n != null){
+			$ga = 'upload/GhiAm/TroChoi/'.$gu_n;
+		}
+			
+		$sql = "UPDATE xepchu SET xc_level = '$lvl', xc_DuongDanHinhAnh = '$ha', xc_DuongDanGhiAm = '$ga',
+			xc_NoiDung = '$nd' WHERE xc_ID= '$id' ";
+		try {			
+			DataProvider::ExecuteQuery($sql);
+			echo '<script type="text/javascript">
+					nodification(2);
+				</script>';
+		}
+		catch (Exception $e) {
+			echo '<script type="text/javascript">
+					nodification(3);
+				</script>';
+		}
+	}
+	?>
+
 <script>
 var sel_id = -1;
 			
@@ -6,10 +142,11 @@ function submitThem(){
 	myFrmObj = document.Them;
 	
 	if(myFrmObj.txtLvl.value.length > 0 &&
-		myFrmObj.txtHA.value.length > 0 &&
-		myFrmObj.txtGA.value.length > 0 &&
+		(myFrmObj.txtHA.value.length > 0 || myFrmObj.fileHA.value.length > 0)&&
+		(myFrmObj.txtGA.value.length > 0 || myFrmObj.fileGA.value.length > 0) &&
 		myFrmObj.txtND.value.length > 0){
-		var formData = {mode: '1', id: '-1', lvl:  myFrmObj.txtLvl.value, ha:  myFrmObj.txtHA.value, ga:  myFrmObj.txtGA.value, nd:  myFrmObj.txtND.value};
+		return true;
+		/*var formData = {mode: '1', id: '-1', lvl:  myFrmObj.txtLvl.value, ha:  myFrmObj.txtHA.value, ga:  myFrmObj.txtGA.value, nd:  myFrmObj.txtND.value};
 		
 				
 		$.ajax(
@@ -27,17 +164,22 @@ function submitThem(){
 			}
 		});
 		
-		location.reload();
+		location.reload();*/
+	}
+	else{
+		return false;
 	}
 }
 
 function submitCapNhat(){				
 	myFrmObj = document.CapNhat;
+	
 	if(myFrmObj.txtLvl2.value.length > 0 &&
-		myFrmObj.txtHA2.value.length > 0 &&
-		myFrmObj.txtGA2.value.length > 0 &&
+		(myFrmObj.txtHA2.value.length > 0 || myFrmObj.fileHA2.value.length > 0)&&
+		(myFrmObj.txtGA2.value.length > 0 || myFrmObj.fileGA2.value.length > 0)&&
 		myFrmObj.txtND2.value.length > 0){
-		var formData = {mode: '2', id: sel_id, lvl:  myFrmObj.txtLvl2.value, ha:  myFrmObj.txtHA2.value, ga:  myFrmObj.txtGA2.value, nd:  myFrmObj.txtND2.value};
+			return true;
+		/*var formData = {mode: '2', id: sel_id, lvl:  myFrmObj.txtLvl2.value, ha:  myFrmObj.txtHA2.value, ga:  myFrmObj.txtGA2.value, nd:  myFrmObj.txtND2.value};
 		var t;
 		$.ajax(
 		{
@@ -54,14 +196,16 @@ function submitCapNhat(){
 						alert("got timeout");
 					} else {
 						alert(textStatus + ": " + errorThrown);
-					}*/
+					}//
 			},
 			complete: function(jqXHR, textStatus)
 			{			
 				//alert("Com " + " " + textStatus);
 			}
 		});	
-		location.reload();
+		location.reload();*/
+	}else{
+		return false;
 	}
 }
 
@@ -140,14 +284,16 @@ function refresher(){
 								<div class="x_panel">
                                 <div class="x_content">
                                     <br />
-                                    <form name="Them" class="form-horizontal form-label-left"  >
+                                    <form name="Them" enctype="multipart/form-data" method="post" action="" 
+										class="form-horizontal form-label-left" role="form" onsubmit="return submitThem()">
+									
 
                                         
                                         <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Màng<span class="required">*</span>
                                             </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtLvl" type="text" class="form-control" placeholder="Màng, cấp độ - ghi bằng số"
+                                                <input id="txtLvl" name ="txtLvl"type="text" class="form-control" placeholder="Màng, cấp độ - ghi bằng số"
 												onkeypress="if(this.value.match(/\D/)) this.value=this.value.replace(/\D/g,'')"
 												onkeyup   ="if(this.value.match(/\D/)) this.value=this.value.replace(/\D/g,'')"
 												required="required" >
@@ -158,8 +304,8 @@ function refresher(){
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Hình ảnh<span class="required">*</span>
                                             </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtHA" type="text" class="form-control" placeholder="Hình ảnh"
-												required="required" >
+                                                <input id="txtHA" name="txtHA" type="text" class="form-control" placeholder="Hình ảnh">
+												<input type="file" name="fileHA" id="fileHA" accept="image/*">
                                             </div>
                                         </div>
 										
@@ -167,8 +313,8 @@ function refresher(){
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Ghi âm<span class="required">*</span>
                                             </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtGA" type="text" class="form-control" placeholder="Ghi âm"
-												required="required" >
+                                                <input id="txtGA" name="txtGA" type="text" class="form-control" placeholder="Ghi âm">
+												<input type="file" name="fileGA" id="fileGA" accept="audio/*">
                                             </div>
                                         </div>
 										
@@ -176,7 +322,7 @@ function refresher(){
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nội dung<span class="required">*</span>
                                             </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtND" type="text" class="form-control" placeholder="Nội dung"
+                                                <input id="txtND" name="txtND" type="text" class="form-control" placeholder="Nội dung"
 												required="required" >
                                             </div>
                                         </div>
@@ -184,7 +330,7 @@ function refresher(){
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                                <button id="send" onclick="submitThem()" type="submit" class="btn btn-primary">Thêm</button>
+                                                <button id="btnThem" name="btnThem" type="submit" class="btn btn-primary">Thêm</button>
                                             </div>
                                         </div>
 
@@ -199,15 +345,17 @@ function refresher(){
 								<div class="x_panel">
                                 <div class="x_content">
                                     <br />
-                                    <form name="CapNhat" class="form-horizontal form-label-left">
+                                    <form name="CapNhat" enctype="multipart/form-data" method="post" action=""
+										class="form-horizontal form-label-left" role="form" onsubmit="return submitCapNhat()">
 										<div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Màng<span class="required">*</span>
                                             </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtLvl2" type="text" class="form-control" placeholder="Màng, cấp độ - ghi bằng số)"
+                                                <input id="txtLvl2" name="txtLvl2" type="text" class="form-control" placeholder="Màng, cấp độ - ghi bằng số)"
 												onkeypress="if(this.value.match(/\D/)) this.value=this.value.replace(/\D/g,'')"
 												onkeyup   ="if(this.value.match(/\D/)) this.value=this.value.replace(/\D/g,'')"
 												required="required" >
+                                                <input id="txtID2" name ="txtID2" type="hidden" class="form-control" value="">
                                             </div>
                                         </div>
 										
@@ -215,8 +363,8 @@ function refresher(){
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Hình ảnh<span class="required">*</span>
                                             </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtHA2" type="text" class="form-control" placeholder="Hình ảnh"
-												required="required" >
+                                                <input id="txtHA2" name="txtHA2"type="text" class="form-control" placeholder="Hình ảnh">
+												<input type="file" name="fileHA2" id="fileHA2" accept="image/*">
                                             </div>
                                         </div>
 										
@@ -224,8 +372,8 @@ function refresher(){
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Ghi âm<span class="required">*</span>
                                             </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtGA2" type="text" class="form-control" placeholder="Ghi âm"
-												required="required" >
+                                                <input id="txtGA2" name="txtGA2"type="text" class="form-control" placeholder="Ghi âm">
+												<input type="file" name="fileGA2" id="fileGA2" accept="audio/*">
                                             </div>
                                         </div>
 										
@@ -233,7 +381,7 @@ function refresher(){
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nội dung<span class="required">*</span>
                                             </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtND2" type="text" class="form-control" placeholder="Nội dung"
+                                                <input id="txtND2" name="txtND2" type="text" class="form-control" placeholder="Nội dung"
 												required="required" >
                                             </div>
                                         </div>
@@ -242,7 +390,7 @@ function refresher(){
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                                <button onclick="submitCapNhat()" type="submit" class="btn btn-primary">Sửa</button>
+                                                <button id="btnSua" name="btnSua" type="submit" class="btn btn-primary">Sửa</button>
 																								
 												<a  href="#tab_content1" role="tab" 
 															id="profile-tabb4" 
@@ -282,6 +430,7 @@ function refresher(){
 			
 			function edit(id,lvl,ha,ga,nd) {
 				sel_id = id;
+				document.getElementById("txtID2").value = id ;
 				document.getElementById("txtLvl2").value = lvl ;
 				document.getElementById("txtHA2").value = ha ;
 				document.getElementById("txtGA2").value = ga ;

@@ -97,6 +97,8 @@
 
             <!-- page content -->
             <div class="right_col" role="main">
+				<div id="div_alert" class="col-sm-5" style="margin-top:10px; margin-right:10px; position:absolute; right:10px;">			
+				</div>
                 <div class="">
                     <div class="page-title">
                         <div class="title_left">

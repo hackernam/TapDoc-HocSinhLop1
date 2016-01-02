@@ -1,12 +1,82 @@
+<script language="javascript">
+function nodification(i){
+	$(document).ready( function() {
+		switch(i){
+			case 0:
+				$('#div_alert').append('<div class="alert alert-success"> '+
+						'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> '+
+						'<strong>Thêm thành công </strong></div>');
+				break;
+			case 1:
+				$('#div_alert').append('<div class="alert alert-danger"> '+
+						'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> '+
+						'<strong>Thêm thất bại </strong>/div>');
+				break;
+			case 2:
+				$('#div_alert').append('<div class="alert alert-success"> '+
+						'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> '+
+						'<strong>Cập nhật thành công </strong></div>');
+				break;
+			case 3:
+				$('#div_alert').append('<div class="alert alert-danger"> '+
+						'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> '+
+						'<strong>Cập nhật thất bại </strong></div>');
+				break;
+		}
+	});
+}
+</script>
+
+<?php
+	include_once '../dataconfig/dataprovider.php';
+	if(isset($_REQUEST["btnThem"])){
+		$td = $_REQUEST["txtTD"];
+		$dt = date("Y-m-d h:i:s");
+		
+		$sql = "INSERT INTO baitap(bt_TieuDe, bt_NgayTao) VALUES ('$td', '$dt')";	
+		try {
+			DataProvider::ExecuteQuery($sql);
+			echo '<script type="text/javascript">
+					nodification(0);
+				</script>';
+		}
+		catch (Exception $e) {
+			echo '<script type="text/javascript">
+					nodification(1);
+				</script>';
+		}
+	}
+	
+	if(isset($_REQUEST["btnSua"])){
+		$td = $_REQUEST["txtTD2"];
+		$id = $_REQUEST["txtID2"];
+		
+		$sql = "UPDATE baitap SET bt_TieuDe = '$td' WHERE bt_ID= '$id' ";			
+		try {			
+			DataProvider::ExecuteQuery($sql);
+			echo '<script type="text/javascript">
+					nodification(2);
+				</script>';
+		}
+		catch (Exception $e) {
+			echo '<script type="text/javascript">
+					nodification(3);
+				</script>';
+		}
+	}
+?>
+
 <script>
 var sel_id = -1;
-			
+
+
 
 function submitThem(){				
 	myFrmObj = document.Them;
 	if(myFrmObj.txtTD.value.length > 0){
+		return true;
 		//document.getElementById('home-tabb').click();
-		var formData = {mode: '1', id: '-1', td:  myFrmObj.txtTD.value};
+		/*var formData = {mode: '1', id: '-1', td:  myFrmObj.txtTD.value};
 		$.ajax(
 		{
 			url : "process/xuly_baitap_post.php",
@@ -22,14 +92,18 @@ function submitThem(){
 			}
 		});
 		
-		location.reload();
+		location.reload();*/
+	}
+	else{
+		return false;
 	}
 }
 
 function submitCapNhat(){				
 	myFrmObj = document.CapNhat;
-	if(myFrmObj.txtTD2.value.length > 0){
-		var formData = {"mode": '2', "id": sel_id, "td": myFrmObj.txtTD2.value};
+	if(myFrmObj.txtTD2.value.length > 0){		
+		return true;
+		/*var formData = {"mode": '2', "id": sel_id, "td": myFrmObj.txtTD2.value};
 		var t;
 		$.ajax(
 		{
@@ -47,14 +121,16 @@ function submitCapNhat(){
 						alert("got timeout");
 					} else {
 						alert(textStatus + ": " + errorThrown);
-					}*/
+					}* /
 			},
 			complete: function(jqXHR, textStatus)
 			{			
 				//alert("Com " + " " + textStatus);
 			}
 		});	
-		location.reload();
+		location.reload();*/
+	}else{
+		return false;
 	}
 }
 
@@ -133,14 +209,14 @@ function refresher(){
 								<div class="x_panel">
                                 <div class="x_content">
                                     <br />
-                                    <form name="Them" class="form-horizontal form-label-left"  >
+                                    <form name="Them" method="post" action="" class="form-horizontal form-label-left" onsubmit="return submitThem()" >
 
                                         
                                         <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Tiêu đề<span class="required">*</span>
                                             </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtTD" type="text" class="form-control" placeholder="Tiêu đề"
+                                                <input id="txtTD" name="txtTD" type="text" class="form-control" placeholder="Tiêu đề"
 												required="required" >
                                             </div>
                                         </div>
@@ -148,7 +224,7 @@ function refresher(){
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                                <button id="send" onclick="submitThem()" type="submit" class="btn btn-primary">Thêm</button>
+                                                <button id="send" name="btnThem" type="submit" class="btn btn-primary">Thêm</button>
 												<!--a onclick="submitThem()" href="#tab_content1" role="tab" 
 															id="profile-tabb3" 
 															data-toggle="tab" aria-controls="profile" aria-expanded="false" 
@@ -169,13 +245,14 @@ function refresher(){
 								<div class="x_panel">
                                 <div class="x_content">
                                     <br />
-                                    <form name="CapNhat" class="form-horizontal form-label-left">
+                                    <form name="CapNhat" method="post" action="" class="form-horizontal form-label-left" onsubmit="return submitCapNhat()">
 										<div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Tiêu đề<span class="required">*</span>
                                             </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="txtTD2" type="text" class="form-control" placeholder="Tiêu đề"
-												 required="required" >
+                                                <input id="txtTD2" name="txtTD2" type="text" class="form-control" placeholder="Tiêu đề"
+												required="required" >
+												<input id="txtID2" name="txtID2" type="hidden" value="">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -189,7 +266,7 @@ function refresher(){
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                                <button onclick="submitCapNhat()" type="submit" class="btn btn-primary">Sửa</button>
+                                                <button name="btnSua" type="submit" class="btn btn-primary">Sửa</button>
 																								
 												<a  href="#tab_content1" role="tab" 
 															id="profile-tabb4" 
@@ -229,6 +306,7 @@ function refresher(){
 			
 			function edit(id,td,nt) {
 				sel_id = id;
+				document.getElementById("txtID2").value = id ;
 				document.getElementById("txtTD2").value = td ;
 				document.getElementById("txtNT2").value = nt ;
 			}

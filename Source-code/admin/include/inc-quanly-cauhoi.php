@@ -1,5 +1,34 @@
+<script language="javascript">
+function nodification(i){
+	$(document).ready( function() {
+		switch(i){
+			case 0:
+				$('#div_alert').append('<div class="alert alert-success"> '+
+						'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> '+
+						'<strong>Thêm thành công </strong></div>');
+				break;
+			case 1:
+				$('#div_alert').append('<div class="alert alert-danger"> '+
+						'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> '+
+						'<strong>Thêm thất bại </strong>/div>');
+				break;
+			case 2:
+				$('#div_alert').append('<div class="alert alert-success"> '+
+						'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> '+
+						'<strong>Cập nhật thành công </strong></div>');
+				break;
+			case 3:
+				$('#div_alert').append('<div class="alert alert-danger"> '+
+						'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> '+
+						'<strong>Cập nhật thất bại </strong></div>');
+				break;
+		}
+	});
+}
+</script>
+
 <?php 
-//include_once '../dataconfig/dataprovider.php';
+include_once '../dataconfig/dataprovider.php';
 
 	if(isset($_REQUEST["btnThem"])){
 		
@@ -21,11 +50,10 @@
 			die("faile $hu_er");
 		}else{
 			move_uploaded_file($hu_te,"../upload/HinhAnh/BaiTap/".$hu_n);
-		}
+		}		
 		if($hu_n != null){
 			$ha = 'upload/HinhAnh/BaiTap/'.$hu_n;
 		}
-		
 		
 		$gu_n = $_FILES["fileGA1"]["name"];
 		$gu_te = $_FILES["fileGA1"]["tmp_name"];
@@ -43,11 +71,20 @@
 		
 		$sql = "INSERT INTO cauhoi 
 				(ch_BaiTap, ch_DuongDanHinhAnh, ch_DuongDanGhiAm, ch_LuaChon1, ch_LuaChon2, ch_LuaChon3, ch_LuaChon4, ch_DapAn) 
-			VALUES
+				VALUES
 				('$btid','$ha','$ga','$l1','$l2','$l3','$l4','$da')";
+		try {			
 			DataProvider::ExecuteQuery($sql);
-	  echo '<script>alert("Thêm thành công!")</script>';
-		
+			echo '<script type="text/javascript">
+					nodification(0);
+				</script>';
+		}
+		catch (Exception $e) {
+			echo '<script type="text/javascript">
+					nodification(1);
+				</script>';
+		}
+			
 			
 	}
 	
@@ -66,13 +103,13 @@
 		$hu_te = $_FILES["fileHA2"]["tmp_name"];
 		$hu_ty = $_FILES["fileHA2"]["type"];
 		$hu_er = $_FILES["fileHA2"]["error"];
-		if($hu_er > 0 && $hu_n != null)
+		if($hu_er != 0 && $hu_er != 4)
 		{
 			die("faile $hu_er");
 		}else{
 			move_uploaded_file($hu_te,"../upload/HinhAnh/BaiTap/".$hu_n);
 		}
-		if($hu_n != null){
+		if($hu_er != 4){
 			$ha = 'upload/HinhAnh/BaiTap/'.$hu_n;
 		}
 		
@@ -81,13 +118,13 @@
 		$gu_te = $_FILES["fileGA2"]["tmp_name"];
 		$gu_ty = $_FILES["fileGA2"]["type"];
 		$gu_er = $_FILES["fileGA2"]["error"];
-		if($gu_er > 0 && $gu_n != null)
+		if($gu_er != 0 && $gu_er != 4)
 		{
 			die("faile $gu_er");
 		}else{
 			move_uploaded_file($gu_te,"../upload/GhiAm/BaiTap/".$gu_n);
 		}
-		if($gu_n != null){
+		if($gu_er != 4){
 			$ga = 'upload/GhiAm/BaiTap/'.$gu_n;
 		}
 		
@@ -95,8 +132,17 @@
 					SET ch_DuongDanHinhAnh = '$ha', ch_DuongDanGhiAm = '$ga',
 						ch_LuaChon1 = '$l1', ch_LuaChon2 = '$l2', ch_LuaChon3 = '$l3',ch_LuaChon4 = '$l4', ch_DapAn = '$da'
 					WHERE ch_ID= '$id' ";
+		try {			
 			DataProvider::ExecuteQuery($sql);
-	  echo '<script>alert("Cập nhật thành công!")</script>';
+			echo '<script type="text/javascript">
+					nodification(2);
+				</script>';
+		}
+		catch (Exception $e) {
+			echo '<script type="text/javascript">
+					nodification(3);
+				</script>';
+		}
 		
 			
 	}
