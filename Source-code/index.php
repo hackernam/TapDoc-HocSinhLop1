@@ -86,27 +86,27 @@
 					
 					
 					<!-- ===============================================================-->
-                    <a href="danhsachbaihoc.php?lsid=1">
+                    <a href="danhsachbaihoc.php?lsid=1&page=1">
                         <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/phatam.png" class="responsive-image" alt="img"></i>
                         <em>Đọc âm</em>
                     </a>                    
-                    <a href="danhsachbaihoc.php?lsid=2">
+                    <a href="danhsachbaihoc.php?lsid=2&page=1">
                         <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/phattu.png" class="responsive-image" alt="img"></i>
                         <em>Đọc từ</em>
                     </a>
-					<a href="danhsachbaihoc.php?lsid=3">
+					<a href="danhsachbaihoc.php?lsid=3&page=1">
                         <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/doccau.png" class="responsive-image" alt="img"></i>
                         <em>Đọc câu</em>
                     </a>
-					<a href="danhsachbaihoc.php?lsid=4">
+					<a href="danhsachbaihoc.php?lsid=4&page=1">
                         <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/hinhanh.png" class="responsive-image" alt="img"></i>
                         <em>Hình ảnh</em>
                     </a>
-					<a href="danhsachbaitap.php">
+					<a href="danhsachbaitap.php?page=1">
                         <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/baitap.png" class="responsive-image" alt="img"></i>
                         <em>Bài tập</em>
                     </a>
-					<a href="index.html">
+					<a href="danhsachmangtc.php?page=1">
                         <i class="bg-green-dark bg-hover-green-dark fa border-radius-img"><img src="images/pictures/game.png" class="responsive-image" alt="img"></i>
                         <em>Trò chơi</em>
                     </a>

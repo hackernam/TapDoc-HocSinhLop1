@@ -3,6 +3,7 @@
             <!--Page content goes here, fixed elements go above the all elements class-->
                 <?php
 					include_once 'dataconfig/dataprovider.php';
+								
 					$id_LoaiBaiHoc = $_GET["lsid"];
 					$sql_tieude = "select lbh_LoaiBaiHoc from loaibaihoc where lbh_ID = $id_LoaiBaiHoc";
 					$result = DataProvider::GetRows($sql_tieude);
@@ -28,12 +29,23 @@
 					<!-- ===============================================================-->
 					<?php
 						include_once("dataconfig/dataprovider.php");
+						if(!isset($_GET['page']))
+						{  
+							$page = 1;  
+						} 
+						else 
+						{  
+							$page = $_GET['page'];  
+						}
+						$max_results = 9;
+						$from = (($page * $max_results) - $max_results);
+			
 						$lessonid = $_GET['lsid'];
 						if($lessonid == null || $lessonid > 6)
 						{
 							$lessonid = 0;
 						}
-						$sql = "SELECT bh_ID, bh_TenBaiHoc, bh_HinhDaiDien FROM baihoc WHERE bh_LoaiBaiHoc = $lessonid";
+						$sql = "SELECT bh_ID, bh_TenBaiHoc, bh_HinhDaiDien FROM baihoc WHERE bh_LoaiBaiHoc = $lessonid LIMIT $from, $max_results";
 						$result = DataProvider::GetRows($sql);
 						if($result != null)
 						{
@@ -44,22 +56,59 @@
                         <i class="bg-green-dark bg-hover-green-dark fa border-radius-img">
 							<img class="img-responsive img-circle" src="<?php echo $value['bh_HinhDaiDien']; ?>">
 						</i>
-                        <em><?php echo $value['bh_TenBaiHoc'];?></em>
+                        <em style="font-weight: bold;"><?php echo $value['bh_TenBaiHoc'];?></em>
                     </a>                    
                     <?php
 							}
 						}
 					?> 
                 </div>
-                
-				<div class="decoration"></div>
 				
-				<div class="thumbnail-menu">
-					<h4 style="text-align: center;">Danh sách các bài bạn chưa học</h4>
-				</div>
+				<div class="decoration"></div>
+				<div class="col-md-12 text-center">
+<ul class="pagination pagination-lg pager" ><?php
+$total_results = DataProvider::NumRows("SELECT COUNT(*) as Num FROM baihoc WHERE bh_LoaiBaiHoc = $lessonid");  
+$total_pages = ceil($total_results / $max_results);   
+for($i = 1; $i <= $total_pages; $i++){  
+?>
+
+<?php
+if($i == $_GET['page'])
+{
+	?>
+								<li class="active">
+								<a href="<?php echo $_SERVER['PHP_SELF']; ?>?lsid=<?php echo $id_LoaiBaiHoc; ?>&page=<?php echo $i; ?>" class="page_link active">
+									<?php echo $i; ?>
+								</a>
+								</li>
+								<?php
+}
+else{
+	?>
+	<li class="">
+	<a href="<?php echo $_SERVER['PHP_SELF']; ?>?lsid=<?php echo $id_LoaiBaiHoc; ?>&page=<?php echo $i; ?>" class="">
+									<?php echo $i; ?>
+								</a>
+								</li>
+	<?php
+}
+?>
+							
+<?php
+}  
+?>
+</ul>
+</div>
+
+<div class="decoration"></div>
+
+				<div class="container">
+                    <h4>Những bài bé chưa học</h4>
+                    <em class="small-heading">Bé có thể chọn những bài chưa học bên dưới nhé!</em>
+                </div>
 				<?php
 					$id = $_SESSION['UID'];
-					$sql_goiy = 'SELECT bh.bh_ID, bh.bh_LoaiBaiHoc, bh.bh_HinhDaiDien
+					$sql_goiy = 'SELECT bh.bh_ID, bh.bh_LoaiBaiHoc, bh.bh_HinhDaiDien,bh_TenBaiHoc
 								FROM baihoc bh					
 								WHERE bh.bh_LoaiBaiHoc = '.$id_LoaiBaiHoc.' 
 								AND bh.bh_ID NOT IN(
@@ -68,37 +117,24 @@
 													WHERE ls.lsbh_TaiKhoan = '.$id.')';
 					$dsgoiy = DataProvider::GetRows($sql_goiy);
 				?>
-				<!-- Swiper -->
-				<div class="swiper-container">
-					<div class="swiper-wrapper">
+				<div class="staff-slider">
+                    <div class="staff-slider-no-transition" data-snap-ignore="true">
 					<?php
 						if($dsgoiy != null){
 							foreach ($dsgoiy as $goiy) { 
 					?>
-							<div class="swiper-slide">
-								<a href="baihoc.php?bh=<?php echo $goiy['bh_ID'] ?>&lbh=<?php echo $goiy['bh_LoaiBaiHoc']?>">
-									<img src="<?php echo $goiy['bh_HinhDaiDien'];?>" width="100px;"/>
-								</a>
-							</div>
-					<?php 
+                        <div class="staff-item">
+                            <a href="baihoc.php?bh=<?php echo $goiy['bh_ID']; ?>&lbh=<?php echo $goiy['bh_LoaiBaiHoc'];?>"><img src="<?php echo $goiy['bh_HinhDaiDien'];?>" alt="img"></a>
+                            <h3><?php echo $goiy['bh_TenBaiHoc']; ?></h3>
+                        </div>
+						<?php 
 							} 
 						}
 					?>
-					</div>
-				</div>
-				<!-- Swiper JS -->
-				<script src="scripts/swiper.min.js"></script>
-
-				<!-- Initialize Swiper -->
-				<script>
-					var swiper = new Swiper('.swiper-container', {
-						pagination: '.swiper-pagination',
-						slidesPerView: 3,
-						paginationClickable: true,
-						spaceBetween: 30,
-						freeMode: true
-					});
-				</script>
+                    </div>
+                    <a class="next-staff-slider" href="#"><i class="fa fa-angle-right"></i></a>
+                    <a class="prev-staff-slider" href="#"><i class="fa fa-angle-left"></i></a>
+                </div>
                 <div class="decoration"></div>
                 
                 <?php

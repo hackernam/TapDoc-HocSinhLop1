@@ -23,7 +23,18 @@
                 </tr>
               </thead>
               <tbody>  
-              <?php  $result = DataProvider::GetRows("select * from taikhoan");
+              <?php  
+			  if(!isset($_GET['page']))
+						{  
+							$page = 1;  
+						} 
+						else 
+						{  
+							$page = $_GET['page'];  
+						}
+						$max_results = 9;
+						$from = (($page * $max_results) - $max_results);
+			  $result = DataProvider::GetRows("select * from taikhoan LIMIT $from, $max_results");
 					foreach($result as $value) { ?>         
                 <tr>
                   <td><?php echo $value[0] ?></td>
@@ -39,4 +50,37 @@
             </table>
           </div> 
           
-          
+<div class="col-md-12 text-center">
+<ul class="pagination pagination-lg pager" ><?php
+$total_results = DataProvider::NumRows("SELECT COUNT(*) as Num FROM taikhoan");  
+$total_pages = ceil($total_results / $max_results);   
+for($i = 1; $i <= $total_pages; $i++){  
+?>
+
+<?php
+if($i == $_GET['page'])
+{
+	?>
+								<li class="active">
+								<a href="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo $i; ?>" class="page_link active">
+									<?php echo $i; ?>
+								</a>
+								</li>
+								<?php
+}
+else{
+	?>
+	<li class="">
+	<a href="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo $i; ?>" class="">
+									<?php echo $i; ?>
+								</a>
+								</li>
+	<?php
+}
+?>
+							
+<?php
+}  
+?>
+</ul>
+</div>          

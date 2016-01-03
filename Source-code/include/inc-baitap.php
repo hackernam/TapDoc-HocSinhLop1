@@ -29,6 +29,19 @@ function done() {
 			//document.getElementById("cautraloi"+dsDA[j].id).innerHTML = "Đán án là " + dsDA[j].va;
 		}
 		document.getElementById("btnXong").innerHTML = "Điểm: " + score +"/"+ dsDA.length;
+		document.getElementById("lblKetQua").innerHTML = "Bé được : " + score + " điểm " +"/ "+ dsDA.length +" câu";
+		if(score < (dsDA.length/2))
+		{
+		document.getElementById("lblKetQuaThongBao").innerHTML = "Bé cần học nhiều hơn nhé !";
+		}
+		if(score > (dsDA.length/2) && score < (dsDA.length-3))
+		{
+		document.getElementById("lblKetQuaThongBao").innerHTML = "Bé đã đạt nhưng cần học thêm !";
+		}
+		if(score > (dsDA.length-3))
+		{
+		document.getElementById("lblKetQuaThongBao").innerHTML = "Bé học giỏi quá !";
+		}
 		xong = true;
 		
 		var formData = {idbt:<?php echo $_GET["bt"];?>, sr: score};
@@ -162,10 +175,24 @@ function answer(c,d){
 						?>
 				</div>
 				
-			
+				<div class="social-profile-modal-content modal-content rounded-modal">
+                            <img src="images/pictures/pikachu.jpg" alt="img">
+                            <h3 id="lblKetQua"></h3>
+                            <strong id="lblKetQuaThongBao"></strong>
+                            <div class="clear"></div>
+							<script>
+function myFunction() {
+    location.reload();
+}
+</script>
+							<a href="#" class="button button-small button-blue button-center round-button modal-close">Xem đáp án</a>
+                            <a href="#" onclick="myFunction()" class="button button-small button-red button-center round-button modal-close">Làm lại</a>
+							<a href="danhsachbaitap.php?page=1" class="button button-small button-green button-center round-button">Chọn bài khác</a>
+                        </div>
+
 				
 				<div align="center" style="padding-left: 15px;">                       
-					<a id="btnXong" class="button button-xl button-green button-round" onclick="done()">Xong</a>
+					<a id="btnXong" class="button button-xl button-green button-round social-profile-modal" onclick="done()">Xong</a>
                 </div>
 					<?php
 					}

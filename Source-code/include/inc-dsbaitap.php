@@ -27,23 +27,18 @@
 					
 					<?php
 						include_once("dataconfig/dataprovider.php");
-						$skip = 0;
-						if(isset($_GET['skip'])) {
-							$skip = $_GET['skip'];
+						if(!isset($_GET['page']))
+						{  
+							$page = 1;  
+						} 
+						else 
+						{  
+							$page = $_GET['page'];  
 						}
+						$max_results = 9;
+						$from = (($page * $max_results) - $max_results);
 						
-						if($skip == null)
-						{
-							$skip = 0;
-						}
-						$sql = "SELECT count(bt_ID) rows FROM baitap";
-						$result = DataProvider::GetRows($sql);
-						$frow =  $result[0];
-						
-						$nRows = $frow['rows'];
-						
-						
-						$sql = "SELECT bt_ID, bt_TieuDe FROM baitap LIMIT $skip, 9";
+						$sql = "SELECT bt_ID, bt_TieuDe FROM baitap LIMIT $from, $max_results";
 						$result = DataProvider::GetRows($sql);
 						if($result != null)
 						{
@@ -57,10 +52,10 @@
 										<img class="img-responsive img-circle" src="images/pictures/sachbaitap.png">
 										<!--?php echo $value['bh_HinhDaiDien']; ?-->
 									</i>
-									<em style="position: absolute; top: 50%; left: 0; width: 100%; color: Bisque;">
+									<!--<em style="position: absolute; top: 50%; left: 0; width: 100%; color: Bisque;">
 										5/10
-									</em>
-									<em style="position: absolute; top: 85%; left: 0; width: 100%; ">
+									</em>-->
+									<em style="position: absolute; top: 85%; left: 0; width: 100%; font-weight: bold;">
 										<?php echo $value['bt_TieuDe'];?>
 									</em>
 								</a>                    
@@ -69,19 +64,47 @@
 						}
 					?> 
                 </div>
-				
                 <div class="decoration">
-				<div align="center">
-                    <p style="align=center;">
-                       
-					<?php echo $skip  / 9 + 1; echo '/'; echo ($nRows - $nRows % 9)  / 9 + 1;?>
-					
-                    </p>
-                </div>
-                </div>
+                </div>	
+				
+				<div class="col-md-12 text-center">
+<ul class="pagination pagination-lg pager" ><?php
+$total_results = DataProvider::NumRows("SELECT COUNT(*) as Num FROM baitap");  
+$total_pages = ceil($total_results / $max_results);   
+for($i = 1; $i <= $total_pages; $i++){  
+?>
+
+<?php
+if($i == $_GET['page'])
+{
+	?>
+								<li class="active">
+								<a href="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo $i; ?>" class="page_link active">
+									<?php echo $i; ?>
+								</a>
+								</li>
+								<?php
+}
+else{
+	?>
+	<li class="">
+	<a href="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo $i; ?>" class="">
+									<?php echo $i; ?>
+								</a>
+								</li>
+	<?php
+}
+?>
+							
+<?php
+}  
+?>
+</ul>
+</div>
 				
                 <div class="decoration"></div>
-                
+				
+				
                 <?php
 				include_once("include/inc-footer.php");
 			?> 

@@ -1,11 +1,15 @@
 <?PHP
 require_once("process/xuly_dangnhap.php");
+include_once("dataconfig/dataprovider.php");
 $xx = new xuLyDangNhap();
 if(isset($_POST['btnLogin']))
 {	
 	//document.getElementById("result").innerHTML =''; // Variable To Store Error Message
 	$xx->HandleError('');
 	$id = $xx->CheckLoginInDB($_POST['txtUsername'], $_POST['txtPassword']);
+	
+	$sql = "select * from taikhoan where tk_TenDangNhap = '".$_POST['txtUsername']."' and tk_MatKhau = '".$_POST['txtPassword']."'";
+	$result = DataProvider::GetOneRow($sql);
 	if($id > 0)
  	{
 		if (session_status() == PHP_SESSION_NONE)
@@ -15,6 +19,7 @@ if(isset($_POST['btnLogin']))
 		$_SESSION['UID'] = $id;
 		$_SESSION["user_name"] = $_POST['txtUsername'];
 		$_SESSION['DaDangNhap'] = 1;
+		$_SESSION['LoaiNguoiDung'] = $result['tk_LoaiNguoiDung'];
 		$xx->RedirectToURL("index.php");
 	}
 }
@@ -65,15 +70,12 @@ if(isset($_POST['btnLogin']))
 								</div>
 								<div class="pageapp-login-field">
 									<i class="fa fa-lock"></i>
-									<input type="password" value="" placeholder="password" id="txtPassword" name="txtPassword">
+									<input type="password" value="" placeholder="Mật khẩu" id="txtPassword" name="txtPassword">
 								</div>
 								<input type="submit" name="btnLogin" value="Đăng nhập" class="pageapp-login-button button button-m button-green button-fullscreen" />
 								<input onclick="window.location.href='dangky.php'" name="btnLogin" value="Đăng ký" class="pageapp-login-button button button-m button-red button-fullscreen" />
-								<div class="decoration"></div>
 								<!--a href="#" class="pageapp-login-button button button-small button-green button-fullscreen">Đăng nhập</a>
-								<div class="decoration"></div-->
-								<a href="#" class="facebook-login facebook-color"><i class="fa fa-facebook"></i>Đăng nhập bằng Facebook</a>
-								<a href="#" class="twitter-login twitter-color no-bottom"><i class="fa fa-twitter"></i>Đăng nhập bằng Twitter</a>                    
+								<div class="decoration"></div-->               
 							</div>
                         </form>
 						<!--Form Dang Nhap END-->

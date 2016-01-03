@@ -37,10 +37,12 @@
 <link href="styles/font-awesome.css"    rel="stylesheet" type="text/css">
 <link href="styles/animate.css"         rel="stylesheet" type="text/css">
 <link href="styles/custom.css"         rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="styles/bootstrap.min.css">
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/jqueryui.js"></script>
 <script type="text/javascript" src="scripts/framework-plugins.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
 </head>
 
 <body class="dual-sidebar"> 

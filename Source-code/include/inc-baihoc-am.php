@@ -66,3 +66,32 @@ function triggerAudio(abc) {
 			<?php
 			}
 ?>
+<div class="decoration"></div>
+<div class="container">
+                    <h4>Những bài khác</h4>
+                    <em class="small-heading">Bé có thể chọn những bài khác bên dưới nhé!</em>
+</div>
+<?php
+					$sql_goiy = 'SELECT bh.bh_ID, bh.bh_LoaiBaiHoc, bh.bh_HinhDaiDien,bh_TenBaiHoc
+								FROM baihoc bh					
+								WHERE bh.bh_LoaiBaiHoc = '.$idLoaiBaiHoc.'';
+					$dsgoiy = DataProvider::GetRows($sql_goiy);
+				?>
+				<div class="staff-slider">
+                    <div class="staff-slider-no-transition" data-snap-ignore="true">
+					<?php
+						if($dsgoiy != null){
+							foreach ($dsgoiy as $goiy) { 
+					?>
+                        <div class="staff-item">
+                            <a href="baihoc.php?bh=<?php echo $goiy['bh_ID']; ?>&lbh=<?php echo $goiy['bh_LoaiBaiHoc'];?>"><img src="<?php echo $goiy['bh_HinhDaiDien'];?>" alt="img"></a>
+                            <h3><?php echo $goiy['bh_TenBaiHoc']; ?></h3>
+                        </div>
+						<?php 
+							} 
+						}
+					?>
+                    </div>
+                    <a class="next-staff-slider" href="#"><i class="fa fa-angle-right"></i></a>
+                    <a class="prev-staff-slider" href="#"><i class="fa fa-angle-left"></i></a>
+                </div>

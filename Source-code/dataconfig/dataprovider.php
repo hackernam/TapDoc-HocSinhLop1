@@ -75,14 +75,14 @@ class DataProvider
 		$connection = mysqli_connect(HOSTNAME,USERNAME,PASSWORD,DATABASE) or 
       	die ("couldn't connect to localhost");
          
-    mysqli_query($connection,"set names 'utf8'"); 
+    mysqli_query($connection,"set names 'utf8'");
      
     $result = mysqli_query($connection,$sql); 
-	$row = mysqli_num_rows($result);
+	$row = mysqli_fetch_row($result);
      
-    mysqli_close($connection); 
+     mysqli_close($connection); 
      
-    return $row; 
-	}	
+    return $row[0]; 
+	}
 } 
 ?> 

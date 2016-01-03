@@ -64,22 +64,6 @@
 	include('include/inc-slidebarmenu.php');
 ?>
 
-                    <!-- /menu footer buttons -->
-                    <div class="sidebar-footer hidden-small">
-                        <a data-toggle="tooltip" data-placement="top" title="Settings">
-                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Lock">
-                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Logout">
-                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                        </a>
-                    </div>
-                    <!-- /menu footer buttons -->
                 </div>
             </div>
 
@@ -97,6 +81,8 @@
 
             <!-- page content -->
             <div class="right_col" role="main">
+				<div id="div_alert" class="col-sm-5" style="margin-top:10px; margin-right:10px; position:absolute; right:10px;">			
+				</div>
                 <div class="">
                     <div class="page-title">
                         <div class="title_left">
@@ -115,14 +101,6 @@
 
                 </div>
                     <!-- footer content -->
-                <footer>
-                    <div class="">
-                        <p class="pull-right">Gentelella Alela! a Bootstrap 3 template by <a>Kimlabs</a>. |
-                            <span class="lead"> <i class="fa fa-paw"></i> Gentelella Alela!</span>
-                        </p>
-                    </div>
-                    <div class="clearfix"></div>
-                </footer>
                 <!-- /footer content -->
                     
                 </div>
@@ -178,7 +156,7 @@
                     "sPaginationType": "full_numbers",
                     "dom": 'T<"clear">lfrtip',
                     "tableTools": {
-                        "sSwfPath": "<?php echo 'assets2/js/Datatables/tools/swf/copy_csv_xls_pdf.swf'; ?>"
+                        "sSwfPath": "<?php echo 'js/Datatables/tools/swf/copy_csv_xls_pdf.swf'; ?>"
                     }
                 });
                 $("tfoot input").keyup(function () {
