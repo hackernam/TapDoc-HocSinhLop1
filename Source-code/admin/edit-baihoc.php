@@ -41,9 +41,23 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
 
-                    <?php 
-	include('include/inc-infouser-leftmenu.php');
-?>
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <!-- menu prile quick info -->
+                    <div class="profile">
+                        <div class="profile_pic">
+                            <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Welcome,</span>
+                            <h2>Anthony Fernando</h2>
+                        </div>
+                    </div>
+                    <!-- /menu prile quick info -->
+
                     <br />
                     <!-- sidebar menu -->
                      <?php include('include/inc-slidebarmenu.php') ?>
@@ -74,7 +88,40 @@
 				echo '<meta http-equiv="refresh" content="0;quanlybaihoc.php">';
 			}else if($lbh == 4){
 				include('include/inc-addlistbaihoc.php');
+			}else if($lbh == 5){
+				include('include/inc-editlistbaihoc.php');
+			}else if($lbh == 6){
+				include('include/inc-deletelistbaihoc.php');
+			}else if($lbh == 7){
+				include_once '../dataconfig/dataprovider.php';
+				$id = $_GET['am'];
+				$sql = "DELETE FROM am WHERE a_ID = $id";
+      			DataProvider::ExecuteQuery($sql);
+				$link = "edit-baihoc.php?lbh=6&id=" . $id . "&lb=1";
+				echo '<meta http-equiv="refresh" content="0;'.$link.'">';
+			}else if($lbh == 8){
+				include_once '../dataconfig/dataprovider.php';
+				$id = $_GET['tu'];
+				$sql = "DELETE FROM tu WHERE t_ID = $id";
+      			DataProvider::ExecuteQuery($sql);
+				$link = "edit-baihoc.php?lbh=6&id=" . $id . "&lb=2";
+				echo '<meta http-equiv="refresh" content="0;'.$link.'">';
+			}else if($lbh == 9){
+				include_once '../dataconfig/dataprovider.php';
+				$id = $_GET['cau'];
+				$sql = "DELETE FROM cau WHERE c_ID = $id";
+      			DataProvider::ExecuteQuery($sql);
+				$link = "edit-baihoc.php?lbh=6&id=" . $id . "&lb=3";
+				echo '<meta http-equiv="refresh" content="0;'.$link.'">';
+			}else if($lbh == 10){
+				include_once '../dataconfig/dataprovider.php';
+				$id = $_GET['hinhanh'];
+				$sql = "DELETE FROM hinhanh WHERE ha_ID = $id";
+      			DataProvider::ExecuteQuery($sql);
+				$link = "edit-baihoc.php?lbh=6&id=" . $id . "&lb=4";
+				echo '<meta http-equiv="refresh" content="0;'.$link.'">';
 			}
+			
 			?>
 			</div>
                 <!-- footer content -->

@@ -2,19 +2,14 @@
 	include_once '../dataconfig/dataprovider.php';
 	$id = $_GET['id'];
 	$loai = $_GET['lb'];
+	$sl = $_GET['ls'];
 	//echo $TypeBaiHoc = $_REQUEST["cbTypeBaiHoc"];
 	if(isset($_REQUEST["btnEditBaiHoc"]))
   	{ 
 		$quantity = $_REQUEST['cbQuantityBaiHoc'];
 		for ($i = 0; $i < $quantity; $i++) {
 			//<!-- file image->
-			if($loai == 4){
-				$nameImage = $_FILES["myfileImage"]["name"][$i];
-				$tempImage = $_FILES["myfileImage"]["tmp_name"][$i];
-				$typeImage = $_FILES["myfileImage"]["type"][$i];
-				$errorImage = $_FILES["myfileImage"]["error"][$i];
-				$tenhinhanh = $_REQUEST["txtHinhAnh"][$i];
-			}
+			
 			
 			//<!-- -->
 			//$myfile = $_REQUEST["myfile"];
@@ -60,7 +55,7 @@
 					move_uploaded_file($temp,"../upload/GhiAm/Cau/".$name);
 				}
 				$path = "upload/GhiAm/Cau/".$name;
-				$sql = "INSERT INTO cau(t_NoiDung, t_DuongDanGhiAm, t_BaiHoc) 
+				$sql = "INSERT INTO cau(c_NoiDung, c_DuongDanGhiAm, c_BaiHoc) 
 						VALUES ('$tennoidung','$path','$id')";
 				//echo $sql; exit;
 				DataProvider::ExecuteQuery($sql);
@@ -82,7 +77,7 @@
 					die("faile $error");
 				}else{
 					if($type == "audio/mp3" || "audio/wav"){
-						move_uploaded_file($temp,"../upload/GhiAm/HinhAnh/".$name);
+						move_uploaded_file($temp,"../upload/GhiAm/Hinh/".$name);
 						//echo "OK";
 					}else{
 						die("faile $error");
@@ -90,7 +85,7 @@
 					
 				}
 				$pathImage = "upload/HinhAnh/HinhAnh/".$nameImage;
-				$path = "upload/GhiAm/HinhAnh/".$name;
+				$path = "upload/GhiAm/Hinh/".$name;
 				$sql = "INSERT INTO hinhanh(ha_NoiDung, ha_DuongDanHinhAnh , ha_DuongDanGhiAm, ha_BaiHoc) 
 						VALUES ('$tennoidung', '$pathImage','$path','$id')";
 				//echo $sql; exit;
@@ -135,7 +130,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-sm-2 control-label">So luong bai hoc</label>
+			<label class="col-sm-2 control-label">Số lượng bài học</label>
 			<div class="col-sm-10">
 			<select name="cbQuantityBaiHoc" id="cbQuantityBaiHoc" class="btn btn-default dropdown-toggle" style="width:50%">
 				<?php for ($i = 1; $i <= 10; $i++) { ?>
