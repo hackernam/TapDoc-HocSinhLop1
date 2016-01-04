@@ -6,7 +6,7 @@
                             <ul class="nav side-menu">
                                 <li><a><i class="fa fa-home"></i> Quản lý <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="quanlytaikhoan.php">Tài khoản</a>
+                                        <li><a href="quanlytaikhoan.php?page=1">Tài khoản</a>
                                         </li>
                                         <li><a href="quanlybaihoc.php">Bài học</a>
                                         </li>

@@ -2,7 +2,7 @@
 	include_once '../dataconfig/dataprovider.php';
 	$id = $_GET['id'];
 	$loai = $_GET['lb'];
-	$sluong = $_GET['ls'];
+	//$sluong = $_GET['ls'];
 	//echo $TypeBaiHoc = $_REQUEST["cbTypeBaiHoc"];
 	if(isset($_REQUEST["btnEditBaiHoc"]))
   	{
@@ -198,7 +198,7 @@
 		
 		<?php 
 			if($loai == 1){
-				$listBH = "select * from am";
+				$listBH = "select * from am where a_BaiHoc = $id";
 				$result_listBH = DataProvider::GetRows($listBH);
 				foreach($result_listBH as $value) {
 					?>
@@ -212,7 +212,7 @@
 					<?php
 				}
 			}else if($loai == 2){
-				$listBH = "select * from tu";
+				$listBH = "select * from tu where t_BaiHoc = $id";
 				$result_listBH = DataProvider::GetRows($listBH);
 				foreach($result_listBH as $value) {
 					?>
@@ -226,7 +226,7 @@
 					<?php
 				}
 			}else if($loai == 3){
-				$listBH = "select * from cau";
+				$listBH = "select * from cau where c_BaiHoc = $id";
 				$result_listBH = DataProvider::GetRows($listBH);
 				foreach($result_listBH as $value) {
 					?>
@@ -241,7 +241,7 @@
 				}
 			}
 			else if($loai == 4){
-				$listBH = "select * from hinhanh";
+				$listBH = "select * from hinhanh where ha_BaiHoc = $id";
 				$result_listBH = DataProvider::GetRows($listBH);
 				foreach($result_listBH as $value) {
 					?>

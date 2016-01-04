@@ -107,7 +107,7 @@
 	
 ?>
 
-<a class="btn btn-primary" href="quanlytaikhoan.php">Back</a>
+<a class="btn btn-primary" href="quanlybaihoc.php">Quay lại</a>
 <?php  $result = DataProvider::GetOneRow("select * from baihoc where bh_ID = $id");?>
 <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
   <fieldset>
@@ -138,7 +138,7 @@
 		</div>
 		<?php 
 			if($loai == 1){
-				$listBH = "select * from am";
+				$listBH = "select * from am where a_BaiHoc = $id";
 				$result_listBH = DataProvider::GetRows($listBH);
 				if($result_listBH != null){
 					foreach($result_listBH as $value) {
@@ -164,7 +164,7 @@
 				
 				
 			}else if($loai == 2){
-				$listBH = "select * from tu";
+				$listBH = "select * from tu where t_BaiHoc = $id";
 				$result_listBH = DataProvider::GetRows($listBH);
 				if($result_listBH != null){
 					foreach($result_listBH as $value) {
@@ -187,7 +187,7 @@
 					echo "Không có dữ liệu! ";
 				}
 			}else if($loai == 3){
-				$listBH = "select * from cau";
+				$listBH = "select * from cau where c_BaiHoc = $id";
 				$result_listBH = DataProvider::GetRows($listBH);
 				if($result_listBH != null){
 					foreach($result_listBH as $value) {
@@ -212,7 +212,7 @@
 				
 			}
 			else if($loai == 4){
-				$listBH = "select * from hinhanh";
+				$listBH = "select * from hinhanh where ha_BaiHoc = $id";
 				$result_listBH = DataProvider::GetRows($listBH);
 				foreach($result_listBH as $value) {
 					?>
@@ -238,7 +238,7 @@
 									<input type="file" name="myfile[]">
 								</div>
 								<div class="col-sm-2">
-								<a href="edit-baihoc.php?lbh=10&hinhanh=<?php echo $value[0] ?>" class="btn btn-primary noprint">Delete
+								<a href="edit-baihoc.php?lbh=10&hinhanh=<?php echo $value[0] ?>" class="btn btn-primary noprint">Xóa
 								</a>
 								
 							</div>

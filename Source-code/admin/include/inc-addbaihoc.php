@@ -85,7 +85,6 @@
     <label class="col-sm-2 control-label">Hình ảnh</label>
     <div class="col-sm-10">
 		<input name="txtHinhAnh" type="text" class="form-control">
-		<img style="width:100px" src="../<?php echo $result[4] ?>" />
 		<input type="file" name="myfile">	
     </div>
   </div>

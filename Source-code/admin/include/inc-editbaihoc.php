@@ -41,7 +41,7 @@
 	
 ?>
 
-<a class="btn btn-primary" href="quanlytaikhoan.php">Back</a>
+<a class="btn btn-primary" href="quanlybaihoc.php">Quay lại</a>
 <?php  $result = DataProvider::GetOneRow("select * from baihoc where bh_ID = $id");?>
 <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
   <fieldset>
@@ -109,7 +109,7 @@
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" name="btnEditBaiHoc" class="btn btn-primary">Save</button>
+      <button type="submit" name="btnEditBaiHoc" class="btn btn-primary">Lưu lại</button>
     </div>
   </div>
 

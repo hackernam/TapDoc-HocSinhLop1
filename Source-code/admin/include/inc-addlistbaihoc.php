@@ -2,7 +2,7 @@
 	include_once '../dataconfig/dataprovider.php';
 	$id = $_GET['id'];
 	$loai = $_GET['lb'];
-	$sl = $_GET['ls'];
+	//$sl = $_GET['ls'];
 	//echo $TypeBaiHoc = $_REQUEST["cbTypeBaiHoc"];
 	if(isset($_REQUEST["btnEditBaiHoc"]))
   	{ 

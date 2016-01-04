@@ -113,6 +113,8 @@
                             </div>
 
                             <div class="clearfix"></div>
+							
+							<p>Tổng số câu: <b><?php echo $tongloai; ?></b></p>
                         </div>
                     </div>
 

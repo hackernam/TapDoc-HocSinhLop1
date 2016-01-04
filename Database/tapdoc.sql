@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2016 at 02:39 AM
+-- Generation Time: Jan 04, 2016 at 03:15 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `am` (
   `a_BaiHoc` int(11) NOT NULL,
   PRIMARY KEY (`a_ID`),
   KEY `fk_am_baihoc_idx` (`a_BaiHoc`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=39 ;
 
 --
 -- Dumping data for table `am`
@@ -51,7 +51,29 @@ INSERT INTO `am` (`a_ID`, `a_NoiDung`, `a_DuongDanGhiAm`, `a_BaiHoc`) VALUES
 (9, 'D', 'upload/GhiAm/Am/d.mp3', 7),
 (10, 'Đ', 'upload/GhiAm/Am/đ.mp3', 8),
 (11, 'E', 'upload/GhiAm/Am/e.mp3', 9),
-(12, 'Ê', 'upload/GhiAm/Am/ê.mp3', 10);
+(12, 'Ê', 'upload/GhiAm/Am/ê.mp3', 10),
+(15, 'â', 'upload/GhiAm/Am/â.mp3', 6),
+(16, 'ă', 'upload/GhiAm/Am/ă.mp3', 6),
+(17, 'g', 'upload/GhiAm/Am/g.mp3', 6),
+(18, 'h', 'upload/GhiAm/Am/h.mp3', 7),
+(19, 'i', 'upload/GhiAm/Am/i.mp3', 7),
+(20, 'k', 'upload/GhiAm/Am/k.mp3', 7),
+(21, 'l', 'upload/GhiAm/Am/l.mp3', 7),
+(22, 'm', 'upload/GhiAm/Am/m.mp3', 7),
+(23, 'n', 'upload/GhiAm/Am/n.mp3', 8),
+(24, 'o', 'upload/GhiAm/Am/o.mp3', 8),
+(25, 'ô', 'upload/GhiAm/Am/ô.mp3', 8),
+(26, 'ơ', 'upload/GhiAm/Am/ơ.mp3', 8),
+(27, 'p', 'upload/GhiAm/Am/p.mp3', 8),
+(28, 'q', 'upload/GhiAm/Am/q.mp3', 9),
+(29, 'r', 'upload/GhiAm/Am/r.mp3', 9),
+(30, 's', 'upload/GhiAm/Am/s.mp3', 9),
+(31, 't', 'upload/GhiAm/Am/t.mp3', 9),
+(32, 'u', 'upload/GhiAm/Am/u.mp3', 9),
+(35, 'ư', 'upload/GhiAm/Am/ư.mp3', 10),
+(36, 'v', 'upload/GhiAm/Am/v.mp3', 10),
+(37, 'x', 'upload/GhiAm/Am/x.mp3', 10),
+(38, 'y', 'upload/GhiAm/Am/y.mp3', 10);
 
 -- --------------------------------------------------------
 
@@ -68,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `baihoc` (
   `bh_SoLanChon` int(11) NOT NULL,
   PRIMARY KEY (`bh_ID`),
   KEY `fk_baihoc_loaibaihoc_idx` (`bh_LoaiBaiHoc`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=36 ;
 
 --
 -- Dumping data for table `baihoc`
@@ -76,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `baihoc` (
 
 INSERT INTO `baihoc` (`bh_ID`, `bh_TenBaiHoc`, `bh_LoaiBaiHoc`, `bh_NgayTao`, `bh_HinhDaiDien`, `bh_SoLanChon`) VALUES
 (1, 'Bài 1', 2, '2015-12-04 00:00:00', 'upload/HinhAnh/doccau.png', 10),
-(2, 'Âm "a"', 1, '2015-12-08 00:00:00', 'upload/HinhAnh/Am/bangchucai.png', 11),
+(2, 'Bài 1', 1, '2015-08-12 00:00:00', 'upload/HinhAnh/Am/bangchucai.png', 11),
 (3, 'Bài 1', 4, '2015-12-08 00:00:00', 'upload/HinhAnh/HinhAnh/bangchucai.png', 12),
 (4, 'Bài 1', 3, '2015-12-18 00:00:00', 'upload/HinhAnh/Cau/bangchucai.png', 1),
 (5, 'Bài 2', 1, '2015-12-19 00:00:00', 'upload/HinhAnh/Am/conbo.jpg', 0),
@@ -108,7 +130,8 @@ INSERT INTO `baihoc` (`bh_ID`, `bh_TenBaiHoc`, `bh_LoaiBaiHoc`, `bh_NgayTao`, `b
 (31, 'Bài 7', 4, '2015-12-28 00:00:00', 'upload/HinhAnh/HinhAnh/tre.png', 0),
 (32, 'Bài 8', 4, '2015-12-28 00:00:00', 'upload/HinhAnh/HinhAnh/antoan.jpg', 0),
 (33, 'Bài 9', 4, '2015-12-28 00:00:00', 'upload/HinhAnh/HinhAnh/lam.gif', 0),
-(34, 'Bài 10', 4, '2015-12-28 00:00:00', 'upload/HinhAnh/HinhAnh/am.jpg', 0);
+(34, 'Bài 10', 4, '2015-12-28 00:00:00', 'upload/HinhAnh/HinhAnh/am.jpg', 0),
+(35, 'Bài 38', 2, '2015-12-04 00:00:00', 'upload/HinhAnh/3d-yellow-star.png', 1);
 
 -- --------------------------------------------------------
 
@@ -128,21 +151,20 @@ CREATE TABLE IF NOT EXISTS `baitap` (
 --
 
 INSERT INTO `baitap` (`bt_ID`, `bt_TieuDe`, `bt_NgayTao`) VALUES
-(1, 'bài 1', '0000-00-00 00:00:00'),
-(2, 'bài 2', '0000-00-00 00:00:00'),
-(3, 'bài 3', '0000-00-00 00:00:00'),
-(4, 'bài 4', '0000-00-00 00:00:00'),
-(5, 'bài 5', '0000-00-00 00:00:00'),
-(6, 'bài 6', '0000-00-00 00:00:00'),
-(7, 'bài 7', '0000-00-00 00:00:00'),
-(8, 'bài 8', '0000-00-00 00:00:00'),
-(9, 'bài 9', '0000-00-00 00:00:00'),
-(10, 'bài 10', '0000-00-00 00:00:00'),
-(11, 'bài 11', '0000-00-00 00:00:00'),
-(12, 'bài 12', '0000-00-00 00:00:00'),
-(13, 'bài 13', '0000-00-00 00:00:00'),
-(14, 'bài 14', '0000-00-00 00:00:00'),
-(15, 'bài 15', '0000-00-00 00:00:00');
+(2, 'Bài 01', '0000-00-00 00:00:00'),
+(3, 'Bài 02', '0000-00-00 00:00:00'),
+(4, 'Bài 03', '0000-00-00 00:00:00'),
+(5, 'Bài 04', '0000-00-00 00:00:00'),
+(6, 'Bài 05', '0000-00-00 00:00:00'),
+(7, 'Bài 06', '0000-00-00 00:00:00'),
+(8, 'Bài 07', '0000-00-00 00:00:00'),
+(9, 'Bài 08', '0000-00-00 00:00:00'),
+(10, 'Bài 09', '0000-00-00 00:00:00'),
+(11, 'Bài 10', '0000-00-00 00:00:00'),
+(12, 'Bài 11', '0000-00-00 00:00:00'),
+(13, 'Bài 12', '0000-00-00 00:00:00'),
+(14, 'Bài 13', '0000-00-00 00:00:00'),
+(15, 'Bài 14', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -230,15 +252,6 @@ CREATE TABLE IF NOT EXISTS `cauhoi` (
 --
 
 INSERT INTO `cauhoi` (`ch_ID`, `ch_BaiTap`, `ch_DuongDanHinhAnh`, `ch_DuongDanGhiAm`, `ch_LuaChon1`, `ch_LuaChon2`, `ch_LuaChon3`, `ch_LuaChon4`, `ch_DapAn`) VALUES
-(1, 1, 'upload/HinhAnh/HinhAnh/conbo.jpg', 'upload/GhiAm/Tu/con bo.mp3', 'DA 1', 'DA 2', 'DA 3', 'DA 4', 1),
-(2, 1, 'upload/HinhAnh/HinhAnh/conbo.jpg', 'upload/GhiAm/Tu/con bo.mp3', 'DA 1', 'DA 2', 'DA 3', 'DA 4', 2),
-(3, 1, 'upload/HinhAnh/HinhAnh/conbo.jpg', 'upload/GhiAm/Tu/con bo.mp3', 'DA 1', 'DA 2', 'DA 3', 'DA 4', 3),
-(4, 1, 'upload/HinhAnh/HinhAnh/conbo.jpg', 'upload/GhiAm/Tu/con bo.mp3', 'DA 1', 'DA 2', 'DA 3', 'DA 4', 4),
-(5, 1, 'upload/HinhAnh/HinhAnh/conbo.jpg', 'upload/GhiAm/Tu/con bo.mp3', 'DA 1', 'DA 2', 'DA 3', 'DA 4', 2),
-(6, 1, 'upload/HinhAnh/HinhAnh/conbo.jpg', 'upload/GhiAm/Tu/con bo.mp3', 'DA 1', 'DA 2', 'DA 3', 'DA 4', 1),
-(7, 1, 'upload/HinhAnh/HinhAnh/conbo.jpg', 'upload/GhiAm/Tu/con bo.mp3', 'DA 1', 'DA 2', 'DA 3', 'DA 4', 1),
-(8, 1, 'upload/HinhAnh/HinhAnh/conbo.jpg', 'upload/GhiAm/Tu/con bo.mp3', 'DA 1', 'DA 2', 'DA 3', 'DA 4', 1),
-(9, 1, 'upload/HinhAnh/HinhAnh/conbo.jpg', 'upload/GhiAm/Tu/con bo.mp3', 'DA 1', 'DA 2', 'DA 3', 'DA 4', 1),
 (10, 2, 'upload/HinhAnh/BaiTap/bong_bong.png', 'upload/GhiAm/BaiTap/bong_bong.mp3', 'Bong Bóng', 'Bóng Đá', 'Bóng Rổ', 'Bóng Bàn', 1),
 (11, 2, 'upload/HinhAnh/BaiTap/cai_khan.png', 'upload/GhiAm/BaiTap/cai_khan.mp3', 'Tấm Thảm', 'Cái Khăn', 'Cái Áo', 'Cái Màn', 2),
 (12, 2, 'upload/HinhAnh/BaiTap/con_ca.png', 'upload/GhiAm/BaiTap/con_ca.mp3', 'Con Gà', 'Con Mèo', 'Con Heo', 'Con Cá', 4),
@@ -325,7 +338,7 @@ CREATE TABLE IF NOT EXISTS `lichsubaihoc` (
   PRIMARY KEY (`lsbh_ID`),
   KEY `fk_lichsubaihoc_baihoc_idx` (`lsbh_BaiHoc`),
   KEY `fk_lichsubaihoc_taikhoan_idx` (`lsbh_TaiKhoan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=40 ;
 
 --
 -- Dumping data for table `lichsubaihoc`
@@ -333,12 +346,12 @@ CREATE TABLE IF NOT EXISTS `lichsubaihoc` (
 
 INSERT INTO `lichsubaihoc` (`lsbh_ID`, `lsbh_TaiKhoan`, `lsbh_BaiHoc`, `lsbh_ThoiGian`, `lsbh_SoLanHoc`) VALUES
 (2, 1, 1, '2015-12-17 00:00:00', 10),
-(3, 1, 2, '2015-12-18 19:20:54', 10),
+(3, 1, 2, '2015-12-18 19:20:54', 11),
 (4, 1, 3, '2015-12-18 23:04:16', 8),
 (5, 1, 4, '2015-12-18 23:48:13', 13),
-(6, 1, 5, '2015-12-19 00:27:14', 6),
-(7, 1, 6, '2015-12-19 00:35:49', 2),
-(8, 1, 8, '2015-12-19 00:46:14', 2),
+(6, 1, 5, '2015-12-19 00:27:14', 8),
+(7, 1, 6, '2015-12-19 00:35:49', 4),
+(8, 1, 8, '2015-12-19 00:46:14', 3),
 (9, 1, 11, '2015-12-19 09:19:08', 6),
 (10, 1, 12, '2015-12-19 09:29:19', 7),
 (11, 1, 13, '2015-12-19 09:37:06', 1),
@@ -363,8 +376,13 @@ INSERT INTO `lichsubaihoc` (`lsbh_ID`, `lsbh_TaiKhoan`, `lsbh_BaiHoc`, `lsbh_Tho
 (30, 1, 32, '2015-12-28 12:44:31', 5),
 (31, 1, 33, '2015-12-28 12:48:49', 7),
 (32, 1, 34, '2015-12-28 12:53:08', 5),
-(33, 1, 7, '2015-12-31 18:24:53', 1),
-(34, 1, 10, '2015-12-31 18:24:59', 1);
+(33, 1, 7, '2015-12-31 18:24:53', 2),
+(34, 1, 10, '2015-12-31 18:24:59', 2),
+(35, 1, 9, '2016-01-03 11:20:50', 1),
+(36, 13, 2, '2016-01-04 08:49:56', 1),
+(37, 13, 1, '2016-01-04 08:50:32', 1),
+(38, 13, 19, '2016-01-04 08:51:03', 1),
+(39, 13, 3, '2016-01-04 08:51:27', 1);
 
 -- --------------------------------------------------------
 
@@ -382,28 +400,17 @@ CREATE TABLE IF NOT EXISTS `lichsubaitap` (
   PRIMARY KEY (`lsbt_ID`),
   KEY `fk_lichsubaitap_taikhoan_idx` (`lsbt_TaiKhoan`),
   KEY `fk_lichsubaitap_baitap_idx` (`lsbt_BaiTap`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `lichsubaitap`
 --
 
 INSERT INTO `lichsubaitap` (`lsbt_ID`, `lsbt_TaiKhoan`, `lsbt_BaiTap`, `lsbt_NgayLam`, `lsbt_SoCauDung`, `lsbt_DiemSo`) VALUES
-(1, 1, 1, '2015-12-18 10:01:45', 1, 1),
-(2, 1, 1, '2015-12-18 10:06:18', 2, 2),
-(3, 1, 1, '2015-12-18 02:39:23', 4, 4),
-(4, 1, 1, '2015-12-18 06:05:59', 1, 1),
-(5, 1, 1, '2015-12-18 06:07:20', 0, 0),
-(6, 1, 1, '2015-12-18 06:09:15', 1, 1),
-(7, 1, 1, '2015-12-18 06:11:04', 0, 0),
-(8, 1, 1, '2015-12-18 06:13:50', 0, 0),
-(9, 1, 1, '2015-12-18 06:14:36', 0, 0),
-(10, 1, 1, '2015-12-18 06:15:58', 0, 0),
-(11, 1, 1, '2015-12-18 06:17:09', 1, 1),
-(12, 1, 1, '2015-12-19 04:55:53', 1, 1),
 (13, 1, 2, '2015-12-19 05:09:15', 1, 1),
 (14, 1, 2, '2015-12-19 05:10:12', 2, 2),
-(15, 1, 2, '2015-12-19 05:13:05', 1, 1);
+(15, 1, 2, '2015-12-19 05:13:05', 1, 1),
+(16, 13, 2, '2016-01-04 02:52:42', 3, 3);
 
 -- --------------------------------------------------------
 
@@ -464,21 +471,23 @@ CREATE TABLE IF NOT EXISTS `taikhoan` (
   PRIMARY KEY (`tk_ID`),
   KEY `fk_taikhoan_gioitinh_idx` (`tk_GioiTinh`),
   KEY `fk_taikhoan_loainguoidung_idx` (`tk_LoaiNguoiDung`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `taikhoan`
 --
 
 INSERT INTO `taikhoan` (`tk_ID`, `tk_HoTen`, `tk_GioiTinh`, `tk_TenDangNhap`, `tk_MatKhau`, `tk_DangNhapLanCuoi`, `tk_LoaiNguoiDung`) VALUES
-(1, 'ABC', 1, 'test', '123', '0000-00-00 00:00:00', 1),
+(1, 'ABC', 1, 'test', '123', '0000-00-00 00:00:00', 2),
 (3, 'asdasfds', 1, 'test123', '123456', '0000-00-00 00:00:00', 1),
 (6, 'Hoc Sinh', 1, 'hocsinh123', '123456', '0000-00-00 00:00:00', 1),
 (7, 'fghdgdfg', 1, 'testasdfs', 'asfdfsdg', '0000-00-00 00:00:00', 1),
 (8, 'sdfsdf', 1, 'abc1234', '1234567', '0000-00-00 00:00:00', 1),
 (9, 'sdfgdsgdf', 2, 'hoangnam123', '1234567', '0000-00-00 00:00:00', 1),
 (10, 'Nguyễn Văn A', 1, 'hocsinhabc', '1234567', '0000-00-00 00:00:00', 1),
-(11, 'Nguyễn Văn V', 1, 'hocsinh123', '1234567', '0000-00-00 00:00:00', 1);
+(11, 'Nguyễn Văn V', 1, 'hocsinh123', '1234567', '0000-00-00 00:00:00', 1),
+(12, 'Hoc sinh A', 1, 'hocsinhabc1', '1234567', '0000-00-00 00:00:00', 1),
+(13, 'Nguyễn Văn A', 1, 'hocsinhlop1', '1234567', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -493,7 +502,7 @@ CREATE TABLE IF NOT EXISTS `tu` (
   `t_BaiHoc` int(11) NOT NULL,
   PRIMARY KEY (`t_ID`),
   KEY `fk_tu_baihoc_idx` (`t_BaiHoc`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=41 ;
 
 --
 -- Dumping data for table `tu`
@@ -532,7 +541,10 @@ INSERT INTO `tu` (`t_ID`, `t_NoiDung`, `t_DuongDanGhiAm`, `t_BaiHoc`) VALUES
 (34, 'Củ Từ', 'upload/GhiAm/Tu/cutu.mp3\r\n', 15),
 (35, 'Vui Vẻ', 'upload/GhiAm/Tu/vuive.mp3\r\n', 16),
 (36, 'Xe Máy', 'upload/GhiAm/Tu/xemay.mp3\r\n', 16),
-(37, 'Y Tá', 'upload/GhiAm/Tu/y tá.mp3\r\n', 16);
+(37, 'Y Tá', 'upload/GhiAm/Tu/y tá.mp3\r\n', 16),
+(38, 'Điều ước', 'upload/GhiAm/Tu/dieu uoc.wav', 35),
+(39, 'Rước đèn', 'upload/GhiAm/Tu/ruoc den.wav', 35),
+(40, 'Vượt qua', 'upload/GhiAm/Tu/vuot qua.wav', 35);
 
 -- --------------------------------------------------------
 
